@@ -1,0 +1,32 @@
+int g( int* arr, int size )
+{
+	int i;
+	i = 0;
+
+	while ( i < size )
+	{
+		arr[ i ] = i;
+		i = i + 1;
+	}
+
+	return 0;
+}
+
+int main()
+{	
+	int a[ 10 ];
+
+	g( &a[ 0 ], 10 );
+
+	int i;
+	i = 0;
+	while ( i < 10 )
+	{
+		write a[ i ];
+		write 0;
+		i = i + 1;
+	}
+
+	return 0;
+}
+

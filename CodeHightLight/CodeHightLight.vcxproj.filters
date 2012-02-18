@@ -1,0 +1,452 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="源文件">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="头文件">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="资源文件">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="CodeHighLight">
+      <UniqueIdentifier>{77344c45-0c8c-4bf5-b391-b2bc2a31dd05}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Complier">
+      <UniqueIdentifier>{de230763-df04-4ed2-875c-2af862f38baf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ETController">
+      <UniqueIdentifier>{a7675534-3384-4ff9-9a67-f5d39efa8e9e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Supplement">
+      <UniqueIdentifier>{1c7436b9-4c44-426b-aa32-7303cf7a4743}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="UIElement">
+      <UniqueIdentifier>{c1f65f68-098f-4e6e-b69e-a5760b0154df}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Window">
+      <UniqueIdentifier>{3c77a23e-87ac-43c1-82bc-bda56635419b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Debuggers">
+      <UniqueIdentifier>{41b5883a-3166-40b8-a041-f1ec345c552e}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ReadMe.txt" />
+    <None Include="res\file_view.ico">
+      <Filter>资源文件</Filter>
+    </None>
+    <None Include="res\file_view_hc.ico">
+      <Filter>资源文件</Filter>
+    </None>
+    <None Include="res\class_view.ico">
+      <Filter>资源文件</Filter>
+    </None>
+    <None Include="res\class_view_hc.ico">
+      <Filter>资源文件</Filter>
+    </None>
+    <None Include="res\fileview.bmp">
+      <Filter>资源文件</Filter>
+    </None>
+    <None Include="res\fileview_hc.bmp">
+      <Filter>资源文件</Filter>
+    </None>
+    <None Include="res\classview.bmp">
+      <Filter>资源文件</Filter>
+    </None>
+    <None Include="res\classview_hc.bmp">
+      <Filter>资源文件</Filter>
+    </None>
+    <None Include="res\explorer.bmp">
+      <Filter>资源文件</Filter>
+    </None>
+    <None Include="res\explorer_hc.bmp">
+      <Filter>资源文件</Filter>
+    </None>
+    <None Include="res\sort.bmp">
+      <Filter>资源文件</Filter>
+    </None>
+    <None Include="res\sort_hc.bmp">
+      <Filter>资源文件</Filter>
+    </None>
+    <None Include="res\menuimages.bmp">
+      <Filter>资源文件</Filter>
+    </None>
+    <None Include="res\menuimages_hc.bmp">
+      <Filter>资源文件</Filter>
+    </None>
+    <None Include="res\output_wnd.ico">
+      <Filter>资源文件</Filter>
+    </None>
+    <None Include="res\output_wnd_hc.ico">
+      <Filter>资源文件</Filter>
+    </None>
+    <None Include="res\properties_wnd.ico">
+      <Filter>资源文件</Filter>
+    </None>
+    <None Include="res\properties_wnd_hc.ico">
+      <Filter>资源文件</Filter>
+    </None>
+    <None Include="res\properties.bmp">
+      <Filter>资源文件</Filter>
+    </None>
+    <None Include="res\properties_hc.bmp">
+      <Filter>资源文件</Filter>
+    </None>
+    <None Include="UserImages.bmp">
+      <Filter>资源文件</Filter>
+    </None>
+    <None Include="res\CodeHightLight.rc2">
+      <Filter>资源文件</Filter>
+    </None>
+    <None Include="res\CodeHightLightDoc.ico">
+      <Filter>资源文件</Filter>
+    </None>
+    <None Include="res\CodeHightLight.ico">
+      <Filter>资源文件</Filter>
+    </None>
+    <None Include="res\Toolbar.bmp">
+      <Filter>资源文件</Filter>
+    </None>
+    <None Include="res\Toolbar256.bmp">
+      <Filter>资源文件</Filter>
+    </None>
+    <None Include="res\启动画面.bmp">
+      <Filter>资源文件</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="CodeHightLight.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="stdafx.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="targetver.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="MainFrm.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="ChildFrm.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="CodeHightLightDoc.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="CodeHightLightView.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="CntrItem.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Syntax.h">
+      <Filter>CodeHighLight</Filter>
+    </ClInclude>
+    <ClInclude Include="SynEditView.h">
+      <Filter>CodeHighLight</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CompilerFrontPart\Parser.h">
+      <Filter>Complier</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CompilerFrontPart\SAMPLE.hpp">
+      <Filter>Complier</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CompilerFrontPart\ETMachine.h">
+      <Filter>Complier</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CompilerFrontPart\Imm2asm.h">
+      <Filter>Complier</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CompilerFrontPart\Token.h">
+      <Filter>Complier</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CompilerFrontPart\TreeDef.h">
+      <Filter>Complier</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CompilerFrontPart\SymbolTable.h">
+      <Filter>Complier</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CompilerFrontPart\Scanner.h">
+      <Filter>Complier</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CompilerFrontPart\def.h">
+      <Filter>Complier</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CompilerFrontPart\StateMachine.h">
+      <Filter>Complier</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CompilerFrontPart\FileReader.h">
+      <Filter>Complier</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CompilerFrontPart\stdafx.h">
+      <Filter>Complier</Filter>
+    </ClInclude>
+    <ClInclude Include="CExecuteController.h">
+      <Filter>ETController</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CompilerFrontPart\Debugger.h">
+      <Filter>Complier</Filter>
+    </ClInclude>
+    <ClInclude Include="ViewController.h">
+      <Filter>ETController</Filter>
+    </ClInclude>
+    <ClInclude Include="MusicPlayer.h">
+      <Filter>Supplement</Filter>
+    </ClInclude>
+    <ClInclude Include="SpeedDialog.h">
+      <Filter>CodeHighLight</Filter>
+    </ClInclude>
+    <ClInclude Include="Resource.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\UIBase\Special\ArrayContainer.h">
+      <Filter>UIElement</Filter>
+    </ClInclude>
+    <ClInclude Include="..\UIBase\Special\ArrayElement.h">
+      <Filter>UIElement</Filter>
+    </ClInclude>
+    <ClInclude Include="..\UIBase\Special\LinkedListContainer.h">
+      <Filter>UIElement</Filter>
+    </ClInclude>
+    <ClInclude Include="..\UIBase\Special\LinkedListElement.h">
+      <Filter>UIElement</Filter>
+    </ClInclude>
+    <ClInclude Include="..\UIBase\Base\Base.h">
+      <Filter>UIElement</Filter>
+    </ClInclude>
+    <ClInclude Include="..\UIBase\Base\Def.h">
+      <Filter>UIElement</Filter>
+    </ClInclude>
+    <ClInclude Include="..\UIBase\Base\EventListener.h">
+      <Filter>UIElement</Filter>
+    </ClInclude>
+    <ClInclude Include="..\UIBase\Base\FSMThread.h">
+      <Filter>UIElement</Filter>
+    </ClInclude>
+    <ClInclude Include="..\UIBase\Base\MacroDef.h">
+      <Filter>UIElement</Filter>
+    </ClInclude>
+    <ClInclude Include="..\UIBase\Base\ObjectBase.h">
+      <Filter>UIElement</Filter>
+    </ClInclude>
+    <ClInclude Include="..\UIBase\Base\Observer.h">
+      <Filter>UIElement</Filter>
+    </ClInclude>
+    <ClInclude Include="..\UIBase\Base\TClassFactory.h">
+      <Filter>UIElement</Filter>
+    </ClInclude>
+    <ClInclude Include="ClassView.h">
+      <Filter>Window</Filter>
+    </ClInclude>
+    <ClInclude Include="FileView.h">
+      <Filter>Window</Filter>
+    </ClInclude>
+    <ClInclude Include="OutputWnd.h">
+      <Filter>Window</Filter>
+    </ClInclude>
+    <ClInclude Include="PropertiesWnd.h">
+      <Filter>Window</Filter>
+    </ClInclude>
+    <ClInclude Include="ViewTree.h">
+      <Filter>Window</Filter>
+    </ClInclude>
+    <ClInclude Include="AnimationWnd.h">
+      <Filter>Window</Filter>
+    </ClInclude>
+    <ClInclude Include="JiafeiDebugger.h">
+      <Filter>Debuggers</Filter>
+    </ClInclude>
+    <ClInclude Include="Threads.h">
+      <Filter>ETController</Filter>
+    </ClInclude>
+    <ClInclude Include="..\UIBase\Base\MessageDefinition.h">
+      <Filter>ETController</Filter>
+    </ClInclude>
+    <ClInclude Include="PropertiesWndThread.h">
+      <Filter>ETController</Filter>
+    </ClInclude>
+    <ClInclude Include="KeyWordDlg.h">
+      <Filter>Window</Filter>
+    </ClInclude>
+    <ClInclude Include="MyComboBox.h">
+      <Filter>Window</Filter>
+    </ClInclude>
+    <ClInclude Include="MemerySpy.h">
+      <Filter>Window</Filter>
+    </ClInclude>
+    <ClInclude Include="OutPutResultWnd.h">
+      <Filter>Window</Filter>
+    </ClInclude>
+    <ClInclude Include="..\UIBase\Base\AnimationFactory.h">
+      <Filter>ETController</Filter>
+    </ClInclude>
+    <ClInclude Include="MyKeyWordsDlg.h">
+      <Filter>Window</Filter>
+    </ClInclude>
+    <ClInclude Include="MyListBox.h">
+      <Filter>Window</Filter>
+    </ClInclude>
+    <ClInclude Include="FindFileClass.h">
+      <Filter>ETController</Filter>
+    </ClInclude>
+    <ClInclude Include="SplashDlg.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="AbstactSyntaxTree.h">
+      <Filter>Window</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="CodeHightLight.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="stdafx.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="MainFrm.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="ChildFrm.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="CodeHightLightDoc.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="CodeHightLightView.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="CntrItem.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Syntax.cpp">
+      <Filter>CodeHighLight</Filter>
+    </ClCompile>
+    <ClCompile Include="SynEditView.cpp">
+      <Filter>CodeHighLight</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CompilerFrontPart\Scanner.cpp">
+      <Filter>Complier</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CompilerFrontPart\Token.cpp">
+      <Filter>Complier</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CompilerFrontPart\TreeDef.cpp">
+      <Filter>Complier</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CompilerFrontPart\def.cpp">
+      <Filter>Complier</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CompilerFrontPart\SymbolTable.cpp">
+      <Filter>Complier</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CompilerFrontPart\FileReader.cpp">
+      <Filter>Complier</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CompilerFrontPart\StateMachine.cpp">
+      <Filter>Complier</Filter>
+    </ClCompile>
+    <ClCompile Include="CExecuteController.cpp">
+      <Filter>ETController</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CompilerFrontPart\debugger.cpp">
+      <Filter>Complier</Filter>
+    </ClCompile>
+    <ClCompile Include="SpeedDialog.cpp">
+      <Filter>CodeHighLight</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CompilerFrontPart\parser.cpp">
+      <Filter>Complier</Filter>
+    </ClCompile>
+    <ClCompile Include="..\UIBase\Special\ArrayContainer.cpp">
+      <Filter>UIElement</Filter>
+    </ClCompile>
+    <ClCompile Include="..\UIBase\Special\ArrayElement.cpp">
+      <Filter>UIElement</Filter>
+    </ClCompile>
+    <ClCompile Include="..\UIBase\Special\LinkedListContainer.cpp">
+      <Filter>UIElement</Filter>
+    </ClCompile>
+    <ClCompile Include="..\UIBase\Special\LinkedListElement.cpp">
+      <Filter>UIElement</Filter>
+    </ClCompile>
+    <ClCompile Include="..\UIBase\Base\Base.cpp">
+      <Filter>UIElement</Filter>
+    </ClCompile>
+    <ClCompile Include="..\UIBase\Base\ObjectBase.cpp">
+      <Filter>UIElement</Filter>
+    </ClCompile>
+    <ClCompile Include="ClassView.cpp">
+      <Filter>Window</Filter>
+    </ClCompile>
+    <ClCompile Include="FileView.cpp">
+      <Filter>Window</Filter>
+    </ClCompile>
+    <ClCompile Include="OutputWnd.cpp">
+      <Filter>Window</Filter>
+    </ClCompile>
+    <ClCompile Include="PropertiesWnd.cpp">
+      <Filter>Window</Filter>
+    </ClCompile>
+    <ClCompile Include="ViewTree.cpp">
+      <Filter>Window</Filter>
+    </ClCompile>
+    <ClCompile Include="AnimationWnd.cpp">
+      <Filter>Window</Filter>
+    </ClCompile>
+    <ClCompile Include="JiafeiDebugger.cpp">
+      <Filter>Debuggers</Filter>
+    </ClCompile>
+    <ClCompile Include="Threads.cpp">
+      <Filter>ETController</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CompilerFrontPart\ETMachine.cpp">
+      <Filter>Complier</Filter>
+    </ClCompile>
+    <ClCompile Include="PropertiesWndThread.cpp">
+      <Filter>ETController</Filter>
+    </ClCompile>
+    <ClCompile Include="KeyWordDlg.cpp">
+      <Filter>Window</Filter>
+    </ClCompile>
+    <ClCompile Include="MyComboBox.cpp">
+      <Filter>Window</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CompilerFrontPart\Imm2asm.cpp">
+      <Filter>Complier</Filter>
+    </ClCompile>
+    <ClCompile Include="MemerySpy.cpp">
+      <Filter>Window</Filter>
+    </ClCompile>
+    <ClCompile Include="OutPutResultWnd.cpp">
+      <Filter>Window</Filter>
+    </ClCompile>
+    <ClCompile Include="..\UIBase\Base\AnimationFactory.cpp">
+      <Filter>ETController</Filter>
+    </ClCompile>
+    <ClCompile Include="MyKeyWordsDlg.cpp">
+      <Filter>Window</Filter>
+    </ClCompile>
+    <ClCompile Include="MyListBox.cpp">
+      <Filter>Window</Filter>
+    </ClCompile>
+    <ClCompile Include="FindFileClass.cpp">
+      <Filter>ETController</Filter>
+    </ClCompile>
+    <ClCompile Include="SplashDlg.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="AbstactSyntaxTree.cpp">
+      <Filter>Window</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="CodeHightLight.rc">
+      <Filter>资源文件</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+</Project>

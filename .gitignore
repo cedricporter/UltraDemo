@@ -1,0 +1,12 @@
+*.o
+*.obj
+
+
+/Intermediate
+/Release
+/DataStructure Final.opensdf
+/DataStructure Final.sdf
+/Debug/Plugins
+/Debug/CodeHightLight.exe
+/Debug/CodeHightLight.ilk
+/Debug/CodeHightLight.pdb

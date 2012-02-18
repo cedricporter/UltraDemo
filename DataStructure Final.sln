@@ -1,0 +1,52 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "CompilerFrontPart", "CompilerFrontPart\CompilerFrontPart.vcxproj", "{077E6C39-DB2B-49A4-8A9C-8CB45E9B9DB4}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "CodeHightLight", "CodeHightLight\CodeHightLight.vcxproj", "{79D878F2-70CE-47DB-A6FF-D1CF56C6600B}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "LinkedListAnimationPlugin", "LinkedlistAnimationPlugin\ArrayAnimationPlugin.vcxproj", "{60162442-1A1E-44B2-AA20-55E5F219E9D8}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "TwoDimensionArrayAnimationPlugin", "TwoDimensionArrayAnimationPlugin\TwoDimensionArrayAnimationPlugin.vcxproj", "{31D3047E-0476-4B80-A138-D9DF73C9F924}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ArrayAnimationPlugin", "ArrayAnimationPlugin\LinkedlistAnimationPlugin.vcxproj", "{51EAA5F7-D370-42F8-A515-F5188FC7BA52}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "HanoiAnimationPlugin", "HanoiAnimationPlugin\HanoiAnimationPlugin.vcxproj", "{CCD01856-0147-4FDB-AA65-9EDE10C6382F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{077E6C39-DB2B-49A4-8A9C-8CB45E9B9DB4}.Debug|Win32.ActiveCfg = Debug|Win32
+		{077E6C39-DB2B-49A4-8A9C-8CB45E9B9DB4}.Release|Win32.ActiveCfg = Release|Win32
+		{79D878F2-70CE-47DB-A6FF-D1CF56C6600B}.Debug|Win32.ActiveCfg = Debug|Win32
+		{79D878F2-70CE-47DB-A6FF-D1CF56C6600B}.Debug|Win32.Build.0 = Debug|Win32
+		{79D878F2-70CE-47DB-A6FF-D1CF56C6600B}.Release|Win32.ActiveCfg = Release|Win32
+		{79D878F2-70CE-47DB-A6FF-D1CF56C6600B}.Release|Win32.Build.0 = Release|Win32
+		{60162442-1A1E-44B2-AA20-55E5F219E9D8}.Debug|Win32.ActiveCfg = Debug|Win32
+		{60162442-1A1E-44B2-AA20-55E5F219E9D8}.Debug|Win32.Build.0 = Debug|Win32
+		{60162442-1A1E-44B2-AA20-55E5F219E9D8}.Release|Win32.ActiveCfg = Release|Win32
+		{60162442-1A1E-44B2-AA20-55E5F219E9D8}.Release|Win32.Build.0 = Release|Win32
+		{31D3047E-0476-4B80-A138-D9DF73C9F924}.Debug|Win32.ActiveCfg = Debug|Win32
+		{31D3047E-0476-4B80-A138-D9DF73C9F924}.Debug|Win32.Build.0 = Debug|Win32
+		{31D3047E-0476-4B80-A138-D9DF73C9F924}.Release|Win32.ActiveCfg = Release|Win32
+		{31D3047E-0476-4B80-A138-D9DF73C9F924}.Release|Win32.Build.0 = Release|Win32
+		{51EAA5F7-D370-42F8-A515-F5188FC7BA52}.Debug|Win32.ActiveCfg = Debug|Win32
+		{51EAA5F7-D370-42F8-A515-F5188FC7BA52}.Debug|Win32.Build.0 = Debug|Win32
+		{51EAA5F7-D370-42F8-A515-F5188FC7BA52}.Release|Win32.ActiveCfg = Release|Win32
+		{51EAA5F7-D370-42F8-A515-F5188FC7BA52}.Release|Win32.Build.0 = Release|Win32
+		{CCD01856-0147-4FDB-AA65-9EDE10C6382F}.Debug|Win32.ActiveCfg = Debug|Win32
+		{CCD01856-0147-4FDB-AA65-9EDE10C6382F}.Debug|Win32.Build.0 = Debug|Win32
+		{CCD01856-0147-4FDB-AA65-9EDE10C6382F}.Release|Win32.ActiveCfg = Release|Win32
+		{CCD01856-0147-4FDB-AA65-9EDE10C6382F}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(SubversionScc) = preSolution
+		Svn-Managed = True
+		Manager = AnkhSVN - Subversion Support for Visual Studio
+	EndGlobalSection
+EndGlobal

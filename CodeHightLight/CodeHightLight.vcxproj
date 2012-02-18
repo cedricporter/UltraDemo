@@ -1,0 +1,260 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{79D878F2-70CE-47DB-A6FF-D1CF56C6600B}</ProjectGuid>
+    <RootNamespace>CodeHightLight</RootNamespace>
+    <Keyword>MFCProj</Keyword>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <CharacterSet>NotSet</CharacterSet>
+    <UseOfMfc>Static</UseOfMfc>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>NotSet</CharacterSet>
+    <UseOfMfc>Static</UseOfMfc>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <LinkIncremental>true</LinkIncremental>
+    <IntDir>$(SolutionDir)\Intermediate\$(ProjectName)\</IntDir>
+    <LibraryPath>..\lib;$(LibraryPath)</LibraryPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <LinkIncremental>false</LinkIncremental>
+    <IntDir>$(SolutionDir)\Intermediate\$(ProjectName)\</IntDir>
+    <LibraryPath>..\lib;$(LibraryPath)</LibraryPath>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>..\lib;..\CompilerFrontPart;..\UIBase\Special;..\UIBase\Base;..\lib</AdditionalIncludeDirectories>
+      <MultiProcessorCompilation>false</MultiProcessorCompilation>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>SkinPPWTL.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+    <Midl>
+      <MkTypLibCompatible>false</MkTypLibCompatible>
+      <ValidateAllParameters>true</ValidateAllParameters>
+      <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </Midl>
+    <ResourceCompile>
+      <Culture>0x0409</Culture>
+      <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>$(IntDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>..\lib;..\CompilerFrontPart;..\UIBase\Special;..\UIBase\Base;..\lib</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalDependencies>SkinPPWTL.lib;</AdditionalDependencies>
+    </Link>
+    <Midl>
+      <MkTypLibCompatible>false</MkTypLibCompatible>
+      <ValidateAllParameters>true</ValidateAllParameters>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </Midl>
+    <ResourceCompile>
+      <Culture>0x0409</Culture>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>$(IntDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <None Include="ReadMe.txt" />
+    <None Include="res\classview.bmp" />
+    <None Include="res\classview_hc.bmp" />
+    <None Include="res\class_view.ico" />
+    <None Include="res\class_view_hc.ico" />
+    <None Include="res\CodeHightLight.ico" />
+    <None Include="res\CodeHightLight.rc2" />
+    <None Include="res\CodeHightLightDoc.ico" />
+    <None Include="res\explorer.bmp" />
+    <None Include="res\explorer_hc.bmp" />
+    <None Include="res\fileview.bmp" />
+    <None Include="res\fileview_hc.bmp" />
+    <None Include="res\file_view.ico" />
+    <None Include="res\file_view_hc.ico" />
+    <None Include="res\menuimages.bmp" />
+    <None Include="res\menuimages_hc.bmp" />
+    <None Include="res\output_wnd.ico" />
+    <None Include="res\output_wnd_hc.ico" />
+    <None Include="res\properties.bmp" />
+    <None Include="res\properties_hc.bmp" />
+    <None Include="res\properties_wnd.ico" />
+    <None Include="res\properties_wnd_hc.ico" />
+    <None Include="res\sort.bmp" />
+    <None Include="res\sort_hc.bmp" />
+    <None Include="res\Toolbar.bmp" />
+    <None Include="res\Toolbar256.bmp" />
+    <None Include="res\启动画面.bmp" />
+    <None Include="UserImages.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\CompilerFrontPart\Debugger.h" />
+    <ClInclude Include="..\CompilerFrontPart\def.h" />
+    <ClInclude Include="..\CompilerFrontPart\ETMachine.h" />
+    <ClInclude Include="..\CompilerFrontPart\FileReader.h" />
+    <ClInclude Include="..\CompilerFrontPart\Imm2asm.h" />
+    <ClInclude Include="..\CompilerFrontPart\Parser.h" />
+    <ClInclude Include="..\CompilerFrontPart\SAMPLE.hpp" />
+    <ClInclude Include="..\CompilerFrontPart\Scanner.h" />
+    <ClInclude Include="..\CompilerFrontPart\StateMachine.h" />
+    <ClInclude Include="..\CompilerFrontPart\stdafx.h" />
+    <ClInclude Include="..\CompilerFrontPart\SymbolTable.h" />
+    <ClInclude Include="..\CompilerFrontPart\Token.h" />
+    <ClInclude Include="..\CompilerFrontPart\TreeDef.h" />
+    <ClInclude Include="..\UIBase\Base\AnimationFactory.h" />
+    <ClInclude Include="..\UIBase\Base\Base.h" />
+    <ClInclude Include="..\UIBase\Base\Def.h" />
+    <ClInclude Include="..\UIBase\Base\EventListener.h" />
+    <ClInclude Include="..\UIBase\Base\FSMThread.h" />
+    <ClInclude Include="..\UIBase\Base\MacroDef.h" />
+    <ClInclude Include="..\UIBase\Base\MessageDefinition.h" />
+    <ClInclude Include="..\UIBase\Base\ObjectBase.h" />
+    <ClInclude Include="..\UIBase\Base\Observer.h" />
+    <ClInclude Include="..\UIBase\Base\TClassFactory.h" />
+    <ClInclude Include="..\UIBase\Special\ArrayContainer.h" />
+    <ClInclude Include="..\UIBase\Special\ArrayElement.h" />
+    <ClInclude Include="..\UIBase\Special\LinkedListContainer.h" />
+    <ClInclude Include="..\UIBase\Special\LinkedListElement.h" />
+    <ClInclude Include="AbstactSyntaxTree.h" />
+    <ClInclude Include="AnimationWnd.h" />
+    <ClInclude Include="CExecuteController.h" />
+    <ClInclude Include="ChildFrm.h" />
+    <ClInclude Include="ClassView.h" />
+    <ClInclude Include="CntrItem.h" />
+    <ClInclude Include="CodeHightLight.h" />
+    <ClInclude Include="CodeHightLightDoc.h" />
+    <ClInclude Include="CodeHightLightView.h" />
+    <ClInclude Include="FileView.h" />
+    <ClInclude Include="FindFileClass.h" />
+    <ClInclude Include="JiafeiDebugger.h" />
+    <ClInclude Include="KeyWordDlg.h" />
+    <ClInclude Include="MainFrm.h" />
+    <ClInclude Include="MemerySpy.h" />
+    <ClInclude Include="MusicPlayer.h" />
+    <ClInclude Include="MyComboBox.h" />
+    <ClInclude Include="MyKeyWordsDlg.h" />
+    <ClInclude Include="MyListBox.h" />
+    <ClInclude Include="OutPutResultWnd.h" />
+    <ClInclude Include="OutputWnd.h" />
+    <ClInclude Include="PropertiesWnd.h" />
+    <ClInclude Include="PropertiesWndThread.h" />
+    <ClInclude Include="Resource.h" />
+    <ClInclude Include="SpeedDialog.h" />
+    <ClInclude Include="SplashDlg.h" />
+    <ClInclude Include="stdafx.h" />
+    <ClInclude Include="SynEditView.h" />
+    <ClInclude Include="Syntax.h" />
+    <ClInclude Include="targetver.h" />
+    <ClInclude Include="Threads.h" />
+    <ClInclude Include="ViewController.h" />
+    <ClInclude Include="ViewTree.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\CompilerFrontPart\debugger.cpp" />
+    <ClCompile Include="..\CompilerFrontPart\def.cpp" />
+    <ClCompile Include="..\CompilerFrontPart\ETMachine.cpp" />
+    <ClCompile Include="..\CompilerFrontPart\FileReader.cpp" />
+    <ClCompile Include="..\CompilerFrontPart\Imm2asm.cpp" />
+    <ClCompile Include="..\CompilerFrontPart\parser.cpp" />
+    <ClCompile Include="..\CompilerFrontPart\Scanner.cpp" />
+    <ClCompile Include="..\CompilerFrontPart\StateMachine.cpp" />
+    <ClCompile Include="..\CompilerFrontPart\SymbolTable.cpp" />
+    <ClCompile Include="..\CompilerFrontPart\Token.cpp" />
+    <ClCompile Include="..\CompilerFrontPart\TreeDef.cpp" />
+    <ClCompile Include="..\UIBase\Base\AnimationFactory.cpp" />
+    <ClCompile Include="..\UIBase\Base\Base.cpp" />
+    <ClCompile Include="..\UIBase\Base\ObjectBase.cpp" />
+    <ClCompile Include="..\UIBase\Special\ArrayContainer.cpp" />
+    <ClCompile Include="..\UIBase\Special\ArrayElement.cpp" />
+    <ClCompile Include="..\UIBase\Special\LinkedListContainer.cpp" />
+    <ClCompile Include="..\UIBase\Special\LinkedListElement.cpp" />
+    <ClCompile Include="AbstactSyntaxTree.cpp" />
+    <ClCompile Include="AnimationWnd.cpp" />
+    <ClCompile Include="CExecuteController.cpp" />
+    <ClCompile Include="ChildFrm.cpp" />
+    <ClCompile Include="ClassView.cpp" />
+    <ClCompile Include="CntrItem.cpp" />
+    <ClCompile Include="CodeHightLight.cpp" />
+    <ClCompile Include="CodeHightLightDoc.cpp" />
+    <ClCompile Include="CodeHightLightView.cpp" />
+    <ClCompile Include="FileView.cpp" />
+    <ClCompile Include="FindFileClass.cpp" />
+    <ClCompile Include="JiafeiDebugger.cpp" />
+    <ClCompile Include="KeyWordDlg.cpp" />
+    <ClCompile Include="MainFrm.cpp" />
+    <ClCompile Include="MemerySpy.cpp" />
+    <ClCompile Include="MyComboBox.cpp" />
+    <ClCompile Include="MyKeyWordsDlg.cpp" />
+    <ClCompile Include="MyListBox.cpp" />
+    <ClCompile Include="OutPutResultWnd.cpp" />
+    <ClCompile Include="OutputWnd.cpp" />
+    <ClCompile Include="PropertiesWnd.cpp" />
+    <ClCompile Include="PropertiesWndThread.cpp" />
+    <ClCompile Include="SpeedDialog.cpp" />
+    <ClCompile Include="SplashDlg.cpp" />
+    <ClCompile Include="stdafx.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="SynEditView.cpp" />
+    <ClCompile Include="Syntax.cpp" />
+    <ClCompile Include="Threads.cpp" />
+    <ClCompile Include="ViewTree.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="CodeHightLight.rc" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+  <ProjectExtensions>
+    <VisualStudio>
+      <UserProperties RESOURCE_FILE="CodeHightLight.rc" />
+    </VisualStudio>
+  </ProjectExtensions>
+</Project>
