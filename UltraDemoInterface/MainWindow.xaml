@@ -1,0 +1,9 @@
+﻿<Window x:Class="UltraDemoInterface.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="MainWindow" Height="350" Width="525">
+    <Grid>
+    	<Rectangle Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="64" Margin="116,54,0,0" Stroke="Black" VerticalAlignment="Top" Width="63"/>
+        
+    </Grid>
+</Window>
