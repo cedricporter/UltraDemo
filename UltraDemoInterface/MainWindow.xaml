@@ -1,9 +1,18 @@
-﻿<Window x:Class="UltraDemoInterface.MainWindow"
+﻿<Window
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="MainWindow" Height="350" Width="525">
-    <Grid>
-    	<Rectangle Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="64" Margin="116,54,0,0" Stroke="Black" VerticalAlignment="Top" Width="63"/>
-        
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="d" x:Class="UltraDemoInterface.MainWindow"
+        Title="UltraDemo" Height="500" Width="800">
+    <Grid x:Name="WindowRoot">
+    	<Grid x:Name="TopBar" Margin="0" VerticalAlignment="Top" Height="34">
+    		<Rectangle x:Name="TopBarBackground" Fill="#FF333333" Margin="0" Stroke="#FF666666"/>
+    		<Button x:Name="EditorViewButton" Content="编辑" HorizontalAlignment="Right" Margin="0,8,163,4.163" Width="75" d:LayoutOverrides="Height"/>
+    		<Button x:Name="SplitViewButton" Content="拆分" HorizontalAlignment="Right" Margin="0,8,84,4.163" Width="75" d:LayoutOverrides="Height"/>
+    		<Button x:Name="DemoViewButton" Content="演示" HorizontalAlignment="Right" Margin="0,8,5,4.163" Width="75" d:LayoutOverrides="Height"/>
+    	</Grid>
+    	<Grid x:Name="MainContainer" Margin="0,34,0,0">
+    		<Grid x:Name="DemoContainer" Margin="0" d:IsHidden="True"/>
+    		<Grid x:Name="EditorContainer"/>
+    	</Grid>
     </Grid>
 </Window>
