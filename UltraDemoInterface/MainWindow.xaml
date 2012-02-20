@@ -5,36 +5,38 @@
         Title="UltraDemo" Height="500" Width="800">
 
     <Grid x:Name="WindowRoot">
-    	<Grid x:Name="TopBar" Margin="0" VerticalAlignment="Top" Height="40">
-    		<Rectangle Fill="#FF333333" RadiusY="16" RadiusX="16" Effect="{DynamicResource GeneralDropShadowEffect}"/>
+    	<Grid x:Name="TopBar" Margin="0" VerticalAlignment="Top" Height="30">
+    		<Rectangle Fill="#FF333333" RadiusY="16" RadiusX="16" Effect="{StaticResource GeneralDropShadowEffect}"/>
     		<Rectangle Fill="{StaticResource LinearWhiteBrush}" RadiusY="16" RadiusX="16" VerticalAlignment="Bottom" Height="60"/>
-    		<Button x:Name="EditorViewButton" Content="编辑" HorizontalAlignment="Right" Margin="0,6.5,184,5.663" Width="75" d:LayoutOverrides="Height" RenderTransformOrigin="0.5,0.5">
-    			<Button.RenderTransform>
-    				<TransformGroup>
-    					<ScaleTransform/>
-    					<SkewTransform/>
-    					<RotateTransform/>
-    					<TranslateTransform/>
-    				</TransformGroup>
-    			</Button.RenderTransform>
-    		</Button>
-    		<Button x:Name="SplitViewButton" Content="拆分" HorizontalAlignment="Right" Margin="0,6.5,105,5.663" Width="75" d:LayoutOverrides="Height"/>
-    		<Button x:Name="DemoViewButton" Content="演示" HorizontalAlignment="Right" Margin="0,6.5,26,5.663" Width="75" d:LayoutOverrides="Height"/>
+    		<RadioButton x:Name="EditorViewButton" Content="编辑" Margin="0,0,172.498,0" Template="{StaticResource TopBarSwitchButtonTemplate}" HorizontalAlignment="Right" ToolTip="切换至编辑视图" IsChecked="True"/>
+    		<RadioButton x:Name="SplitViewButton" Content="拆分" Margin="0,0,113.498,0" Template="{StaticResource TopBarSwitchButtonTemplate}" HorizontalAlignment="Right" ToolTip="切换至拆分视图"/>
+    		<RadioButton x:Name="DemoViewButton" Content="演示" Margin="0,0,54.498,0" Template="{StaticResource TopBarSwitchButtonTemplate}" HorizontalAlignment="Right" ToolTip="切换至演示视图"/>
     	</Grid>
     	<Grid x:Name="MainContainer" Margin="0,34,0,0">
     		<Grid x:Name="DemoContainer" Margin="0">
     			<Grid x:Name="DemoControlBar" Height="50" Margin="0" VerticalAlignment="Bottom">
     				<Rectangle Fill="#FF333333" Effect="{StaticResource GeneralBlurEffect}" Margin="0" RadiusX="16" RadiusY="16"/>
     				<Rectangle Fill="{StaticResource LinearWhiteBrush}" Margin="0" RadiusX="16" RadiusY="16"/>
-    				<Button x:Name="RunButton" HorizontalAlignment="Left" Margin="25.5,0,0,0" Template="{StaticResource CircleButtonTemplate}"/>
-    				<Button x:Name="StepButton" Content="单步" HorizontalAlignment="Left" Margin="69.5,0.918,0,-0.918" Template="{StaticResource CircleButtonTemplate}"/>
-    				<Button x:Name="StopButton" Content="" HorizontalAlignment="Left" Margin="113.5,0,0,0" Template="{StaticResource CircleButtonTemplate}"/>
+    				<Button x:Name="PauseButton" HorizontalAlignment="Left" Margin="35.5,0,0,0" Template="{StaticResource CircleButtonTemplate}" ToolTip="暂停" Visibility="Hidden">
+    					<Path Stroke="#333333" Fill="#666666"
+						Data="M 0,0 L 0,12 L 3,12 L 3,0 Z M 6,0 L 6,12 L 9,12 L 9,0 Z"/>
+    				</Button>
+    				<Button x:Name="RunButton" HorizontalAlignment="Left" Margin="35.5,0,0,0" Template="{StaticResource CircleButtonTemplate}" ToolTip="运行">
+    					<Path Stroke="#333333" Fill="#666666" Data="M 0,0 L 0,12 L 10,6 Z"/>
+					</Button>
+    				<Button x:Name="StepButton" HorizontalAlignment="Left" Margin="79.5,0,0,0" Template="{StaticResource CircleButtonTemplate}" ToolTip="单步">
+    					<Path Stroke="#333333" Fill="#666666"
+						Data="M 0,0 L 0,12 L 8,6 L 0,0 M 8,0 L 8,12 L 10,12 L 10,0 Z"/>		
+					</Button>
+    				<Button x:Name="StopButton" HorizontalAlignment="Left" Margin="123.5,0,0,0" Template="{StaticResource CircleButtonTemplate}" ToolTip="停止">
+    					<Path Stroke="#333333" Fill="#666666" Data="M 0,0 L 0,10 L 10,10 L 10,0 Z"/>			
+					</Button>
     				<Button x:Name="OutputWindowButton" Content="输出窗口" Margin="0,0,141,0" Template="{StaticResource EllipseButtonTemplate}" d:LayoutOverrides="Height" VerticalAlignment="Center" HorizontalAlignment="Right"/>
     				<Button x:Name="MemeryWindowButton" Content="内存窗口" HorizontalAlignment="Right" Margin="0,0,17,0" Template="{StaticResource EllipseButtonTemplate}" VerticalAlignment="Center"/>
-    				<Slider Margin="269,11,333,8"/>
+    				<Slider Margin="216,11,342.5,8" Template="{StaticResource HorizontalSliderTemplate}" Width="225"/>
     			</Grid>
     		</Grid>
-    		<Grid x:Name="EditorContainer" Visibility="Hidden" d:IsHidden="True">
+    		<Grid x:Name="EditorContainer" Visibility="Hidden" d:IsHidden="True" d:IsLocked="True">
     			<TabControl Margin="0">
     				<TabItem Header="TabItem">
     					<Grid Background="#FFE5E5E5"/>
@@ -45,6 +47,6 @@
     			</TabControl>
     		</Grid>
     	</Grid>
-    	<Rectangle x:Name="WindowBackGround" Margin="0" Panel.ZIndex="-10" Fill="#FFDFDFDF"/>
+    	<Rectangle x:Name="WindowBackGround" Margin="0" Panel.ZIndex="-10" Fill="#FFDFDFDF" d:IsLocked="True"/>
     </Grid>
 </Window>

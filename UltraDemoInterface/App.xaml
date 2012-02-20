@@ -29,6 +29,12 @@
 	    	<GradientStop Color="#E8E8E8" Offset="1.0"/> 		
 		</LinearGradientBrush>
 		
+		<!--LinearGrayBrush-->
+		<LinearGradientBrush x:Key="LinearGrayBrush" StartPoint="0,0" EndPoint="0,1">
+    		<GradientStop Color="#CCCCCC" Offset="0.0"/>     
+	    	<GradientStop Color="#999999" Offset="1.0"/> 		
+		</LinearGradientBrush>
+		
 		<!--GeneralDropShadowEffect-->
 		<DropShadowEffect x:Key="GeneralDropShadowEffect" Color="#4C7880" Opacity="0.5"
 		ShadowDepth="4" Direction="270"/>
@@ -116,25 +122,35 @@
 			</ColorAnimationUsingKeyFrames>
 		</Storyboard>
 		
+		<!--TurnGrayStoryboard-->
+		<Storyboard x:Key="TurnGrayStoryboard">
+			<ColorAnimationUsingKeyFrames Storyboard.TargetName="Background"
+			Storyboard.TargetProperty="Fill.GradientStops[0].Color">
+				<EasingColorKeyFrame KeyTime="0:0:0.2" Value="#CCCCCC">
+					<EasingColorKeyFrame.EasingFunction>
+						<CubicEase EasingMode="EaseOut"/>
+					</EasingColorKeyFrame.EasingFunction>
+				</EasingColorKeyFrame>
+			</ColorAnimationUsingKeyFrames>
+            <ColorAnimationUsingKeyFrames Storyboard.TargetName="Background"
+			Storyboard.TargetProperty="Fill.GradientStops[1].Color">
+				<EasingColorKeyFrame KeyTime="0:0:0.2" Value="#999999">
+					<EasingColorKeyFrame.EasingFunction>
+						<CubicEase EasingMode="EaseOut"/>
+					</EasingColorKeyFrame.EasingFunction>
+				</EasingColorKeyFrame>
+			</ColorAnimationUsingKeyFrames>
+		</Storyboard>
+		
 		<!--ScaleSmallStoryboard-->
 		<Storyboard x:Key="ScaleSmallStoryboard">
 			<DoubleAnimationUsingKeyFrames Storyboard.TargetName="Grid"
 			Storyboard.TargetProperty="(UIElement.RenderTransform).(ScaleTransform.ScaleX)">
 				<LinearDoubleKeyFrame KeyTime="0:0:0.1" Value="0.9"/>
-				<!--<EasingDoubleKeyFrame KeyTime="0:0:0.1" Value="0.9">
-					<EasingDoubleKeyFrame.EasingFunction>
-						<CubicEase EasingMode="EaseOut"/>
-					</EasingDoubleKeyFrame.EasingFunction>
-				</EasingDoubleKeyFrame>-->
 			</DoubleAnimationUsingKeyFrames>
 			<DoubleAnimationUsingKeyFrames Storyboard.TargetName="Grid"
 			Storyboard.TargetProperty="(UIElement.RenderTransform).(ScaleTransform.ScaleY)">
 				<LinearDoubleKeyFrame KeyTime="0:0:0.1" Value="0.9"/>
-				<!--<EasingDoubleKeyFrame KeyTime="0:0:0.1" Value="0.9">
-					<EasingDoubleKeyFrame.EasingFunction>
-						<CubicEase EasingMode="EaseOut"/>
-					</EasingDoubleKeyFrame.EasingFunction>
-				</EasingDoubleKeyFrame>-->
 			</DoubleAnimationUsingKeyFrames>
 		</Storyboard>
 		
@@ -142,19 +158,11 @@
 		<Storyboard x:Key="ScaleOriginStoryboard">
 			<DoubleAnimationUsingKeyFrames Storyboard.TargetName="Grid"
 			Storyboard.TargetProperty="(UIElement.RenderTransform).(ScaleTransform.ScaleX)">
-				<EasingDoubleKeyFrame KeyTime="0:0:0.1" Value="1">
-					<EasingDoubleKeyFrame.EasingFunction>
-						<CubicEase EasingMode="EaseOut"/>
-					</EasingDoubleKeyFrame.EasingFunction>
-				</EasingDoubleKeyFrame>
+				<LinearDoubleKeyFrame KeyTime="0:0:0.1" Value="1"/>
 			</DoubleAnimationUsingKeyFrames>
 			<DoubleAnimationUsingKeyFrames Storyboard.TargetName="Grid"
 			Storyboard.TargetProperty="(UIElement.RenderTransform).(ScaleTransform.ScaleY)">
-				<EasingDoubleKeyFrame KeyTime="0:0:0.1" Value="1">
-					<EasingDoubleKeyFrame.EasingFunction>
-						<CubicEase EasingMode="EaseOut"/>
-					</EasingDoubleKeyFrame.EasingFunction>
-				</EasingDoubleKeyFrame>
+				<LinearDoubleKeyFrame KeyTime="0:0:0.1" Value="1"/>
 			</DoubleAnimationUsingKeyFrames>
 		</Storyboard>
 		
@@ -163,27 +171,24 @@
 			<Grid Name="Grid" Width="48" Height="48" 
 			HorizontalAlignment="Center" VerticalAlignment="Center">
 				<Ellipse Width="36" Height="36" Fill="#333333" Effect="{StaticResource GeneralBlurEffect}"/>
-				<Ellipse Width="36" Height="36" Fill="#333333" Effect="{StaticResource GeneralDropShadowEffect}"/>
+				<Ellipse Width="34" Height="34" Fill="#333333" Effect="{StaticResource GeneralDropShadowEffect}"/>
                 <Ellipse Name="Background" Width="36" Height="36"
-                Fill="{StaticResource LinearBlueBrush}"/>
+                Fill="{StaticResource LinearWhiteBrush}"/>
                 <ContentPresenter RecognizesAccessKey="True"
-				HorizontalAlignment="Center" VerticalAlignment="Center">
-				</ContentPresenter>
+				HorizontalAlignment="Center" VerticalAlignment="Center"/>
 				<Grid.RenderTransform>
 					<ScaleTransform CenterX="20" CenterY="20"/>
 				</Grid.RenderTransform>
+				<VisualStateManager.VisualStateGroups>
+					<VisualStateGroup x:Name="CommonStates">
+						<VisualState x:Name="Normal"
+						Storyboard="{StaticResource TurnWhiteStoryboard}"/>
+						<VisualState x:Name="MouseOver"
+						Storyboard="{StaticResource TurnOrangeStoryboard}"/>
+					</VisualStateGroup>
+				</VisualStateManager.VisualStateGroups>
 			</Grid>
 			<ControlTemplate.Triggers>
-				<EventTrigger RoutedEvent="MouseEnter">
-					<EventTrigger.Actions>
-                        <BeginStoryboard Storyboard="{StaticResource TurnOrangeStoryboard}"/>
-					</EventTrigger.Actions>
-				</EventTrigger>
-                <EventTrigger RoutedEvent="MouseLeave">
-                    <EventTrigger.Actions>
-                        <BeginStoryboard Storyboard="{StaticResource TurnBlueStoryboard}"/>
-                    </EventTrigger.Actions>
-                </EventTrigger>
 				<Trigger Property="IsPressed" Value="True">
 					<Trigger.EnterActions>
 						<BeginStoryboard Storyboard="{StaticResource ScaleSmallStoryboard}"/>
@@ -201,28 +206,25 @@
 			HorizontalAlignment="Center" VerticalAlignment="Center">
 				<Rectangle RadiusX="16" RadiusY="16" Height="32" Width="96"
 				Fill="#333333" Effect="{StaticResource GeneralBlurEffect}"/>
-				<Rectangle RadiusX="16" RadiusY="16" Height="32" Width="96"
+				<Rectangle RadiusX="16" RadiusY="16" Height="30" Width="94"
 				Fill="#333333" Effect="{StaticResource GeneralDropShadowEffect}"/>
 				<Rectangle Name="Background" RadiusX="16" RadiusY="16" Height="32" Width="96"
 				Fill="{StaticResource LinearWhiteBrush}"/>
                 <ContentPresenter RecognizesAccessKey="True"
-				HorizontalAlignment="Center" VerticalAlignment="Center">
-				</ContentPresenter>
+				HorizontalAlignment="Center" VerticalAlignment="Center"/>
 				<Grid.RenderTransform>
 					<ScaleTransform CenterX="60" CenterY="20"/>
 				</Grid.RenderTransform>
+				<VisualStateManager.VisualStateGroups>
+					<VisualStateGroup x:Name="CommonStates">
+						<VisualState x:Name="Normal"
+						Storyboard="{StaticResource TurnWhiteStoryboard}"/>
+						<VisualState x:Name="MouseOver"
+						Storyboard="{StaticResource TurnOrangeStoryboard}"/>
+					</VisualStateGroup>
+				</VisualStateManager.VisualStateGroups>
 			</Grid>
 			<ControlTemplate.Triggers>
-				<EventTrigger RoutedEvent="MouseEnter">
-					<EventTrigger.Actions>
-                        <BeginStoryboard Storyboard="{StaticResource TurnOrangeStoryboard}"/>
-					</EventTrigger.Actions>
-				</EventTrigger>
-                <EventTrigger RoutedEvent="MouseLeave">
-                    <EventTrigger.Actions>
-                        <BeginStoryboard Storyboard="{StaticResource TurnWhiteStoryboard}"/>
-                    </EventTrigger.Actions>
-                </EventTrigger>
 				<Trigger Property="IsPressed" Value="True">
 					<Trigger.EnterActions>
 						<BeginStoryboard Storyboard="{StaticResource ScaleSmallStoryboard}"/>
@@ -233,6 +235,86 @@
 				</Trigger>
 			</ControlTemplate.Triggers>
 		</ControlTemplate>
-		 
+		
+		<!--TopBarSwitchButtonTemplate-->
+		<ControlTemplate x:Key="TopBarSwitchButtonTemplate" TargetType="{x:Type RadioButton}">
+			<Grid HorizontalAlignment="Center" VerticalAlignment="Center">
+				<Rectangle Name="Background" Height="30" Width="60"
+				Stroke="#E1E1E1" StrokeThickness="1"
+				Fill="{StaticResource LinearWhiteBrush}"/>
+				<ContentPresenter RecognizesAccessKey="True"
+				HorizontalAlignment="Center" VerticalAlignment="Center"/>
+				<VisualStateManager.VisualStateGroups>
+					<VisualStateGroup x:Name="CommonStates">
+						<VisualState x:Name="Normal"/>
+						<VisualState x:Name="MouseOver"
+						Storyboard="{StaticResource TurnOrangeStoryboard}"/>
+					</VisualStateGroup>
+					<VisualStateGroup x:Name="CheckedStates">
+						<VisualState x:Name="Checked"
+						Storyboard="{StaticResource TurnGrayStoryboard}"/>
+						<!--<VisualState x:Name="Unchecked"
+						Storyboard="{StaticResource TurnWhiteStoryboard}"/>-->
+					</VisualStateGroup>
+				</VisualStateManager.VisualStateGroups>
+			</Grid>
+			<ControlTemplate.Triggers>
+				<Trigger Property="IsChecked" Value="True">
+					<Setter TargetName="Background" Property="Fill" Value="{StaticResource LinearGrayBrush}"/>
+				</Trigger>
+			</ControlTemplate.Triggers>
+		</ControlTemplate>
+		
+		<!--HorizontalThumbTemplate-->
+		<ControlTemplate x:Key="HorizontalThumbTemplate" TargetType="{x:Type Thumb}">
+			<Grid Name="Grid">
+				<Rectangle Height="26" Width="18" Fill="#333333" RadiusX="5" RadiusY="5"
+				Effect="{StaticResource GeneralDropShadowEffect}"/>
+				<Rectangle x:Name="Background" Height="26" Width="20" Stroke="#333333" RadiusX="5" RadiusY="5"
+				Fill="{StaticResource LinearWhiteBrush}"/>
+				<Grid.RenderTransform>
+					<ScaleTransform CenterX="9" CenterY="13"/>
+				</Grid.RenderTransform>
+				<VisualStateManager.VisualStateGroups>
+					<VisualStateGroup x:Name="CommonStates">
+						<VisualState x:Name="Normal"
+						Storyboard="{StaticResource TurnWhiteStoryboard}"/>
+						<VisualState x:Name="MouseOver"
+						Storyboard="{StaticResource TurnOrangeStoryboard}"/>
+					</VisualStateGroup>
+				</VisualStateManager.VisualStateGroups>
+			</Grid>
+			<ControlTemplate.Triggers>
+				<Trigger Property="IsDragging" Value="True">
+					<Trigger.EnterActions>
+						<BeginStoryboard Storyboard="{StaticResource ScaleSmallStoryboard}"/>
+					</Trigger.EnterActions>
+					<Trigger.ExitActions>
+						<BeginStoryboard Storyboard="{StaticResource ScaleOriginStoryboard}"/>
+					</Trigger.ExitActions>
+				</Trigger>
+			</ControlTemplate.Triggers>
+		</ControlTemplate>
+		
+		<!--HorizontalSliderTemplate-->
+		<ControlTemplate x:Key="HorizontalSliderTemplate" TargetType="{x:Type Slider}">
+			<Grid x:Name="Root">
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition Width="Auto"/>
+					<ColumnDefinition Width="Auto"/>
+					<ColumnDefinition Width="Auto"/>
+				</Grid.ColumnDefinitions>
+				<Rectangle Stroke="#999999" Fill="#CCCCCC" StrokeThickness="1.5"
+				Height="10" RadiusX="3" RadiusY="3" Margin="5,0,5,0"
+				VerticalAlignment="Center"/>
+				<Track x:Name="PART_Track" Grid.Row="1" Width="{TemplateBinding Width}">
+			  		<Track.Thumb>
+			  			<Thumb x:Name="Thumb" Width="20" Template="{StaticResource HorizontalThumbTemplate}"/>
+			  		</Track.Thumb>
+			  	</Track>
+			</Grid>
+		</ControlTemplate>
+		
+
     </Application.Resources>
 </Application>
