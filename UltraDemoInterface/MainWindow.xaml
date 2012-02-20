@@ -3,16 +3,48 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="d" x:Class="UltraDemoInterface.MainWindow"
         Title="UltraDemo" Height="500" Width="800">
+
     <Grid x:Name="WindowRoot">
-    	<Grid x:Name="TopBar" Margin="0" VerticalAlignment="Top" Height="34">
-    		<Rectangle x:Name="TopBarBackground" Fill="#FF333333" Margin="0" Stroke="#FF666666"/>
-    		<Button x:Name="EditorViewButton" Content="编辑" HorizontalAlignment="Right" Margin="0,8,163,4.163" Width="75" d:LayoutOverrides="Height"/>
-    		<Button x:Name="SplitViewButton" Content="拆分" HorizontalAlignment="Right" Margin="0,8,84,4.163" Width="75" d:LayoutOverrides="Height"/>
-    		<Button x:Name="DemoViewButton" Content="演示" HorizontalAlignment="Right" Margin="0,8,5,4.163" Width="75" d:LayoutOverrides="Height"/>
+    	<Grid x:Name="TopBar" Margin="0" VerticalAlignment="Top" Height="40">
+    		<Rectangle Fill="#FF333333" RadiusY="16" RadiusX="16" Effect="{DynamicResource GeneralDropShadowEffect}"/>
+    		<Rectangle Fill="{StaticResource LinearWhiteBrush}" RadiusY="16" RadiusX="16" VerticalAlignment="Bottom" Height="60"/>
+    		<Button x:Name="EditorViewButton" Content="编辑" HorizontalAlignment="Right" Margin="0,6.5,184,5.663" Width="75" d:LayoutOverrides="Height" RenderTransformOrigin="0.5,0.5">
+    			<Button.RenderTransform>
+    				<TransformGroup>
+    					<ScaleTransform/>
+    					<SkewTransform/>
+    					<RotateTransform/>
+    					<TranslateTransform/>
+    				</TransformGroup>
+    			</Button.RenderTransform>
+    		</Button>
+    		<Button x:Name="SplitViewButton" Content="拆分" HorizontalAlignment="Right" Margin="0,6.5,105,5.663" Width="75" d:LayoutOverrides="Height"/>
+    		<Button x:Name="DemoViewButton" Content="演示" HorizontalAlignment="Right" Margin="0,6.5,26,5.663" Width="75" d:LayoutOverrides="Height"/>
     	</Grid>
     	<Grid x:Name="MainContainer" Margin="0,34,0,0">
-    		<Grid x:Name="DemoContainer" Margin="0" d:IsHidden="True"/>
-    		<Grid x:Name="EditorContainer"/>
+    		<Grid x:Name="DemoContainer" Margin="0">
+    			<Grid x:Name="DemoControlBar" Height="50" Margin="0" VerticalAlignment="Bottom">
+    				<Rectangle Fill="#FF333333" Effect="{StaticResource GeneralBlurEffect}" Margin="0" RadiusX="16" RadiusY="16"/>
+    				<Rectangle Fill="{StaticResource LinearWhiteBrush}" Margin="0" RadiusX="16" RadiusY="16"/>
+    				<Button x:Name="RunButton" HorizontalAlignment="Left" Margin="25.5,0,0,0" Template="{StaticResource CircleButtonTemplate}"/>
+    				<Button x:Name="StepButton" Content="单步" HorizontalAlignment="Left" Margin="69.5,0.918,0,-0.918" Template="{StaticResource CircleButtonTemplate}"/>
+    				<Button x:Name="StopButton" Content="" HorizontalAlignment="Left" Margin="113.5,0,0,0" Template="{StaticResource CircleButtonTemplate}"/>
+    				<Button x:Name="OutputWindowButton" Content="输出窗口" Margin="0,0,141,0" Template="{StaticResource EllipseButtonTemplate}" d:LayoutOverrides="Height" VerticalAlignment="Center" HorizontalAlignment="Right"/>
+    				<Button x:Name="MemeryWindowButton" Content="内存窗口" HorizontalAlignment="Right" Margin="0,0,17,0" Template="{StaticResource EllipseButtonTemplate}" VerticalAlignment="Center"/>
+    				<Slider Margin="269,11,333,8"/>
+    			</Grid>
+    		</Grid>
+    		<Grid x:Name="EditorContainer" Visibility="Hidden" d:IsHidden="True">
+    			<TabControl Margin="0">
+    				<TabItem Header="TabItem">
+    					<Grid Background="#FFE5E5E5"/>
+    				</TabItem>
+    				<TabItem Header="TabItem">
+    					<Grid Background="#FFE5E5E5"/>
+    				</TabItem>
+    			</TabControl>
+    		</Grid>
     	</Grid>
+    	<Rectangle x:Name="WindowBackGround" Margin="0" Panel.ZIndex="-10" Fill="#FFDFDFDF"/>
     </Grid>
 </Window>

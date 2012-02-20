@@ -1,8 +1,238 @@
-﻿<Application x:Class="UltraDemoInterface.App"
+﻿<Application
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:Microsoft_Windows_Themes="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Aero" x:Class="UltraDemoInterface.App"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-         
+    	
+    	<!--LinearBlueBrush-->
+    	<LinearGradientBrush x:Key="LinearBlueBrush" StartPoint="0,0" EndPoint="0,1">
+    		<GradientStop Color="#88E8F9" Offset="0.0"/>     
+	    	<GradientStop Color="#40A0B1" Offset="1.0"/> 		
+		</LinearGradientBrush>
+		
+		<!--LinearOrangeBrush-->
+		<LinearGradientBrush x:Key="LinearOrangeBrush" StartPoint="0,0" EndPoint="0,1">
+    		<GradientStop Color="#FFDC60" Offset="0.0"/>     
+	    	<GradientStop Color="#EB8A0E" Offset="1.0"/> 		
+		</LinearGradientBrush>
+		
+		<!--LinearGreenBrush-->
+		<LinearGradientBrush x:Key="LinearGreenBrush" StartPoint="0,0" EndPoint="0,1">
+    		<GradientStop Color="#CDF25D" Offset="0.0"/>     
+	    	<GradientStop Color="#7EA30E" Offset="1.0"/> 		
+		</LinearGradientBrush>
+		
+		<!--LinearWhiteBrush-->
+		<LinearGradientBrush x:Key="LinearWhiteBrush" StartPoint="0,0" EndPoint="0,1">
+    		<GradientStop Color="#FFFFFF" Offset="0.0"/>     
+	    	<GradientStop Color="#E8E8E8" Offset="1.0"/> 		
+		</LinearGradientBrush>
+		
+		<!--GeneralDropShadowEffect-->
+		<DropShadowEffect x:Key="GeneralDropShadowEffect" Color="#4C7880" Opacity="0.5"
+		ShadowDepth="4" Direction="270"/>
+		
+		<!--GeneralBlurEffect-->
+		<BlurEffect x:Key="GeneralBlurEffect" Radius="4"/>
+		
+		<!--TurnOrangeStoryboard-->
+		<Storyboard x:Key="TurnOrangeStoryboard">
+			<ColorAnimationUsingKeyFrames Storyboard.TargetName="Background"
+			Storyboard.TargetProperty="Fill.GradientStops[0].Color">
+				<EasingColorKeyFrame KeyTime="0:0:0.2" Value="#FFDC60">
+					<EasingColorKeyFrame.EasingFunction>
+						<CubicEase EasingMode="EaseOut"/>
+					</EasingColorKeyFrame.EasingFunction>
+				</EasingColorKeyFrame>
+			</ColorAnimationUsingKeyFrames>
+            <ColorAnimationUsingKeyFrames Storyboard.TargetName="Background"
+			Storyboard.TargetProperty="Fill.GradientStops[1].Color">
+				<EasingColorKeyFrame KeyTime="0:0:0.2" Value="#EB8A0E">
+					<EasingColorKeyFrame.EasingFunction>
+						<CubicEase EasingMode="EaseOut"/>
+					</EasingColorKeyFrame.EasingFunction>
+				</EasingColorKeyFrame>
+			</ColorAnimationUsingKeyFrames>
+		</Storyboard>
+		
+		<!--TurnBlueStoryboard-->
+		<Storyboard x:Key="TurnBlueStoryboard">
+			<ColorAnimationUsingKeyFrames Storyboard.TargetName="Background"
+			Storyboard.TargetProperty="Fill.GradientStops[0].Color">
+				<EasingColorKeyFrame KeyTime="0:0:0.2" Value="#88E8F9">
+					<EasingColorKeyFrame.EasingFunction>
+						<CubicEase EasingMode="EaseOut"/>
+					</EasingColorKeyFrame.EasingFunction>
+				</EasingColorKeyFrame>
+			</ColorAnimationUsingKeyFrames>
+            <ColorAnimationUsingKeyFrames Storyboard.TargetName="Background"
+			Storyboard.TargetProperty="Fill.GradientStops[1].Color">
+				<EasingColorKeyFrame KeyTime="0:0:0.2" Value="#40A0B1">
+					<EasingColorKeyFrame.EasingFunction>
+						<CubicEase EasingMode="EaseOut"/>
+					</EasingColorKeyFrame.EasingFunction>
+				</EasingColorKeyFrame>
+			</ColorAnimationUsingKeyFrames>
+		</Storyboard>
+		
+		<!--TurnGreenStoryboard-->
+		<Storyboard x:Key="TurnGreenStoryboard">
+			<ColorAnimationUsingKeyFrames Storyboard.TargetName="Background"
+			Storyboard.TargetProperty="Fill.GradientStops[0].Color">
+				<EasingColorKeyFrame KeyTime="0:0:0.2" Value="#CDF25D">
+					<EasingColorKeyFrame.EasingFunction>
+						<CubicEase EasingMode="EaseOut"/>
+					</EasingColorKeyFrame.EasingFunction>
+				</EasingColorKeyFrame>
+			</ColorAnimationUsingKeyFrames>
+            <ColorAnimationUsingKeyFrames Storyboard.TargetName="Background"
+			Storyboard.TargetProperty="Fill.GradientStops[1].Color">
+				<EasingColorKeyFrame KeyTime="0:0:0.2" Value="#7EA30E">
+					<EasingColorKeyFrame.EasingFunction>
+						<CubicEase EasingMode="EaseOut"/>
+					</EasingColorKeyFrame.EasingFunction>
+				</EasingColorKeyFrame>
+			</ColorAnimationUsingKeyFrames>
+		</Storyboard>
+		
+		<!--TurnWhiteStoryboard-->
+		<Storyboard x:Key="TurnWhiteStoryboard">
+			<ColorAnimationUsingKeyFrames Storyboard.TargetName="Background"
+			Storyboard.TargetProperty="Fill.GradientStops[0].Color">
+				<EasingColorKeyFrame KeyTime="0:0:0.2" Value="#FFFFFF">
+					<EasingColorKeyFrame.EasingFunction>
+						<CubicEase EasingMode="EaseOut"/>
+					</EasingColorKeyFrame.EasingFunction>
+				</EasingColorKeyFrame>
+			</ColorAnimationUsingKeyFrames>
+            <ColorAnimationUsingKeyFrames Storyboard.TargetName="Background"
+			Storyboard.TargetProperty="Fill.GradientStops[1].Color">
+				<EasingColorKeyFrame KeyTime="0:0:0.2" Value="#E8E8E8">
+					<EasingColorKeyFrame.EasingFunction>
+						<CubicEase EasingMode="EaseOut"/>
+					</EasingColorKeyFrame.EasingFunction>
+				</EasingColorKeyFrame>
+			</ColorAnimationUsingKeyFrames>
+		</Storyboard>
+		
+		<!--ScaleSmallStoryboard-->
+		<Storyboard x:Key="ScaleSmallStoryboard">
+			<DoubleAnimationUsingKeyFrames Storyboard.TargetName="Grid"
+			Storyboard.TargetProperty="(UIElement.RenderTransform).(ScaleTransform.ScaleX)">
+				<LinearDoubleKeyFrame KeyTime="0:0:0.1" Value="0.9"/>
+				<!--<EasingDoubleKeyFrame KeyTime="0:0:0.1" Value="0.9">
+					<EasingDoubleKeyFrame.EasingFunction>
+						<CubicEase EasingMode="EaseOut"/>
+					</EasingDoubleKeyFrame.EasingFunction>
+				</EasingDoubleKeyFrame>-->
+			</DoubleAnimationUsingKeyFrames>
+			<DoubleAnimationUsingKeyFrames Storyboard.TargetName="Grid"
+			Storyboard.TargetProperty="(UIElement.RenderTransform).(ScaleTransform.ScaleY)">
+				<LinearDoubleKeyFrame KeyTime="0:0:0.1" Value="0.9"/>
+				<!--<EasingDoubleKeyFrame KeyTime="0:0:0.1" Value="0.9">
+					<EasingDoubleKeyFrame.EasingFunction>
+						<CubicEase EasingMode="EaseOut"/>
+					</EasingDoubleKeyFrame.EasingFunction>
+				</EasingDoubleKeyFrame>-->
+			</DoubleAnimationUsingKeyFrames>
+		</Storyboard>
+		
+		<!--ScaleOriginStoryboard-->
+		<Storyboard x:Key="ScaleOriginStoryboard">
+			<DoubleAnimationUsingKeyFrames Storyboard.TargetName="Grid"
+			Storyboard.TargetProperty="(UIElement.RenderTransform).(ScaleTransform.ScaleX)">
+				<EasingDoubleKeyFrame KeyTime="0:0:0.1" Value="1">
+					<EasingDoubleKeyFrame.EasingFunction>
+						<CubicEase EasingMode="EaseOut"/>
+					</EasingDoubleKeyFrame.EasingFunction>
+				</EasingDoubleKeyFrame>
+			</DoubleAnimationUsingKeyFrames>
+			<DoubleAnimationUsingKeyFrames Storyboard.TargetName="Grid"
+			Storyboard.TargetProperty="(UIElement.RenderTransform).(ScaleTransform.ScaleY)">
+				<EasingDoubleKeyFrame KeyTime="0:0:0.1" Value="1">
+					<EasingDoubleKeyFrame.EasingFunction>
+						<CubicEase EasingMode="EaseOut"/>
+					</EasingDoubleKeyFrame.EasingFunction>
+				</EasingDoubleKeyFrame>
+			</DoubleAnimationUsingKeyFrames>
+		</Storyboard>
+		
+        <!--Circle Button-->
+		<ControlTemplate x:Key="CircleButtonTemplate" TargetType="{x:Type Button}">
+			<Grid Name="Grid" Width="48" Height="48" 
+			HorizontalAlignment="Center" VerticalAlignment="Center">
+				<Ellipse Width="36" Height="36" Fill="#333333" Effect="{StaticResource GeneralBlurEffect}"/>
+				<Ellipse Width="36" Height="36" Fill="#333333" Effect="{StaticResource GeneralDropShadowEffect}"/>
+                <Ellipse Name="Background" Width="36" Height="36"
+                Fill="{StaticResource LinearBlueBrush}"/>
+                <ContentPresenter RecognizesAccessKey="True"
+				HorizontalAlignment="Center" VerticalAlignment="Center">
+				</ContentPresenter>
+				<Grid.RenderTransform>
+					<ScaleTransform CenterX="20" CenterY="20"/>
+				</Grid.RenderTransform>
+			</Grid>
+			<ControlTemplate.Triggers>
+				<EventTrigger RoutedEvent="MouseEnter">
+					<EventTrigger.Actions>
+                        <BeginStoryboard Storyboard="{StaticResource TurnOrangeStoryboard}"/>
+					</EventTrigger.Actions>
+				</EventTrigger>
+                <EventTrigger RoutedEvent="MouseLeave">
+                    <EventTrigger.Actions>
+                        <BeginStoryboard Storyboard="{StaticResource TurnBlueStoryboard}"/>
+                    </EventTrigger.Actions>
+                </EventTrigger>
+				<Trigger Property="IsPressed" Value="True">
+					<Trigger.EnterActions>
+						<BeginStoryboard Storyboard="{StaticResource ScaleSmallStoryboard}"/>
+					</Trigger.EnterActions>
+					<Trigger.ExitActions>
+						<BeginStoryboard Storyboard="{StaticResource ScaleOriginStoryboard}"/>
+					</Trigger.ExitActions>
+				</Trigger>
+			</ControlTemplate.Triggers>
+		</ControlTemplate>
+		
+		<!--Ellipse Button-->
+		<ControlTemplate x:Key="EllipseButtonTemplate" TargetType="{x:Type Button}">
+			<Grid Name="Grid" Width="120" Height="40" 
+			HorizontalAlignment="Center" VerticalAlignment="Center">
+				<Rectangle RadiusX="16" RadiusY="16" Height="32" Width="96"
+				Fill="#333333" Effect="{StaticResource GeneralBlurEffect}"/>
+				<Rectangle RadiusX="16" RadiusY="16" Height="32" Width="96"
+				Fill="#333333" Effect="{StaticResource GeneralDropShadowEffect}"/>
+				<Rectangle Name="Background" RadiusX="16" RadiusY="16" Height="32" Width="96"
+				Fill="{StaticResource LinearWhiteBrush}"/>
+                <ContentPresenter RecognizesAccessKey="True"
+				HorizontalAlignment="Center" VerticalAlignment="Center">
+				</ContentPresenter>
+				<Grid.RenderTransform>
+					<ScaleTransform CenterX="60" CenterY="20"/>
+				</Grid.RenderTransform>
+			</Grid>
+			<ControlTemplate.Triggers>
+				<EventTrigger RoutedEvent="MouseEnter">
+					<EventTrigger.Actions>
+                        <BeginStoryboard Storyboard="{StaticResource TurnOrangeStoryboard}"/>
+					</EventTrigger.Actions>
+				</EventTrigger>
+                <EventTrigger RoutedEvent="MouseLeave">
+                    <EventTrigger.Actions>
+                        <BeginStoryboard Storyboard="{StaticResource TurnWhiteStoryboard}"/>
+                    </EventTrigger.Actions>
+                </EventTrigger>
+				<Trigger Property="IsPressed" Value="True">
+					<Trigger.EnterActions>
+						<BeginStoryboard Storyboard="{StaticResource ScaleSmallStoryboard}"/>
+					</Trigger.EnterActions>
+					<Trigger.ExitActions>
+						<BeginStoryboard Storyboard="{StaticResource ScaleOriginStoryboard}"/>
+					</Trigger.ExitActions>
+				</Trigger>
+			</ControlTemplate.Triggers>
+		</ControlTemplate>
+		 
     </Application.Resources>
 </Application>
