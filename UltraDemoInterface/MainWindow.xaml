@@ -5,15 +5,15 @@
         Title="UltraDemo" Height="500" Width="800">
 
     <Grid x:Name="WindowRoot">
-    	<Grid x:Name="TopBar" Margin="0" VerticalAlignment="Top" Height="30">
+    	<Grid x:Name="TopBar" Margin="0" VerticalAlignment="Top" Height="30" d:IsLocked="True">
     		<Rectangle Fill="#FF333333" RadiusY="16" RadiusX="16" Effect="{StaticResource GeneralDropShadowEffect}"/>
     		<Rectangle Fill="{StaticResource LinearWhiteBrush}" RadiusY="16" RadiusX="16" VerticalAlignment="Bottom" Height="60"/>
-    		<RadioButton x:Name="EditorViewButton" Content="编辑" Margin="0,0,172.498,0" Template="{StaticResource TopBarSwitchButtonTemplate}" HorizontalAlignment="Right" ToolTip="切换至编辑视图" IsChecked="True"/>
+    		<RadioButton x:Name="EditorViewButton" Content="编辑" Margin="0,0,172.498,0" Template="{StaticResource TopBarSwitchButtonTemplate}" HorizontalAlignment="Right" ToolTip="切换至编辑视图" IsChecked="True"  Checked="EditorViewButton_Checked" />
     		<RadioButton x:Name="SplitViewButton" Content="拆分" Margin="0,0,113.498,0" Template="{StaticResource TopBarSwitchButtonTemplate}" HorizontalAlignment="Right" ToolTip="切换至拆分视图"/>
-    		<RadioButton x:Name="DemoViewButton" Content="演示" Margin="0,0,54.498,0" Template="{StaticResource TopBarSwitchButtonTemplate}" HorizontalAlignment="Right" ToolTip="切换至演示视图"/>
+    		<RadioButton x:Name="DemoViewButton" Content="演示" Margin="0,0,54.498,0" Template="{StaticResource TopBarSwitchButtonTemplate}" HorizontalAlignment="Right" ToolTip="切换至演示视图" Checked="DemoViewButton_Checked" />
     	</Grid>
     	<Grid x:Name="MainContainer" Margin="0,34,0,0">
-    		<Grid x:Name="DemoContainer" Margin="0">
+    		<Grid x:Name="DemoContainer" Margin="0" d:IsLocked="True" d:IsHidden="True">
     			<Grid x:Name="DemoControlBar" Height="50" Margin="0" VerticalAlignment="Bottom">
     				<Rectangle Fill="#FF333333" Effect="{StaticResource GeneralBlurEffect}" Margin="0" RadiusX="16" RadiusY="16"/>
     				<Rectangle Fill="{StaticResource LinearWhiteBrush}" Margin="0" RadiusX="16" RadiusY="16"/>
@@ -36,12 +36,12 @@
     				<Slider Margin="216,11,342.5,8" Template="{StaticResource HorizontalSliderTemplate}" Width="225"/>
     			</Grid>
     		</Grid>
-    		<Grid x:Name="EditorContainer" Visibility="Hidden" d:IsHidden="True" d:IsLocked="True">
-    			<TabControl Margin="0">
-    				<TabItem Header="TabItem">
+    		<Grid x:Name="EditorContainer">
+    			<TabControl x:Name="EditorTab" Margin="0" Template="{StaticResource WindowTabControl}">
+    				<TabItem Header="源代码" Template="{StaticResource WindowTabItem}">
     					<Grid Background="#FFE5E5E5"/>
     				</TabItem>
-    				<TabItem Header="TabItem">
+    				<TabItem Header="TabItem" Template="{StaticResource WindowTabItem}">
     					<Grid Background="#FFE5E5E5"/>
     				</TabItem>
     			</TabControl>

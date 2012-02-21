@@ -23,5 +23,24 @@ namespace UltraDemoInterface
         {
             InitializeComponent();
         }
+
+        private void EditorViewButton_Checked(object sender, RoutedEventArgs e)
+        {
+            if (this.IsInitialized)
+            {
+                EditorContainer.Visibility = Visibility.Visible;
+                DemoContainer.Visibility = Visibility.Hidden;
+            }
+        }
+
+        private void DemoViewButton_Checked(object sender, RoutedEventArgs e)
+        {
+            if (this.IsInitialized)
+            {
+                EditorContainer.Visibility = Visibility.Hidden;
+                DemoContainer.Visibility = Visibility.Visible;
+            }
+        }
     }
+    
 }
