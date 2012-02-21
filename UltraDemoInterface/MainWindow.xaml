@@ -1,9 +1,52 @@
-﻿<Window x:Class="UltraDemoInterface.MainWindow"
+﻿<Window
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="MainWindow" Height="350" Width="525">
-    <Grid>
-    	<Rectangle Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="64" Margin="116,54,0,0" Stroke="Black" VerticalAlignment="Top" Width="63"/>
-        
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="d" x:Class="UltraDemoInterface.MainWindow"
+        Title="UltraDemo" Height="500" Width="800">
+
+    <Grid x:Name="WindowRoot">
+    	<Grid x:Name="TopBar" Margin="0" VerticalAlignment="Top" Height="30" d:IsLocked="True">
+    		<Rectangle Fill="#FF333333" RadiusY="16" RadiusX="16" Effect="{StaticResource GeneralDropShadowEffect}"/>
+    		<Rectangle Fill="{StaticResource LinearWhiteBrush}" RadiusY="16" RadiusX="16" VerticalAlignment="Bottom" Height="60"/>
+    		<RadioButton x:Name="EditorViewButton" Content="编辑" Margin="0,0,172.498,0" Template="{StaticResource TopBarSwitchButtonTemplate}" HorizontalAlignment="Right" ToolTip="切换至编辑视图" IsChecked="True"  Checked="EditorViewButton_Checked" />
+    		<RadioButton x:Name="SplitViewButton" Content="拆分" Margin="0,0,113.498,0" Template="{StaticResource TopBarSwitchButtonTemplate}" HorizontalAlignment="Right" ToolTip="切换至拆分视图"/>
+    		<RadioButton x:Name="DemoViewButton" Content="演示" Margin="0,0,54.498,0" Template="{StaticResource TopBarSwitchButtonTemplate}" HorizontalAlignment="Right" ToolTip="切换至演示视图" Checked="DemoViewButton_Checked" />
+    	</Grid>
+    	<Grid x:Name="MainContainer" Margin="0,34,0,0">
+    		<Grid x:Name="DemoContainer" Margin="0" d:IsLocked="True" d:IsHidden="True">
+    			<Grid x:Name="DemoControlBar" Height="50" Margin="0" VerticalAlignment="Bottom">
+    				<Rectangle Fill="#FF333333" Effect="{StaticResource GeneralBlurEffect}" Margin="0" RadiusX="16" RadiusY="16"/>
+    				<Rectangle Fill="{StaticResource LinearWhiteBrush}" Margin="0" RadiusX="16" RadiusY="16"/>
+    				<Button x:Name="PauseButton" HorizontalAlignment="Left" Margin="35.5,0,0,0" Template="{StaticResource CircleButtonTemplate}" ToolTip="暂停" Visibility="Hidden">
+    					<Path Stroke="#333333" Fill="#666666"
+						Data="M 0,0 L 0,12 L 3,12 L 3,0 Z M 6,0 L 6,12 L 9,12 L 9,0 Z"/>
+    				</Button>
+    				<Button x:Name="RunButton" HorizontalAlignment="Left" Margin="35.5,0,0,0" Template="{StaticResource CircleButtonTemplate}" ToolTip="运行">
+    					<Path Stroke="#333333" Fill="#666666" Data="M 0,0 L 0,12 L 10,6 Z"/>
+					</Button>
+    				<Button x:Name="StepButton" HorizontalAlignment="Left" Margin="79.5,0,0,0" Template="{StaticResource CircleButtonTemplate}" ToolTip="单步">
+    					<Path Stroke="#333333" Fill="#666666"
+						Data="M 0,0 L 0,12 L 8,6 L 0,0 M 8,0 L 8,12 L 10,12 L 10,0 Z"/>		
+					</Button>
+    				<Button x:Name="StopButton" HorizontalAlignment="Left" Margin="123.5,0,0,0" Template="{StaticResource CircleButtonTemplate}" ToolTip="停止">
+    					<Path Stroke="#333333" Fill="#666666" Data="M 0,0 L 0,10 L 10,10 L 10,0 Z"/>			
+					</Button>
+    				<Button x:Name="OutputWindowButton" Content="输出窗口" Margin="0,0,141,0" Template="{StaticResource EllipseButtonTemplate}" d:LayoutOverrides="Height" VerticalAlignment="Center" HorizontalAlignment="Right"/>
+    				<Button x:Name="MemeryWindowButton" Content="内存窗口" HorizontalAlignment="Right" Margin="0,0,17,0" Template="{StaticResource EllipseButtonTemplate}" VerticalAlignment="Center"/>
+    				<Slider Margin="216,11,342.5,8" Template="{StaticResource HorizontalSliderTemplate}" Width="225"/>
+    			</Grid>
+    		</Grid>
+    		<Grid x:Name="EditorContainer">
+    			<TabControl x:Name="EditorTab" Margin="0" Template="{StaticResource WindowTabControl}">
+    				<TabItem Header="源代码" Template="{StaticResource WindowTabItem}">
+    					<Grid Background="#FFE5E5E5"/>
+    				</TabItem>
+    				<TabItem Header="TabItem" Template="{StaticResource WindowTabItem}">
+    					<Grid Background="#FFE5E5E5"/>
+    				</TabItem>
+    			</TabControl>
+    		</Grid>
+    	</Grid>
+    	<Rectangle x:Name="WindowBackGround" Margin="0" Panel.ZIndex="-10" Fill="#FFDFDFDF" d:IsLocked="True"/>
     </Grid>
 </Window>
