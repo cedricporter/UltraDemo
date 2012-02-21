@@ -26,7 +26,7 @@
             <EventTrigger.Actions>
                 <BeginStoryboard>
                     <Storyboard>
-                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="DemoContainer" Storyboard.TargetProperty="Visibility" Duration="0">
+                        <!--<ObjectAnimationUsingKeyFrames Storyboard.TargetName="DemoContainer" Storyboard.TargetProperty="Visibility" Duration="0">
                             <DiscreteObjectKeyFrame>
                                 <DiscreteObjectKeyFrame.Value>
                                     <Visibility>Visible</Visibility>
@@ -39,8 +39,8 @@
                                     <Visibility>Hidden</Visibility>
                                 </DiscreteObjectKeyFrame.Value>
                             </DiscreteObjectKeyFrame>
-                        </ObjectAnimationUsingKeyFrames>
-                        <!--<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="EditorContainer">
+                        </ObjectAnimationUsingKeyFrames>-->
+                        <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="EditorContainer">
                             <EasingDoubleKeyFrame KeyTime="0" Value="0">
                                 <EasingDoubleKeyFrame.EasingFunction>
                                     <CubicEase EasingMode="EaseOut"/>
@@ -51,7 +51,7 @@
                                     <CubicEase EasingMode="EaseOut"/>
                                 </EasingDoubleKeyFrame.EasingFunction>
                             </EasingDoubleKeyFrame>
-                        </DoubleAnimationUsingKeyFrames>-->
+                        </DoubleAnimationUsingKeyFrames>
                     </Storyboard>
                 </BeginStoryboard>
             </EventTrigger.Actions>
@@ -124,11 +124,13 @@
     					<TranslateTransform/>
     				</TransformGroup>
     			</Grid.RenderTransform>
-    			<TabControl x:Name="EditorTab" Margin="0" Template="{StaticResource WindowTabControl}">
-    				<TabItem Header="源代码" Template="{StaticResource WindowTabItem}">
-    					<Grid Background="#FFE5E5E5"/>
+    			<TabControl x:Name="EditorTabControl" Margin="0">
+    				<TabItem Header="源代码">
+    					<Grid Background="#FFE5E5E5">
+    						<Ellipse Fill="#FFF4F4F5" Margin="42,23.163,0,0" Stroke="Black" HorizontalAlignment="Left" Width="72" Height="68" VerticalAlignment="Top"/>
+    					</Grid>
     				</TabItem>
-    				<TabItem Header="TabItem" Template="{StaticResource WindowTabItem}">
+    				<TabItem Header="TabItem">
     					<Grid Background="#FFE5E5E5"/>
     				</TabItem>
     			</TabControl>

@@ -326,14 +326,14 @@
 				Fill="{StaticResource LinearWhiteBrush}"/>
 				<ContentPresenter x:Name="Content" ContentSource="Header"
 				 HorizontalAlignment="Center" RecognizesAccessKey="True" VerticalAlignment="Center"/>
-			</Grid>
+            </Grid>
 			<ControlTemplate.Triggers>
 				<Trigger Property="IsSelected" Value="True">
 					<Setter TargetName="Background" Property="Fill" Value="{StaticResource LinearGrayBrush}"/>
 					<Setter TargetName="Background2" Property="Fill" Value="{StaticResource LinearGrayBrush}"/>
 				</Trigger>
-			</ControlTemplate.Triggers>
-		</ControlTemplate>
+            </ControlTemplate.Triggers>
+        </ControlTemplate>
 		
 		<!--WindowTabControl-->
 		<ControlTemplate x:Key="WindowTabControl" TargetType="{x:Type TabControl}">
