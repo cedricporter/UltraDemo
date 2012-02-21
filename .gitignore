@@ -1,5 +1,6 @@
 *.o
 *.obj
+*.suo
 
 
 /Intermediate
@@ -45,3 +46,4 @@
 /CompilerFrontPart/Debug/vc100.pdb
 /CompilerFrontPart/Debug/CompilerFrontPart.Build.CppClean.log
 /CompilerFrontPart/Debug/CompilerFrontPart.log
+/CompilerFrontPart/Debug
