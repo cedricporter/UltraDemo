@@ -5,7 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
         mc:Ignorable="d" x:Class="UltraDemoInterface.MainWindow"
         xmlns:local="clr-namespace:UltraDemoInterface"
-        Title="UltraDemo" Height="500" Width="800">
+        Title="UltraDemo" Height="500" Width="800"
+    >
     
 	<Window.Resources>
         <!--Converters-->
@@ -18,19 +19,15 @@
             <EventTrigger.Actions>
                 <BeginStoryboard>
                     <Storyboard>
-                        <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="EditorContainer">
-                            <EasingDoubleKeyFrame KeyTime="0:0:0.5">
-                                <EasingDoubleKeyFrame.Value>
-                                    <Binding ElementName="WindowRoot" Path="ActualWidth"
-                                    Converter="{StaticResource NumericalConverter}" ConverterParameter="*,-1"/>
-                                </EasingDoubleKeyFrame.Value>
+                        <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="Width" Storyboard.TargetName="EditorContainer">
+                            <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="0">
                                 <EasingDoubleKeyFrame.EasingFunction>
                                     <CubicEase EasingMode="EaseOut"/>
                                 </EasingDoubleKeyFrame.EasingFunction>
                             </EasingDoubleKeyFrame>
                         </DoubleAnimationUsingKeyFrames>
-                        <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="DemoContainer">
-                            <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="0">
+                        <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="Width" Storyboard.TargetName="DemoContainer">
+                            <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="{Binding ElementName=WindowRoot, Path=ActualWidth}">
                                 <EasingDoubleKeyFrame.EasingFunction>
                                     <CubicEase EasingMode="EaseOut"/>
                                 </EasingDoubleKeyFrame.EasingFunction>
@@ -62,32 +59,15 @@
             <EventTrigger.Actions>
                 <BeginStoryboard>
                     <Storyboard>
-                        <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="EditorContainer">
-                            <!--<EasingDoubleKeyFrame KeyTime="0">
-                                <EasingDoubleKeyFrame.Value>
-                                    <Binding ElementName="WindowRoot" Path="ActualWidth"
-                                    Converter="{StaticResource NumericalConverter}" ConverterParameter="*,-1"/>
-                                </EasingDoubleKeyFrame.Value>
-                                <EasingDoubleKeyFrame.EasingFunction>
-                                    <CubicEase EasingMode="EaseOut"/>
-                                </EasingDoubleKeyFrame.EasingFunction>
-                            </EasingDoubleKeyFrame>-->
-                            <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="0">
+                        <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="Width" Storyboard.TargetName="EditorContainer">
+                            <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="{Binding ElementName=WindowRoot, Path=ActualWidth}">
                                 <EasingDoubleKeyFrame.EasingFunction>
                                     <CubicEase EasingMode="EaseOut"/>
                                 </EasingDoubleKeyFrame.EasingFunction>
                             </EasingDoubleKeyFrame>
                         </DoubleAnimationUsingKeyFrames>
-                        <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="DemoContainer">
-                            <!--<EasingDoubleKeyFrame KeyTime="0" Value="0">
-                                <EasingDoubleKeyFrame.EasingFunction>
-                                    <CubicEase EasingMode="EaseOut"/>
-                                </EasingDoubleKeyFrame.EasingFunction>
-                            </EasingDoubleKeyFrame>-->
-                            <EasingDoubleKeyFrame KeyTime="0:0:0.5">
-                                <EasingDoubleKeyFrame.Value>
-                                    <Binding ElementName="WindowRoot" Path="ActualWidth"/>
-                                </EasingDoubleKeyFrame.Value>
+                        <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="Width" Storyboard.TargetName="DemoContainer">
+                            <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="0">
                                 <EasingDoubleKeyFrame.EasingFunction>
                                     <CubicEase EasingMode="EaseOut"/>
                                 </EasingDoubleKeyFrame.EasingFunction>
@@ -119,38 +99,11 @@
             <EventTrigger.Actions>
                 <BeginStoryboard>
                     <Storyboard>
-                        <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="EditorContainer">
-                            <EasingDoubleKeyFrame KeyTime="0:0:0.5">
-                                <EasingDoubleKeyFrame.Value>
-                                    <Binding ElementName="WindowRoot" Path="ActualWidth"
-                                    Converter="{StaticResource NumericalConverter}" ConverterParameter="*,-0.25"/>
-                                </EasingDoubleKeyFrame.Value>
-                                <EasingDoubleKeyFrame.EasingFunction>
-                                    <CubicEase EasingMode="EaseOut"/>
-                                </EasingDoubleKeyFrame.EasingFunction>
-                            </EasingDoubleKeyFrame>
-                        </DoubleAnimationUsingKeyFrames>
                         <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="Width" Storyboard.TargetName="EditorContainer">
-                            <EasingDoubleKeyFrame KeyTime="0" Value="{Binding ElementName=WindowRoot, Path=ActualWidth}">
-                                <EasingDoubleKeyFrame.EasingFunction>
-                                    <CubicEase EasingMode="EaseOut"/>
-                                </EasingDoubleKeyFrame.EasingFunction>
-                            </EasingDoubleKeyFrame>
                             <EasingDoubleKeyFrame KeyTime="0:0:0.5">
                                 <EasingDoubleKeyFrame.Value>
                                     <Binding ElementName="WindowRoot" Path="ActualWidth"
-                                    Converter="{StaticResource NumericalConverter}" ConverterParameter="/,2"/>
-                                </EasingDoubleKeyFrame.Value>
-                                <EasingDoubleKeyFrame.EasingFunction>
-                                    <CubicEase EasingMode="EaseOut"/>
-                                </EasingDoubleKeyFrame.EasingFunction>
-                            </EasingDoubleKeyFrame>
-                        </DoubleAnimationUsingKeyFrames>
-                        <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="DemoContainer">
-                            <EasingDoubleKeyFrame KeyTime="0:0:0.5">
-                                <EasingDoubleKeyFrame.Value>
-                                    <Binding ElementName="WindowRoot" Path="ActualWidth"
-                                    Converter="{StaticResource NumericalConverter}" ConverterParameter="*,0.25"/>
+                                    Converter="{StaticResource NumericalConverter}" ConverterParameter="*,0.5"/>
                                 </EasingDoubleKeyFrame.Value>
                                 <EasingDoubleKeyFrame.EasingFunction>
                                     <CubicEase EasingMode="EaseOut"/>
@@ -158,15 +111,10 @@
                             </EasingDoubleKeyFrame>
                         </DoubleAnimationUsingKeyFrames>
                         <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="Width" Storyboard.TargetName="DemoContainer">
-                            <EasingDoubleKeyFrame KeyTime="0" Value="{Binding ElementName=WindowRoot, Path=ActualWidth}">
-                                <EasingDoubleKeyFrame.EasingFunction>
-                                    <CubicEase EasingMode="EaseOut"/>
-                                </EasingDoubleKeyFrame.EasingFunction>
-                            </EasingDoubleKeyFrame>
                             <EasingDoubleKeyFrame KeyTime="0:0:0.5">
                                 <EasingDoubleKeyFrame.Value>
                                     <Binding ElementName="WindowRoot" Path="ActualWidth"
-                                    Converter="{StaticResource NumericalConverter}" ConverterParameter="/,2"/>
+                                    Converter="{StaticResource NumericalConverter}" ConverterParameter="*,0.5"/>
                                 </EasingDoubleKeyFrame.Value>
                                 <EasingDoubleKeyFrame.EasingFunction>
                                     <CubicEase EasingMode="EaseOut"/>
@@ -195,7 +143,7 @@
         </EventTrigger>
         
         <!--退出拆分模式-->
-        <EventTrigger SourceName="SplitViewButton" RoutedEvent="RadioButton.Unchecked">
+        <!--<EventTrigger SourceName="SplitViewButton" RoutedEvent="RadioButton.Unchecked">
             <EventTrigger.Actions>
                 <BeginStoryboard>
                     <Storyboard>
@@ -232,7 +180,7 @@
                     </Storyboard>
                 </BeginStoryboard>
             </EventTrigger.Actions>
-        </EventTrigger>
+        </EventTrigger>-->
 
         <!--当处于拆分模式且窗口大小发生改变时，调整窗口布局-->
         <EventTrigger RoutedEvent="FrameworkElement.SizeChanged">
@@ -261,7 +209,7 @@
     				<TranslateTransform/>
     			</TransformGroup>
     		</Grid.RenderTransform>
-    		<Grid x:Name="DemoContainer" Margin="0" RenderTransformOrigin="0.5,0.5" Width="784" Visibility="Hidden">
+    		<Grid x:Name="DemoContainer" Margin="0" RenderTransformOrigin="0.5,0.5" Width="0" Visibility="Hidden" HorizontalAlignment="Right">
     			<Grid.RenderTransform>
     				<TransformGroup>
     					<ScaleTransform/>
@@ -292,7 +240,7 @@
     				<Slider Margin="216,11,342.5,8" Template="{StaticResource HorizontalSliderTemplate}" Width="225"/>
     			</Grid>
     		</Grid>
-    		<Grid x:Name="EditorContainer" RenderTransformOrigin="0.5,0.5">
+    		<Grid x:Name="EditorContainer" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Left" Width="784">
     			<Grid.RenderTransform>
     				<TransformGroup>
     					<ScaleTransform/>
