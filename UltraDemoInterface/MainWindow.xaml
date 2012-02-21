@@ -11,6 +11,11 @@
 	<Window.Resources>
         <!--Converters-->
         <local:NumericalConverter x:Key="NumericalConverter"/>
+        <!--Prebuild Values-->
+        <GridLength x:Key="ZeroWidth">0*</GridLength>
+        <GridLength x:Key="SingleWidth">*</GridLength>
+        <GridLength x:Key="DoubleWidth">2*</GridLength>
+        <GridLength x:Key="AutoWidth">Auto</GridLength>
 	</Window.Resources>
 
     <Window.Triggers>
@@ -19,20 +24,60 @@
             <EventTrigger.Actions>
                 <BeginStoryboard>
                     <Storyboard>
-                        <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="Width" Storyboard.TargetName="EditorContainer">
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="GridLeftCol" 
+                        Storyboard.TargetProperty="Width" Duration="0">
+                            <DiscreteObjectKeyFrame Value="{StaticResource AutoWidth}"/>
+                        </ObjectAnimationUsingKeyFrames>
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="GridRightCol" 
+                        Storyboard.TargetProperty="Width" Duration="0">
+                            <DiscreteObjectKeyFrame Value="{StaticResource AutoWidth}"/>
+                        </ObjectAnimationUsingKeyFrames>
+                        <!--**********************-->
+                        <DoubleAnimationUsingKeyFrames Storyboard.TargetName="EditorContainer" 
+                        Storyboard.TargetProperty="Width" Duration="0:0:0.5">
+                            <EasingDoubleKeyFrame KeyTime="0" Value="{Binding ElementName=EditorContainer, Path=ActualWidth}">
+                                <EasingDoubleKeyFrame.EasingFunction>
+                                    <CubicEase EasingMode="EaseOut"/>
+                                </EasingDoubleKeyFrame.EasingFunction>
+                            </EasingDoubleKeyFrame>
                             <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="0">
                                 <EasingDoubleKeyFrame.EasingFunction>
                                     <CubicEase EasingMode="EaseOut"/>
                                 </EasingDoubleKeyFrame.EasingFunction>
                             </EasingDoubleKeyFrame>
                         </DoubleAnimationUsingKeyFrames>
-                        <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="Width" Storyboard.TargetName="DemoContainer">
+                        <DoubleAnimationUsingKeyFrames Storyboard.TargetName="DemoContainer" 
+                        Storyboard.TargetProperty="Width" Duration="0:0:0.5">
+                            <EasingDoubleKeyFrame KeyTime="0" Value="{Binding ElementName=EditorContainer, Path=ActualWidth}">
+                                <EasingDoubleKeyFrame.EasingFunction>
+                                    <CubicEase EasingMode="EaseOut"/>
+                                </EasingDoubleKeyFrame.EasingFunction>
+                            </EasingDoubleKeyFrame>
                             <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="{Binding ElementName=WindowRoot, Path=ActualWidth}">
                                 <EasingDoubleKeyFrame.EasingFunction>
                                     <CubicEase EasingMode="EaseOut"/>
                                 </EasingDoubleKeyFrame.EasingFunction>
                             </EasingDoubleKeyFrame>
                         </DoubleAnimationUsingKeyFrames>
+                        <!--**********************-->
+                        <DoubleAnimationUsingKeyFrames Storyboard.TargetName="DemoContainer" 
+                        Storyboard.TargetProperty="Width" Duration="0:0:0.5">
+                            <DiscreteDoubleKeyFrame Value="{Binding ElementName=WindowRoot, Path=Width}"/>
+                        </DoubleAnimationUsingKeyFrames>
+                        <DoubleAnimationUsingKeyFrames Storyboard.TargetName="EditorContainer" 
+                        Storyboard.TargetProperty="Width" Duration="0:0:0.5">
+                            <DiscreteDoubleKeyFrame Value="{Binding ElementName=WindowRoot, Path=Width}"/>
+                        </DoubleAnimationUsingKeyFrames>
+                        <!--**********************-->
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="GridLeftCol" 
+                        Storyboard.TargetProperty="Width" Duration="0:0:0.5">
+                            <DiscreteObjectKeyFrame Value="{StaticResource ZeroWidth}"/>
+                        </ObjectAnimationUsingKeyFrames>
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="GridRightCol" 
+                        Storyboard.TargetProperty="Width" Duration="0:0:0.5">
+                            <DiscreteObjectKeyFrame Value="{StaticResource SingleWidth}"/>
+                        </ObjectAnimationUsingKeyFrames>
+                        <!--**********************-->
                         <ObjectAnimationUsingKeyFrames Storyboard.TargetName="DemoContainer" 
                         Storyboard.TargetProperty="Visibility" Duration="0">
                             <DiscreteObjectKeyFrame>
@@ -59,20 +104,60 @@
             <EventTrigger.Actions>
                 <BeginStoryboard>
                     <Storyboard>
-                        <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="Width" Storyboard.TargetName="EditorContainer">
-                            <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="{Binding ElementName=WindowRoot, Path=ActualWidth}">
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="GridLeftCol" 
+                        Storyboard.TargetProperty="Width" Duration="0">
+                            <DiscreteObjectKeyFrame Value="{StaticResource AutoWidth}"/>
+                        </ObjectAnimationUsingKeyFrames>
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="GridRightCol" 
+                        Storyboard.TargetProperty="Width" Duration="0">
+                            <DiscreteObjectKeyFrame Value="{StaticResource AutoWidth}"/>
+                        </ObjectAnimationUsingKeyFrames>
+                        <!--**********************-->
+                        <DoubleAnimationUsingKeyFrames Storyboard.TargetName="DemoContainer" 
+                        Storyboard.TargetProperty="Width" Duration="0:0:0.5">
+                            <EasingDoubleKeyFrame KeyTime="0" Value="{Binding ElementName=DemoContainer, Path=ActualWidth}">
                                 <EasingDoubleKeyFrame.EasingFunction>
                                     <CubicEase EasingMode="EaseOut"/>
                                 </EasingDoubleKeyFrame.EasingFunction>
                             </EasingDoubleKeyFrame>
-                        </DoubleAnimationUsingKeyFrames>
-                        <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="Width" Storyboard.TargetName="DemoContainer">
                             <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="0">
                                 <EasingDoubleKeyFrame.EasingFunction>
                                     <CubicEase EasingMode="EaseOut"/>
                                 </EasingDoubleKeyFrame.EasingFunction>
                             </EasingDoubleKeyFrame>
                         </DoubleAnimationUsingKeyFrames>
+                        <DoubleAnimationUsingKeyFrames Storyboard.TargetName="EditorContainer" 
+                        Storyboard.TargetProperty="Width" Duration="0:0:0.5">
+                            <EasingDoubleKeyFrame KeyTime="0" Value="{Binding ElementName=EditorContainer, Path=ActualWidth}">
+                                <EasingDoubleKeyFrame.EasingFunction>
+                                    <CubicEase EasingMode="EaseOut"/>
+                                </EasingDoubleKeyFrame.EasingFunction>
+                            </EasingDoubleKeyFrame>
+                            <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="{Binding ElementName=WindowRoot, Path=ActualWidth}">
+                                <EasingDoubleKeyFrame.EasingFunction>
+                                    <CubicEase EasingMode="EaseOut"/>
+                                </EasingDoubleKeyFrame.EasingFunction>
+                            </EasingDoubleKeyFrame>
+                        </DoubleAnimationUsingKeyFrames>
+                        <!--**********************-->
+                        <DoubleAnimationUsingKeyFrames Storyboard.TargetName="DemoContainer" 
+                        Storyboard.TargetProperty="Width" Duration="0:0:0.5">
+                            <DiscreteDoubleKeyFrame Value="{Binding ElementName=WindowRoot, Path=Width}"/>
+                        </DoubleAnimationUsingKeyFrames>
+                        <DoubleAnimationUsingKeyFrames Storyboard.TargetName="EditorContainer" 
+                        Storyboard.TargetProperty="Width" Duration="0:0:0.5">
+                            <DiscreteDoubleKeyFrame Value="{Binding ElementName=WindowRoot, Path=Width}"/>
+                        </DoubleAnimationUsingKeyFrames>
+                        <!--**********************-->
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="GridLeftCol" 
+                        Storyboard.TargetProperty="Width" Duration="0:0:0.5">
+                            <DiscreteObjectKeyFrame Value="{StaticResource SingleWidth}"/>
+                        </ObjectAnimationUsingKeyFrames>
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="GridRightCol" 
+                        Storyboard.TargetProperty="Width" Duration="0:0:0.5">
+                            <DiscreteObjectKeyFrame Value="{StaticResource ZeroWidth}"/>
+                        </ObjectAnimationUsingKeyFrames>
+                        <!--**********************-->
                         <ObjectAnimationUsingKeyFrames Storyboard.TargetName="DemoContainer" 
                         Storyboard.TargetProperty="Visibility" Duration="0:0:0.5">
                             <DiscreteObjectKeyFrame>
@@ -99,7 +184,22 @@
             <EventTrigger.Actions>
                 <BeginStoryboard>
                     <Storyboard>
-                        <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="Width" Storyboard.TargetName="EditorContainer">
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="GridLeftCol" 
+                        Storyboard.TargetProperty="Width" Duration="0">
+                            <DiscreteObjectKeyFrame Value="{StaticResource AutoWidth}"/>
+                        </ObjectAnimationUsingKeyFrames>
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="GridRightCol" 
+                        Storyboard.TargetProperty="Width" Duration="0">
+                            <DiscreteObjectKeyFrame Value="{StaticResource AutoWidth}"/>
+                        </ObjectAnimationUsingKeyFrames>
+                        <!--**********************-->
+                        <DoubleAnimationUsingKeyFrames Storyboard.TargetName="DemoContainer" 
+                        Storyboard.TargetProperty="Width" Duration="0:0:0.5">
+                            <EasingDoubleKeyFrame KeyTime="0" Value="{Binding ElementName=DemoContainer, Path=ActualWidth}">
+                                <EasingDoubleKeyFrame.EasingFunction>
+                                    <CubicEase EasingMode="EaseOut"/>
+                                </EasingDoubleKeyFrame.EasingFunction>
+                            </EasingDoubleKeyFrame>
                             <EasingDoubleKeyFrame KeyTime="0:0:0.5">
                                 <EasingDoubleKeyFrame.Value>
                                     <Binding ElementName="WindowRoot" Path="ActualWidth"
@@ -110,7 +210,13 @@
                                 </EasingDoubleKeyFrame.EasingFunction>
                             </EasingDoubleKeyFrame>
                         </DoubleAnimationUsingKeyFrames>
-                        <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="Width" Storyboard.TargetName="DemoContainer">
+                        <DoubleAnimationUsingKeyFrames Storyboard.TargetName="EditorContainer" 
+                        Storyboard.TargetProperty="Width" Duration="0:0:0.5">
+                            <EasingDoubleKeyFrame KeyTime="0" Value="{Binding ElementName=EditorContainer, Path=ActualWidth}">
+                                <EasingDoubleKeyFrame.EasingFunction>
+                                    <CubicEase EasingMode="EaseOut"/>
+                                </EasingDoubleKeyFrame.EasingFunction>
+                            </EasingDoubleKeyFrame>
                             <EasingDoubleKeyFrame KeyTime="0:0:0.5">
                                 <EasingDoubleKeyFrame.Value>
                                     <Binding ElementName="WindowRoot" Path="ActualWidth"
@@ -121,6 +227,25 @@
                                 </EasingDoubleKeyFrame.EasingFunction>
                             </EasingDoubleKeyFrame>
                         </DoubleAnimationUsingKeyFrames>
+                        <!--**********************-->
+                        <DoubleAnimationUsingKeyFrames Storyboard.TargetName="DemoContainer" 
+                        Storyboard.TargetProperty="Width" Duration="0:0:0.5">
+                            <DiscreteDoubleKeyFrame Value="{Binding ElementName=WindowRoot, Path=Width}"/>
+                        </DoubleAnimationUsingKeyFrames>
+                        <DoubleAnimationUsingKeyFrames Storyboard.TargetName="EditorContainer" 
+                        Storyboard.TargetProperty="Width" Duration="0:0:0.5">
+                            <DiscreteDoubleKeyFrame Value="{Binding ElementName=WindowRoot, Path=Width}"/>
+                        </DoubleAnimationUsingKeyFrames>
+                        <!--**********************-->
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="GridLeftCol" 
+                        Storyboard.TargetProperty="Width" Duration="0:0:0.5">
+                            <DiscreteObjectKeyFrame Value="{StaticResource SingleWidth}"/>
+                        </ObjectAnimationUsingKeyFrames>
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="GridRightCol" 
+                        Storyboard.TargetProperty="Width" Duration="0:0:0.5">
+                            <DiscreteObjectKeyFrame Value="{StaticResource SingleWidth}"/>
+                        </ObjectAnimationUsingKeyFrames>
+                        <!--**********************-->
                         <ObjectAnimationUsingKeyFrames Storyboard.TargetName="DemoContainer" 
                         Storyboard.TargetProperty="Visibility" Duration="0">
                             <DiscreteObjectKeyFrame>
@@ -142,54 +267,6 @@
             </EventTrigger.Actions>
         </EventTrigger>
         
-        <!--退出拆分模式-->
-        <!--<EventTrigger SourceName="SplitViewButton" RoutedEvent="RadioButton.Unchecked">
-            <EventTrigger.Actions>
-                <BeginStoryboard>
-                    <Storyboard>
-                        <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="Width" Storyboard.TargetName="DemoContainer">
-                            <EasingDoubleKeyFrame KeyTime="0" Value="{Binding ElementName=DemoContainer, Path=ActualWidth}">
-                                <EasingDoubleKeyFrame.EasingFunction>
-                                    <CubicEase EasingMode="EaseOut"/>
-                                </EasingDoubleKeyFrame.EasingFunction>
-                            </EasingDoubleKeyFrame>
-                            <EasingDoubleKeyFrame KeyTime="0:0:0.5"  Value="{Binding ElementName=WindowRoot, Path=ActualWidth}">
-                                <EasingDoubleKeyFrame.EasingFunction>
-                                    <CubicEase EasingMode="EaseOut"/>
-                                </EasingDoubleKeyFrame.EasingFunction>
-                            </EasingDoubleKeyFrame>
-                        </DoubleAnimationUsingKeyFrames>
-                        <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="Width" Storyboard.TargetName="EditorContainer">
-                            <EasingDoubleKeyFrame KeyTime="0" Value="{Binding ElementName=EditorContainer, Path=ActualWidth}">
-                                <EasingDoubleKeyFrame.EasingFunction>
-                                    <CubicEase EasingMode="EaseOut"/>
-                                </EasingDoubleKeyFrame.EasingFunction>
-                            </EasingDoubleKeyFrame>
-                            <EasingDoubleKeyFrame KeyTime="0:0:0.5"  Value="{Binding ElementName=WindowRoot, Path=ActualWidth}">
-                                <EasingDoubleKeyFrame.EasingFunction>
-                                    <CubicEase EasingMode="EaseOut"/>
-                                </EasingDoubleKeyFrame.EasingFunction>
-                            </EasingDoubleKeyFrame>
-                        </DoubleAnimationUsingKeyFrames>
-                        <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="Width" Storyboard.TargetName="DemoContainer" Duration="0:0:0.5">
-                            <DiscreteDoubleKeyFrame Value="{Binding ElementName=WindowRoot, Path=Width}"/>
-                        </DoubleAnimationUsingKeyFrames>
-                        <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="Width" Storyboard.TargetName="EditorContainer" Duration="0:0:0.5">
-                            <DiscreteDoubleKeyFrame Value="{Binding ElementName=WindowRoot, Path=Width}"/>
-                        </DoubleAnimationUsingKeyFrames>
-                    </Storyboard>
-                </BeginStoryboard>
-            </EventTrigger.Actions>
-        </EventTrigger>-->
-
-        <!--当处于拆分模式且窗口大小发生改变时，调整窗口布局-->
-        <EventTrigger RoutedEvent="FrameworkElement.SizeChanged">
-            <EventTrigger.Actions>
-                
-            </EventTrigger.Actions>
-        </EventTrigger>
-
-
     </Window.Triggers>
     
     <Grid x:Name="WindowRoot">
@@ -201,6 +278,10 @@
     		<RadioButton x:Name="DemoViewButton" Content="演示" Margin="0,0,54.498,0" Template="{StaticResource TopBarSwitchButtonTemplate}" HorizontalAlignment="Right" ToolTip="切换至演示视图"/>
     	</Grid>
     	<Grid x:Name="MainContainer" Margin="0,34,0,0" RenderTransformOrigin="0.5,0.5">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition x:Name="GridLeftCol"  Width="*"></ColumnDefinition>
+                <ColumnDefinition x:Name="GridRightCol"  Width="0*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
     		<Grid.RenderTransform>
     			<TransformGroup>
     				<ScaleTransform/>
@@ -209,7 +290,7 @@
     				<TranslateTransform/>
     			</TransformGroup>
     		</Grid.RenderTransform>
-    		<Grid x:Name="DemoContainer" Margin="0" RenderTransformOrigin="0.5,0.5" Width="0" Visibility="Hidden" HorizontalAlignment="Right">
+    		<Grid x:Name="DemoContainer" Grid.Column="2"  Margin="0" RenderTransformOrigin="0.5,0.5">
     			<Grid.RenderTransform>
     				<TransformGroup>
     					<ScaleTransform/>
@@ -240,7 +321,7 @@
     				<Slider Margin="216,11,342.5,8" Template="{StaticResource HorizontalSliderTemplate}" Width="225"/>
     			</Grid>
     		</Grid>
-    		<Grid x:Name="EditorContainer" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Left" Width="784">
+    		<Grid x:Name="EditorContainer" Grid.Column="0"  RenderTransformOrigin="0.5,0.5">
     			<Grid.RenderTransform>
     				<TransformGroup>
     					<ScaleTransform/>
@@ -260,6 +341,7 @@
     				</TabItem>
     			</TabControl>
     		</Grid>
+            <!--<GridSplitter Grid.Column="1" VerticalAlignment="Stretch" Width="10"/>-->
     	</Grid>
     	<Rectangle x:Name="WindowBackGround" Margin="0" Panel.ZIndex="-10" Fill="#FFDFDFDF" d:IsLocked="True"/>
     </Grid>
