@@ -351,7 +351,52 @@
 					<ContentPresenter x:Name="PART_SelectedContentHost" Margin="5"/>
 				</Border>
 			</Grid>
-		</ControlTemplate>		
+		</ControlTemplate>
+		<SolidColorBrush x:Key="CheckBoxFillNormal" Color="#F4F4F4"/>
+		<SolidColorBrush x:Key="CheckBoxStroke" Color="#8E8F8F"/>
+		
+		<!--EllipseToggleButton-->
+        <ControlTemplate x:Key="EllipseToggleButton"  TargetType="{x:Type CheckBox}">
+			<Grid Name="Grid" Width="120" Height="40" 
+			HorizontalAlignment="Center" VerticalAlignment="Center">
+				<Rectangle RadiusX="16" RadiusY="16" Height="32" Width="96"
+				Fill="#333333" Effect="{StaticResource GeneralBlurEffect}"/>
+				<Rectangle RadiusX="16" RadiusY="16" Height="30" Width="94"
+				Fill="#333333" Effect="{StaticResource GeneralDropShadowEffect}"/>
+				<Rectangle Name="Background" RadiusX="16" RadiusY="16" Height="32" Width="96"
+				Fill="{StaticResource LinearWhiteBrush}"/>
+                <ContentPresenter RecognizesAccessKey="True"
+				HorizontalAlignment="Center" VerticalAlignment="Center"/>
+				<Grid.RenderTransform>
+					<ScaleTransform CenterX="60" CenterY="20"/>
+				</Grid.RenderTransform>
+				<VisualStateManager.VisualStateGroups>
+					<VisualStateGroup x:Name="CommonStates">
+						<VisualState x:Name="Normal"/>
+						<VisualState x:Name="MouseOver"
+						Storyboard="{StaticResource TurnOrangeStoryboard}"/>
+                    </VisualStateGroup>
+                    <VisualStateGroup x:Name="CheckedStates">
+                        <VisualState x:Name="Checked"
+						Storyboard="{StaticResource TurnGrayStoryboard}"/>
+                    </VisualStateGroup>
+                </VisualStateManager.VisualStateGroups>
+			</Grid>
+            <ControlTemplate.Triggers>
+				<Trigger Property="IsPressed" Value="True">
+					<Trigger.EnterActions>
+						<BeginStoryboard Storyboard="{StaticResource ScaleSmallStoryboard}"/>
+					</Trigger.EnterActions>
+					<Trigger.ExitActions>
+						<BeginStoryboard Storyboard="{StaticResource ScaleOriginStoryboard}"/>
+					</Trigger.ExitActions>
+				</Trigger>
+                <Trigger Property="IsChecked" Value="True">
+                    <Setter TargetName="Background" Property="Fill" Value="{StaticResource LinearGrayBrush}"/>
+                </Trigger>
+            </ControlTemplate.Triggers>
+        </ControlTemplate>
+
 
     </Application.Resources>
 </Application>
