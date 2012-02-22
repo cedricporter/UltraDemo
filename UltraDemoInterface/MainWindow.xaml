@@ -466,7 +466,39 @@
     		<RadioButton x:Name="EditorViewButton" Content="编辑" Margin="0,0,172.498,0" Template="{StaticResource TopBarSwitchButtonTemplate}" HorizontalAlignment="Right" ToolTip="切换至编辑视图" IsChecked="True"/>
     		<RadioButton x:Name="SplitViewButton" Content="拆分" Margin="0,0,113.498,0" Template="{StaticResource TopBarSwitchButtonTemplate}" HorizontalAlignment="Right" ToolTip="切换至拆分视图"/>
     		<RadioButton x:Name="DemoViewButton" Content="演示" Margin="0,0,54.498,0" Template="{StaticResource TopBarSwitchButtonTemplate}" HorizontalAlignment="Right" ToolTip="切换至演示视图"/>
-    	</Grid>
+            <Menu HorizontalAlignment="Left" Template="{StaticResource TopBarMenuTemplate}" Margin="32,0,0,0">
+                <MenuItem Header="_文件" Style="{StaticResource TopBarMenuItemStyle}">
+                    <MenuItem Command="New"/>
+                    <MenuItem Command="Open"/>
+                    <MenuItem Command="Save"/>
+                    <MenuItem Command="SaveAs"/>
+                </MenuItem>
+                <MenuItem Header="_运行" Style="{StaticResource TopBarMenuItemStyle}">
+                    <MenuItem Header="编译"/>
+                    <Separator/>
+                    <MenuItem Header="运行">
+                        <MenuItem.Icon>
+                            <Image Height="20" Width="20" Source="icons/run.png"/>
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <MenuItem Header="单步">
+                        <MenuItem.Icon>
+                            <Image Height="20" Width="20" Source="icons/step.png"/>
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <MenuItem Header="暂停">
+                        <MenuItem.Icon>
+                            <Image Height="20" Width="20" Source="icons/pause.png"/>
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <MenuItem Header="停止">
+                        <MenuItem.Icon>
+                            <Image Height="20" Width="20" Source="icons/stop.png"/>
+                        </MenuItem.Icon>
+                    </MenuItem>
+                </MenuItem>
+            </Menu>
+        </Grid>
     	<Grid x:Name="MainContainer" Margin="0,34,0,0" RenderTransformOrigin="0.5,0.5">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition x:Name="GridLeftCol"  Width="*"></ColumnDefinition>
