@@ -473,9 +473,13 @@
                     <MenuItem Command="Save"/>
                     <MenuItem Command="SaveAs"/>
                 </MenuItem>
+                <MenuItem Header="_编译" Style="{StaticResource TopBarMenuItemStyle}">
+                    <MenuItem Header="编译代码">
+                    </MenuItem>
+                    <MenuItem Header="选择运行动画">
+                    </MenuItem>
+                </MenuItem>
                 <MenuItem Header="_运行" Style="{StaticResource TopBarMenuItemStyle}">
-                    <MenuItem Header="编译"/>
-                    <Separator/>
                     <MenuItem Header="运行">
                         <MenuItem.Icon>
                             <Image Height="20" Width="20" Source="icons/run.png"/>

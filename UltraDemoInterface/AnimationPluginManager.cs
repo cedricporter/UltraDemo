@@ -50,42 +50,18 @@ namespace UltraDemoInterface
                         if (token.Length > 0)
                         {
                             // 找到了入口
-                            //System.Windows.MessageBox.Show(t.ToString());
-                            //MethodInfo m = t.GetMethod("SayHello");
-                            //obj = Activator.CreateInstance(t);
                             anima = Activator.CreateInstance(t);
                             getName = t.GetMethod("GetName");
                             getDescription = t.GetMethod("GetDescription");
                             getWatchedList = t.GetMethod("GetWatchedList");
                             name = getName.Invoke(anima, null);
-                            System.Windows.MessageBox.Show(name.ToString());
+                            //System.Windows.MessageBox.Show(name.ToString());
                             description = getDescription.Invoke(anima, null);
-                            System.Windows.MessageBox.Show(description.ToString());
-                            //MethodInfo getName = t.GetMethod("GeName");
-                            //if (m != null)
-                            //{
-                            //    obj = Activator.CreateInstance(t);
-                            //    //getName.Invoke(obj, null);
-                            //    //Object name = getName.Invoke(obj, null);
-                            //    //System.Windows.MessageBox.Show(name.ToString());
-                            //}
-
-
-
-                            //(obj as AnimationFactory).SayHello();
-                            //anima = (obj as AnimationFactory);
-                            //anima.SayHello();
+                            //System.Windows.MessageBox.Show(description.ToString());
+                            //将动画实例装入动画列表
+                            animationList[name.ToString()] = anima;
                         }
                     }
-                    //mi = type.GetMethod("GetAnimationSingleton");
-                        //System.Windows.MessageBox.Show(mi.IsStatic.ToString());
-                    //mi.Invoke(null, null);
-                    //Type[]ts = assembly.GetTypes();
-                    //foreach (Type t in ts)
-                    //{
-                    //    Object obj =System.Activator.CreateInstance(t);
-                    //    System.Windows.MessageBox.Show(obj.GetType().ToString());
-                    //}
                 }
             }
             //System.Windows.MessageBox.Show(files.Length.ToString());
@@ -95,5 +71,16 @@ namespace UltraDemoInterface
         {
 
         }
+
+        public AnimationPluginManager()
+        {
+            animationList = new Dictionary<String, Object>();
+        }
+
+        /// <summary>
+        /// 动画列表
+        /// </summary>
+        private Dictionary<String, Object> animationList;
+
     }
 }
