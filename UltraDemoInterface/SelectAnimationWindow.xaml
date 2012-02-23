@@ -1,0 +1,16 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="d" x:Class="UltraDemoInterface.SelectAnimationWindow"
+        Title="SelectAnimationWindow" Height="400" Width="400"
+		WindowStyle="None" AllowsTransparency="True"
+		Template="{StaticResource WindowTemplate}">
+    <Grid x:Name="WindowRoot" MouseLeftButtonDown="Grid_MouseLeftButtonDown" Background="#00000000">
+        <TextBlock x:Name="Description" TextWrapping="Wrap" Text="TextBlock" Background="White" Width="148" HorizontalAlignment="Right" Margin="0,104,33,96"/>
+        <Button x:Name="OK" Content="确定" Margin="142,0,138,19.163" Template="{StaticResource EllipseButtonTemplate}" VerticalAlignment="Bottom" d:LayoutOverrides="Width" Click="OK_Click" />
+        <Button x:Name="Cancle" Content="取消" HorizontalAlignment="Right" Margin="0,0,18,19.163" VerticalAlignment="Bottom" Template="{StaticResource EllipseButtonTemplate}" Click="Cancle_Click" />
+        <ListBox x:Name="WatchedList" Margin="33,104,0,96" HorizontalAlignment="Left" Width="166"/>
+        <ComboBox x:Name="AnimationList" Height="26" Margin="33,58,33,0" VerticalAlignment="Top" SelectionChanged="AnimationList_SelectionChanged"/>
+
+    </Grid>
+</Window>

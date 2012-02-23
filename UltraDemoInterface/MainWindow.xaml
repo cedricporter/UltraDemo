@@ -6,6 +6,7 @@
         mc:Ignorable="d" x:Class="UltraDemoInterface.MainWindow"
         xmlns:local="clr-namespace:UltraDemoInterface"
         Title="UltraDemo" Height="500" Width="800"
+        Closing="Window_Closing"
     >
     
 	<Window.Resources>
@@ -476,7 +477,7 @@
                 <MenuItem Header="_编译" Style="{StaticResource TopBarMenuItemStyle}">
                     <MenuItem Header="编译代码">
                     </MenuItem>
-                    <MenuItem Header="选择运行动画">
+                    <MenuItem Header="选择动画" Click="MenuItem_Click">
                     </MenuItem>
                 </MenuItem>
                 <MenuItem Header="_运行" Style="{StaticResource TopBarMenuItemStyle}">

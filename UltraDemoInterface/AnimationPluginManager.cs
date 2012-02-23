@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.IO;
 using System.Reflection;
+using System.Windows.Controls;
 
 /**
 @date		:	2012/02/22
@@ -55,11 +56,20 @@ namespace UltraDemoInterface
                             getDescription = t.GetMethod("GetDescription");
                             getWatchedList = t.GetMethod("GetWatchedList");
                             name = getName.Invoke(anima, null);
-                            //System.Windows.MessageBox.Show(name.ToString());
                             description = getDescription.Invoke(anima, null);
-                            //System.Windows.MessageBox.Show(description.ToString());
+                            watchedList = getWatchedList.Invoke(anima, null);
+
+                            // 向SelectAnimationWindow添加信息
+                            SelectAnimationWindow.AnimationInfo aniInfo = new SelectAnimationWindow.AnimationInfo();
+                            aniInfo.description = description.ToString();
+                            aniInfo.watchedList = (List<String>)watchedList;
+                            selectAnimationWindow.animationInfoMap[name.ToString()] = aniInfo;
+                            ListBoxItem item = new ListBoxItem();
+                            item.Content = name.ToString();
+                            selectAnimationWindow.AnimationList.Items.Add(item);
+
                             //将动画实例装入动画列表
-                            animationList[name.ToString()] = anima;
+                            animationMap[name.ToString()] = anima;
                         }
                     }
                 }
@@ -72,15 +82,15 @@ namespace UltraDemoInterface
 
         }
 
-        public AnimationPluginManager()
+        public AnimationPluginManager(SelectAnimationWindow selectAnimationWindow)
         {
-            animationList = new Dictionary<String, Object>();
+            animationMap = new Dictionary<String, Object>();
+            this.selectAnimationWindow = selectAnimationWindow;
         }
 
-        /// <summary>
-        /// 动画列表
-        /// </summary>
-        private Dictionary<String, Object> animationList;
+
+        private Dictionary<String, Object> animationMap;
+        private SelectAnimationWindow selectAnimationWindow;
 
     }
 }

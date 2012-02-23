@@ -12,6 +12,9 @@ namespace UltraDemoInterface
         {
             name = "ArrayAnimation";
             description = "如果希望动画可以监控您的代码，请以关键字命名您希望被监控关键字。以watchedArray命名数组指针，以watchedSize命名数组长度";
+            watchedList = new List<String>();
+            watchedList.Add("watchedArray");
+            watchedList.Add("watchedSize");
             //System.Windows.MessageBox.Show("ArrayAnimation Created");
         }
 
