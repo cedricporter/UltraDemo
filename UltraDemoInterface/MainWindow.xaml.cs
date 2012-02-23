@@ -11,6 +11,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Windows.Media.Animation;
+
 
 namespace UltraDemoInterface
 {
@@ -39,7 +41,8 @@ namespace UltraDemoInterface
             // 初始化其他窗口
             //outputWindow = new OutputWindow();
             selectAnimationWindow = new SelectAnimationWindow();
-            selectAnimationWindow.Show();
+            //selectAnimationWindow.Show();
+            //selectAnimationWindow.Visibility = Visibility.Visible;
 
             AnimationPluginManager mgr = new AnimationPluginManager(selectAnimationWindow);
             mgr.LoadPlugins("AnimationPlugins");
@@ -181,6 +184,11 @@ namespace UltraDemoInterface
         /// <param name="e"></param>
         private void MenuItem_Click(object sender, RoutedEventArgs e)
         {
+            DoubleAnimationUsingKeyFrames scaleYAni = new DoubleAnimationUsingKeyFrames();
+            CubicEase ef = new CubicEase();
+            scaleYAni.KeyFrames.Add(new EasingDoubleKeyFrame(0, KeyTime.FromTimeSpan(TimeSpan.FromSeconds(0)), ef));
+            scaleYAni.KeyFrames.Add(new EasingDoubleKeyFrame(selectAnimationWindow.Height, KeyTime.FromTimeSpan(TimeSpan.FromSeconds(0.5)), ef));
+            selectAnimationWindow.BeginAnimation(Window.HeightProperty, scaleYAni);
             selectAnimationWindow.Show();
         }
 

@@ -191,7 +191,7 @@
 				<LinearDoubleKeyFrame KeyTime="0:0:0.1" Value="1"/>
 			</DoubleAnimationUsingKeyFrames>
 		</Storyboard>
-		
+        
         <!--Circle Button-->
 		<ControlTemplate x:Key="CircleButtonTemplate" TargetType="{x:Type Button}">
 			<Grid x:Name="Grid" Width="48" Height="48" 

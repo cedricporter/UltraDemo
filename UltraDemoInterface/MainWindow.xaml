@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
         mc:Ignorable="d" x:Class="UltraDemoInterface.MainWindow"
         xmlns:local="clr-namespace:UltraDemoInterface"
-        Title="UltraDemo" Height="500" Width="800"
+        Title="UltraDemo" Height="500" Width="800" WindowStartupLocation="CenterScreen"
         Closing="Window_Closing"
     >
     
@@ -20,6 +20,8 @@
         <!--Commands-->
         <RoutedUICommand x:Key="OutputWindowButtonHotKey" Text="显示或隐藏输出窗口"/>
         <RoutedUICommand x:Key="MemoryWindowButtonHotKey" Text="显示或隐藏输出窗口"/>
+        <!--Windows-->
+        <local:SelectAnimationWindow x:Key="SelectAnimationWindowIns"/>
 	</Window.Resources>
     
     <Window.InputBindings>
@@ -445,6 +447,8 @@
                 </BeginStoryboard>
             </EventTrigger.Actions>
         </EventTrigger>
+        
+        <!--显示动画选择窗口-->
 
         <!--<EventTrigger SourceName="OutputWindow" RoutedEvent="Grid.MouseMove">
             <EventTrigger.Actions>

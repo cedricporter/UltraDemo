@@ -10,6 +10,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using System.Windows.Media.Animation;
 
 namespace UltraDemoInterface
 {
@@ -63,7 +64,15 @@ namespace UltraDemoInterface
         /// <param name="e"></param>
         private void OK_Click(object sender, RoutedEventArgs e)
         {
-            Hide();
+            ObjectAnimationUsingKeyFrames visAni = new ObjectAnimationUsingKeyFrames();
+            visAni.KeyFrames.Add(new DiscreteObjectKeyFrame(Visibility.Hidden, KeyTime.FromTimeSpan(TimeSpan.FromSeconds(0.5))));
+            this.BeginAnimation(Window.VisibilityProperty, visAni);
+            DoubleAnimationUsingKeyFrames scaleYAni = new DoubleAnimationUsingKeyFrames();
+            CubicEase ef = new CubicEase();
+            scaleYAni.KeyFrames.Add(new EasingDoubleKeyFrame(Height, KeyTime.FromTimeSpan(TimeSpan.FromSeconds(0)), ef));
+            scaleYAni.KeyFrames.Add(new EasingDoubleKeyFrame(0, KeyTime.FromTimeSpan(TimeSpan.FromSeconds(0.5)), ef));
+            this.BeginAnimation(Window.HeightProperty, scaleYAni);
+            //Hide();
         }
 
         /// <summary>
@@ -73,7 +82,15 @@ namespace UltraDemoInterface
         /// <param name="e"></param>
         private void Cancle_Click(object sender, RoutedEventArgs e)
         {
-            Hide();
+            ObjectAnimationUsingKeyFrames visAni = new ObjectAnimationUsingKeyFrames();
+            visAni.KeyFrames.Add(new DiscreteObjectKeyFrame(Visibility.Hidden, KeyTime.FromTimeSpan(TimeSpan.FromSeconds(0.5))));
+            this.BeginAnimation(Window.VisibilityProperty, visAni);
+            DoubleAnimationUsingKeyFrames scaleYAni = new DoubleAnimationUsingKeyFrames();
+            CubicEase ef = new CubicEase();
+            scaleYAni.KeyFrames.Add(new EasingDoubleKeyFrame(Height, KeyTime.FromTimeSpan(TimeSpan.FromSeconds(0)), ef));
+            scaleYAni.KeyFrames.Add(new EasingDoubleKeyFrame(0, KeyTime.FromTimeSpan(TimeSpan.FromSeconds(0.5)), ef));
+            this.BeginAnimation(Window.HeightProperty, scaleYAni);
+            //Hide();
         }
 
         /// <summary>
@@ -88,6 +105,22 @@ namespace UltraDemoInterface
         }
 
         public Dictionary<String, AnimationInfo> animationInfoMap;
+
+        ///// <summary>
+        ///// 缩放显示窗体动画
+        ///// </summary>
+        ///// <param name="sender"></param>
+        ///// <param name="e"></param>
+        //private void Window_IsVisibleChanged(object sender, DependencyPropertyChangedEventArgs e)
+        //{
+        //    if (IsVisible == false)
+        //        return;
+        //    DoubleAnimationUsingKeyFrames scaleYAni = new DoubleAnimationUsingKeyFrames();
+        //    CubicEase ef = new CubicEase();
+        //    scaleYAni.KeyFrames.Add(new EasingDoubleKeyFrame(0, KeyTime.FromTimeSpan(TimeSpan.FromSeconds(0)), ef));
+        //    scaleYAni.KeyFrames.Add(new EasingDoubleKeyFrame(Height, KeyTime.FromTimeSpan(TimeSpan.FromSeconds(0.5)), ef));
+        //    this.BeginAnimation(Window.HeightProperty, scaleYAni);
+        //}
         
 
         
