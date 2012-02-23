@@ -19,6 +19,7 @@ using System.Reflection;
 
 namespace UltraDemoInterface
 {
+
     class AnimationPluginManager
     {
         /// <summary>
@@ -31,7 +32,8 @@ namespace UltraDemoInterface
             String[] files;
             Assembly assembly;
             Type[] types;
-            Object obj;
+            MethodInfo getName, getDescription, getWatchedList;
+            Object anima, name, description, watchedList;
 
             files = Directory.GetFiles(path);
             foreach (String file in files)
@@ -49,12 +51,24 @@ namespace UltraDemoInterface
                         {
                             // 找到了入口
                             //System.Windows.MessageBox.Show(t.ToString());
-                            MethodInfo m = t.GetMethod("SayHello");
-                            if (m != null)
-                            {
-                                obj = Activator.CreateInstance(t);
-                                m.Invoke(obj, null);
-                            }
+                            //MethodInfo m = t.GetMethod("SayHello");
+                            //obj = Activator.CreateInstance(t);
+                            anima = Activator.CreateInstance(t);
+                            getName = t.GetMethod("GetName");
+                            getDescription = t.GetMethod("GetDescription");
+                            getWatchedList = t.GetMethod("GetWatchedList");
+                            name = getName.Invoke(anima, null);
+                            System.Windows.MessageBox.Show(name.ToString());
+                            description = getDescription.Invoke(anima, null);
+                            System.Windows.MessageBox.Show(description.ToString());
+                            //MethodInfo getName = t.GetMethod("GeName");
+                            //if (m != null)
+                            //{
+                            //    obj = Activator.CreateInstance(t);
+                            //    //getName.Invoke(obj, null);
+                            //    //Object name = getName.Invoke(obj, null);
+                            //    //System.Windows.MessageBox.Show(name.ToString());
+                            //}
 
 
 
