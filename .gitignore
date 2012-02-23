@@ -51,3 +51,7 @@
 /NewArrayAnimationPlugin/obj
 /NewArrayAnimationPlugin/bin
 *.suo
+/Compiler/Debug
+/Debug/Compiler.exp
+/Debug/Compiler.dll
+/Debug/Compiler.lib
