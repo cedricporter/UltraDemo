@@ -17,6 +17,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UltraDemoInterface", "Ultra
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NewArrayAnimationPlugin", "NewArrayAnimationPlugin\NewArrayAnimationPlugin.csproj", "{B1062EA0-BF01-43F9-97DB-D64A08DDA83C}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Compiler", "Compiler\Compiler.vcxproj", "{7C8C6522-33B4-4A2C-83C5-8208B4941047}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -123,6 +125,18 @@ Global
 		{B1062EA0-BF01-43F9-97DB-D64A08DDA83C}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{B1062EA0-BF01-43F9-97DB-D64A08DDA83C}.Release|Win32.ActiveCfg = Release|Any CPU
 		{B1062EA0-BF01-43F9-97DB-D64A08DDA83C}.Release|x86.ActiveCfg = Release|Any CPU
+		{7C8C6522-33B4-4A2C-83C5-8208B4941047}.Debug|Any CPU.ActiveCfg = Debug|Win32
+		{7C8C6522-33B4-4A2C-83C5-8208B4941047}.Debug|Mixed Platforms.ActiveCfg = Debug|Win32
+		{7C8C6522-33B4-4A2C-83C5-8208B4941047}.Debug|Mixed Platforms.Build.0 = Debug|Win32
+		{7C8C6522-33B4-4A2C-83C5-8208B4941047}.Debug|Win32.ActiveCfg = Debug|Win32
+		{7C8C6522-33B4-4A2C-83C5-8208B4941047}.Debug|Win32.Build.0 = Debug|Win32
+		{7C8C6522-33B4-4A2C-83C5-8208B4941047}.Debug|x86.ActiveCfg = Debug|Win32
+		{7C8C6522-33B4-4A2C-83C5-8208B4941047}.Release|Any CPU.ActiveCfg = Release|Win32
+		{7C8C6522-33B4-4A2C-83C5-8208B4941047}.Release|Mixed Platforms.ActiveCfg = Release|Win32
+		{7C8C6522-33B4-4A2C-83C5-8208B4941047}.Release|Mixed Platforms.Build.0 = Release|Win32
+		{7C8C6522-33B4-4A2C-83C5-8208B4941047}.Release|Win32.ActiveCfg = Release|Win32
+		{7C8C6522-33B4-4A2C-83C5-8208B4941047}.Release|Win32.Build.0 = Release|Win32
+		{7C8C6522-33B4-4A2C-83C5-8208B4941047}.Release|x86.ActiveCfg = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
