@@ -66,6 +66,7 @@ namespace UltraDemoInterface
                             selectAnimationWindow.animationInfoMap[name.ToString()] = aniInfo;
                             ListBoxItem item = new ListBoxItem();
                             item.Content = name.ToString();
+                            item.Template = (ControlTemplate)App.Current.FindResource("ListBoxItemTemplate");
                             selectAnimationWindow.AnimationList.Items.Add(item);
 
                             //将动画实例装入动画列表

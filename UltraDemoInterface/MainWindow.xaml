@@ -599,6 +599,7 @@
     				<TabItem Header="源代码" Template="{StaticResource WindowTabItem}">
     					<Grid Background="#FFE5E5E5">
     						<Ellipse Fill="#FFF4F4F5" Margin="42,23.163,0,0" Stroke="Black" HorizontalAlignment="Left" Width="72" Height="68" VerticalAlignment="Top"/>
+    						<ListBoxItem Content="ListBoxItem" Height="35" Margin="305,139,378,0" VerticalAlignment="Top" Style="{DynamicResource ListBoxItemStyle1}"/>
     					</Grid>
     				</TabItem>
     				<TabItem Header="TabItem" Template="{StaticResource WindowTabItem}">

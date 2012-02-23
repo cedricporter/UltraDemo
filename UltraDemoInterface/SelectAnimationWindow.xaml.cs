@@ -50,6 +50,7 @@ namespace UltraDemoInterface
             {
                 ListBoxItem item = new ListBoxItem();
                 item.Content = value;
+                item.Template = (ControlTemplate)App.Current.FindResource("ListBoxItemTemplate");
                 WatchedList.Items.Add(item);
             }
             //WatchedList
