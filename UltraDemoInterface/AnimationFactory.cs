@@ -18,7 +18,7 @@ using System.Text;
 namespace UltraDemoInterface
 {
 
-    public abstract class AnimationFactory : Object
+    public abstract class AnimationFactory
     {
         /// <summary>
         /// 测试用
@@ -27,17 +27,6 @@ namespace UltraDemoInterface
         {
             System.Windows.MessageBox.Show(this.ToString() + " say hello");
         }
-
-        ///// <summary>
-        ///// 子类通过重载该函数以实现单例
-        ///// 注意：不实现此方法则无法加载dll
-        ///// </summary>
-        ///// <returns></returns>
-        //public static AnimationFactory GetAnimationSingleton()
-        //{
-        //    System.Windows.MessageBox.Show("asdfafasdfadsf");
-        //    return null;
-        //}
 
         /// <summary>
         /// 子类通过重载此方法以实现动画
@@ -73,41 +62,9 @@ namespace UltraDemoInterface
             return watchedList;
         }
 
-        ///// <summary>
-        ///// 构造函数
-        ///// </summary>
-        //public AnimationFactory();
-
-        /// <summary>
-        /// 设置动画名称
-        /// </summary>
-        /// <param name="name">动画名称</param>
-        protected virtual void SetName(String name)
-        {
-            this.name = name;
-        }
-
-        /// <summary>
-        /// 设置动画描述
-        /// </summary>
-        /// <param name="description">动画描述</param>
-        protected virtual void SetDescription(String description)
-        {
-            this.description = description;
-        }
-
-        /// <summary>
-        /// 向监控值名称列表中加入新的监控名称
-        /// </summary>
-        /// <param name="varname">监控值名称</param>
-        protected virtual void AddWatchedVarName(String varname)
-        {
-            watchedList.Add(varname);
-        }
-
         protected String name;
         protected String description;
         protected List<String> watchedList;
-        public static AnimationFactory instance = null;
+        //protected static AnimationFactory instance = null;
     }
 }

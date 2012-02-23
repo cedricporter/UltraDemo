@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.IO;
 using System.Reflection;
+using System.Windows.Controls;
 
 /**
 @date		:	2012/02/22
@@ -19,6 +20,7 @@ using System.Reflection;
 
 namespace UltraDemoInterface
 {
+
     class AnimationPluginManager
     {
         /// <summary>
@@ -31,7 +33,8 @@ namespace UltraDemoInterface
             String[] files;
             Assembly assembly;
             Type[] types;
-            Object obj;
+            MethodInfo getName, getDescription, getWatchedList;
+            Object anima, name, description, watchedList;
 
             files = Directory.GetFiles(path);
             foreach (String file in files)
@@ -48,30 +51,27 @@ namespace UltraDemoInterface
                         if (token.Length > 0)
                         {
                             // 找到了入口
-                            //System.Windows.MessageBox.Show(t.ToString());
-                            MethodInfo m = t.GetMethod("SayHello");
-                            if (m != null)
-                            {
-                                obj = Activator.CreateInstance(t);
-                                m.Invoke(obj, null);
-                            }
+                            anima = Activator.CreateInstance(t);
+                            getName = t.GetMethod("GetName");
+                            getDescription = t.GetMethod("GetDescription");
+                            getWatchedList = t.GetMethod("GetWatchedList");
+                            name = getName.Invoke(anima, null);
+                            description = getDescription.Invoke(anima, null);
+                            watchedList = getWatchedList.Invoke(anima, null);
 
+                            // 向SelectAnimationWindow添加信息
+                            SelectAnimationWindow.AnimationInfo aniInfo = new SelectAnimationWindow.AnimationInfo();
+                            aniInfo.description = description.ToString();
+                            aniInfo.watchedList = (List<String>)watchedList;
+                            selectAnimationWindow.animationInfoMap[name.ToString()] = aniInfo;
+                            ListBoxItem item = new ListBoxItem();
+                            item.Content = name.ToString();
+                            selectAnimationWindow.AnimationList.Items.Add(item);
 
-
-                            //(obj as AnimationFactory).SayHello();
-                            //anima = (obj as AnimationFactory);
-                            //anima.SayHello();
+                            //将动画实例装入动画列表
+                            animationMap[name.ToString()] = anima;
                         }
                     }
-                    //mi = type.GetMethod("GetAnimationSingleton");
-                        //System.Windows.MessageBox.Show(mi.IsStatic.ToString());
-                    //mi.Invoke(null, null);
-                    //Type[]ts = assembly.GetTypes();
-                    //foreach (Type t in ts)
-                    //{
-                    //    Object obj =System.Activator.CreateInstance(t);
-                    //    System.Windows.MessageBox.Show(obj.GetType().ToString());
-                    //}
                 }
             }
             //System.Windows.MessageBox.Show(files.Length.ToString());
@@ -81,5 +81,16 @@ namespace UltraDemoInterface
         {
 
         }
+
+        public AnimationPluginManager(SelectAnimationWindow selectAnimationWindow)
+        {
+            animationMap = new Dictionary<String, Object>();
+            this.selectAnimationWindow = selectAnimationWindow;
+        }
+
+
+        private Dictionary<String, Object> animationMap;
+        private SelectAnimationWindow selectAnimationWindow;
+
     }
 }

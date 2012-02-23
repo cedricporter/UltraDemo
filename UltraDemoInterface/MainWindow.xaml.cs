@@ -25,6 +25,9 @@ namespace UltraDemoInterface
         private TranslateTransform lastMemoryWindowTranslate;
         private TranslateTransform currMemoryWindowTranslate;
 
+        private OutputWindow outputWindow;
+        private SelectAnimationWindow selectAnimationWindow;
+
         public MainWindow()
         {
             InitializeComponent();
@@ -33,8 +36,28 @@ namespace UltraDemoInterface
             lastMemoryWindowTranslate = new TranslateTransform();
             currMemoryWindowTranslate = new TranslateTransform();
 
-            AnimationPluginManager mgr = new AnimationPluginManager();
+            // 初始化其他窗口
+            //outputWindow = new OutputWindow();
+            selectAnimationWindow = new SelectAnimationWindow();
+            selectAnimationWindow.Show();
+
+            AnimationPluginManager mgr = new AnimationPluginManager(selectAnimationWindow);
             mgr.LoadPlugins("AnimationPlugins");
+
+            
+        }
+
+        /// <summary>
+        /// 窗口关闭时释放资源
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            if (outputWindow != null)
+                outputWindow.Close();
+            if (selectAnimationWindow != null)
+                selectAnimationWindow.Close();
         }
 
         /// <summary>
@@ -149,6 +172,16 @@ namespace UltraDemoInterface
                 try { MemoryWindowButton.IsChecked = false; }
                 catch { }
             }
+        }
+
+        /// <summary>
+        /// 打开动画选择窗口
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void MenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            selectAnimationWindow.Show();
         }
 
     }
