@@ -32,6 +32,9 @@ namespace UltraDemoInterface
             currOutputWindowTranslate = new TranslateTransform();
             lastMemoryWindowTranslate = new TranslateTransform();
             currMemoryWindowTranslate = new TranslateTransform();
+
+            AnimationPluginManager mgr = new AnimationPluginManager();
+            mgr.LoadPlugins("AnimationPlugins");
         }
 
         /// <summary>
