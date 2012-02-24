@@ -13,6 +13,8 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Windows.Media.Animation;
 
+using System.Reflection;
+
 
 namespace UltraDemoInterface
 {
@@ -21,33 +23,53 @@ namespace UltraDemoInterface
     /// </summary>
     public partial class MainWindow : Window
     {
-        private Point lastMousePos;
-        private TranslateTransform lastOutputWindowTranslate;
-        private TranslateTransform currOutputWindowTranslate;
-        private TranslateTransform lastMemoryWindowTranslate;
-        private TranslateTransform currMemoryWindowTranslate;
+        //private Point lastMousePos;
+        //private TranslateTransform lastOutputWindowTranslate;
+        //private TranslateTransform currOutputWindowTranslate;
+        //private TranslateTransform lastMemoryWindowTranslate;
+        //private TranslateTransform currMemoryWindowTranslate;
+        
+        //private Double lastMemoryWindowHeight;
 
         private OutputWindow outputWindow;
+        private MemoryWindow memoryWindow;
         private SelectAnimationWindow selectAnimationWindow;
+        private AnimationPluginManager animationPluginManager;
+
+        //MethodInfo beginRender;
+        //Object anima;
+
+        //Rectangle fuckr;
 
         public MainWindow()
         {
             InitializeComponent();
-            lastOutputWindowTranslate = new TranslateTransform();
-            currOutputWindowTranslate = new TranslateTransform();
-            lastMemoryWindowTranslate = new TranslateTransform();
-            currMemoryWindowTranslate = new TranslateTransform();
 
             // 初始化其他窗口
-            //outputWindow = new OutputWindow();
+            outputWindow = new OutputWindow();
+            memoryWindow = new MemoryWindow();
             selectAnimationWindow = new SelectAnimationWindow();
             //selectAnimationWindow.Show();
-            //selectAnimationWindow.Visibility = Visibility.Visible;
 
-            AnimationPluginManager mgr = new AnimationPluginManager(selectAnimationWindow);
-            mgr.LoadPlugins("AnimationPlugins");
+            //testing
+            //Grid animationContainer = (Grid)FindName("AnimationContainer");
+            //fuckr = new Rectangle();
+            //Color bg = new Color();
+            //bg.A = 255;
+            //fuckr.Width = 100;
+            //fuckr.Height = 100;
+            //fuckr.Fill = new SolidColorBrush(bg);
+            //animationContainer.Children.Add(fuckr);
 
-            
+            Grid animationContainer = (Grid)FindName("AnimationContainer");
+            animationPluginManager = new AnimationPluginManager(animationContainer, selectAnimationWindow);
+            animationPluginManager.LoadPlugins("AnimationPlugins");
+
+            //Type t = animationPluginManager.animationMap["ArrayAnimation"];
+            //anima = Activator.CreateInstance(t, animationContainer);
+            //beginRender = t.GetMethod("BeginRender");
+            ////System.Windows.MessageBox.Show(ins.ToString());
+            CompositionTarget.Rendering += animationPluginManager.RenderAnimationCallback;    
         }
 
         /// <summary>
@@ -59,78 +81,10 @@ namespace UltraDemoInterface
         {
             if (outputWindow != null)
                 outputWindow.Close();
+            if (memoryWindow != null)
+                memoryWindow.Close();
             if (selectAnimationWindow != null)
                 selectAnimationWindow.Close();
-        }
-
-        /// <summary>
-        /// 输出窗口
-        /// </summary>
-        private void OBackground_MouseMove(object sender, MouseEventArgs e)
-        {
-            //            <ScaleTransform/>
-            //            <SkewTransform/>
-            //            <RotateTransform/>
-            //            <TranslateTransform/>
-            if (e.LeftButton == MouseButtonState.Released)
-                return;
-            Point curMousePos = e.GetPosition(this);
-            currOutputWindowTranslate = new TranslateTransform(curMousePos.X - lastMousePos.X, curMousePos.Y - lastMousePos.Y);
-            currOutputWindowTranslate.X += lastOutputWindowTranslate.X;
-            currOutputWindowTranslate.Y += lastOutputWindowTranslate.Y;
-            TransformGroup group = new TransformGroup();
-            group.Children.Add(new ScaleTransform(1, 1, OutputWindow.Width/2.0, OutputWindow.Height/2.0));
-            group.Children.Add(new SkewTransform());
-            group.Children.Add(new RotateTransform());
-            group.Children.Add(currOutputWindowTranslate);
-            OutputWindow.RenderTransform = group;
-        }
-        /// <summary>
-        /// ……
-        /// </summary>
-        private void OBackground_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
-        {
-            lastMousePos = e.GetPosition(this);
-        }
-        /// <summary>
-        /// ……
-        /// </summary>
-        private void OBackground_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
-        {
-            lastOutputWindowTranslate = currOutputWindowTranslate;
-        }
-
-        /// <summary>
-        /// 内存窗口
-        /// </summary>
-        private void MBackground_MouseMove(object sender, MouseEventArgs e)
-        {
-            if (e.LeftButton == MouseButtonState.Released)
-                return;
-            Point curMousePos = e.GetPosition(this);
-            currMemoryWindowTranslate = new TranslateTransform(curMousePos.X - lastMousePos.X, curMousePos.Y - lastMousePos.Y);
-            currMemoryWindowTranslate.X += lastMemoryWindowTranslate.X;
-            currMemoryWindowTranslate.Y += lastMemoryWindowTranslate.Y;
-            TransformGroup group = new TransformGroup();
-            group.Children.Add(new ScaleTransform(1, 1, MemoryWindow.Width / 2.0, MemoryWindow.Height / 2.0));
-            group.Children.Add(new SkewTransform());
-            group.Children.Add(new RotateTransform());
-            group.Children.Add(currMemoryWindowTranslate);
-            MemoryWindow.RenderTransform = group;
-        }
-        /// <summary>
-        /// ……
-        /// </summary>
-        private void MBackground_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
-        {
-            lastMousePos = e.GetPosition(this);
-        }
-        /// <summary>
-        /// ……
-        /// </summary>
-        private void MBackground_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
-        {
-            lastMemoryWindowTranslate = currMemoryWindowTranslate;
         }
 
         /// <summary>
@@ -178,18 +132,87 @@ namespace UltraDemoInterface
         }
 
         /// <summary>
-        /// 打开动画选择窗口
+        /// 显示窗口
+        /// </summary>
+        /// <param name="window">要显示的窗口</param>
+        private void ShowWindow(Window window)
+        {
+            ObjectAnimationUsingKeyFrames visAni = new ObjectAnimationUsingKeyFrames();
+            visAni.KeyFrames.Add(new DiscreteObjectKeyFrame(Visibility.Visible, KeyTime.FromTimeSpan(TimeSpan.FromSeconds(0))));
+            window.BeginAnimation(Window.VisibilityProperty, visAni);
+
+            DoubleAnimationUsingKeyFrames alphaAni = new DoubleAnimationUsingKeyFrames();
+            CubicEase ef = new CubicEase();
+            alphaAni.KeyFrames.Add(new EasingDoubleKeyFrame(0, KeyTime.FromTimeSpan(TimeSpan.FromSeconds(0)), ef));
+            alphaAni.KeyFrames.Add(new EasingDoubleKeyFrame(1, KeyTime.FromTimeSpan(TimeSpan.FromSeconds(0.5)), ef));
+            window.BeginAnimation(Window.OpacityProperty, alphaAni);
+        }
+
+        /// <summary>
+        /// 隐藏窗口
+        /// </summary>
+        /// <param name="window">要隐藏的窗口</param>
+        private void HideWindow(Window window)
+        {
+            ObjectAnimationUsingKeyFrames visAni = new ObjectAnimationUsingKeyFrames();
+            visAni.KeyFrames.Add(new DiscreteObjectKeyFrame(Visibility.Hidden, KeyTime.FromTimeSpan(TimeSpan.FromSeconds(0.5))));
+            window.BeginAnimation(Window.VisibilityProperty, visAni);
+
+            DoubleAnimationUsingKeyFrames alphaAni = new DoubleAnimationUsingKeyFrames();
+            CubicEase ef = new CubicEase();
+            alphaAni.KeyFrames.Add(new EasingDoubleKeyFrame(1, KeyTime.FromTimeSpan(TimeSpan.FromSeconds(0)), ef));
+            alphaAni.KeyFrames.Add(new EasingDoubleKeyFrame(0, KeyTime.FromTimeSpan(TimeSpan.FromSeconds(0.5)), ef));
+            window.BeginAnimation(Window.OpacityProperty, alphaAni);
+        }
+
+        /// <summary>
+        /// 显示动画选择窗口
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void MenuItem_Click(object sender, RoutedEventArgs e)
         {
-            DoubleAnimationUsingKeyFrames scaleYAni = new DoubleAnimationUsingKeyFrames();
-            CubicEase ef = new CubicEase();
-            scaleYAni.KeyFrames.Add(new EasingDoubleKeyFrame(0, KeyTime.FromTimeSpan(TimeSpan.FromSeconds(0)), ef));
-            scaleYAni.KeyFrames.Add(new EasingDoubleKeyFrame(selectAnimationWindow.Height, KeyTime.FromTimeSpan(TimeSpan.FromSeconds(0.5)), ef));
-            selectAnimationWindow.BeginAnimation(Window.HeightProperty, scaleYAni);
-            selectAnimationWindow.Show();
+            ShowWindow(selectAnimationWindow);
+        }
+
+        /// <summary>
+        /// 显示输出窗口
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void OutputWindowButton_Checked(object sender, RoutedEventArgs e)
+        {
+            ShowWindow(outputWindow);
+        }
+
+        /// <summary>
+        /// 隐藏输出窗口
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void OutputWindowButton_Unchecked(object sender, RoutedEventArgs e)
+        {
+            HideWindow(outputWindow);
+        }
+
+        /// <summary>
+        /// 显示内存窗口
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void MemoryWindowButton_Checked(object sender, RoutedEventArgs e)
+        {
+            ShowWindow(memoryWindow);
+        }
+
+        /// <summary>
+        /// 隐藏内存窗口
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void MemoryWindowButton_Unchecked(object sender, RoutedEventArgs e)
+        {
+            HideWindow(memoryWindow);
         }
 
     }

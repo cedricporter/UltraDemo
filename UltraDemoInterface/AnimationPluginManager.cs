@@ -5,6 +5,7 @@ using System.Text;
 using System.IO;
 using System.Reflection;
 using System.Windows.Controls;
+using System.Windows.Media;
 
 /**
 @date		:	2012/02/22
@@ -51,7 +52,9 @@ namespace UltraDemoInterface
                         if (token.Length > 0)
                         {
                             // 找到了入口
-                            anima = Activator.CreateInstance(t);
+                            Object[] args = new Object[1];
+                            args[0] = animationContainer;
+                            anima = Activator.CreateInstance(t,animationContainer);
                             getName = t.GetMethod("GetName");
                             getDescription = t.GetMethod("GetDescription");
                             getWatchedList = t.GetMethod("GetWatchedList");
@@ -69,28 +72,116 @@ namespace UltraDemoInterface
                             item.Template = (ControlTemplate)App.Current.FindResource("ListBoxItemTemplate");
                             selectAnimationWindow.AnimationList.Items.Add(item);
 
-                            //将动画实例装入动画列表
-                            animationMap[name.ToString()] = anima;
+                            //将动画类型装入动画列表
+                            animationMap[name.ToString()] = t;
                         }
                     }
                 }
             }
-            //System.Windows.MessageBox.Show(files.Length.ToString());
         }
 
+        /// <summary>
+        /// 移除所有动画
+        /// </summary>
         public void RemoveAllPlugins()
         {
 
         }
 
-        public AnimationPluginManager(SelectAnimationWindow selectAnimationWindow)
+        /// <summary>
+        /// 供Composition.Target调用的动画回调函数
+        /// </summary>
+        /// <param name="sender">Threading.Dispatcher</param>
+        /// <param name="e">RenderingEventArgs</param>
+        public void RenderAnimationCallback(Object sender, EventArgs e)
         {
-            animationMap = new Dictionary<String, Object>();
+            //if (isRendering == false)
+            //    return;
+
+
+            //TimeSpan renderingTime = (e as RenderingEventArgs).RenderingTime;
+            ////System.Windows.MessageBox.Show(sender.ToString());
+            //System.Windows.MessageBox.Show(renderingTime.Milliseconds.ToString());
+        }
+
+        /// <summary>
+        /// 开始运行动画
+        /// 初始化动画实例，将标志位设为渲染
+        /// </summary>
+        public void BeginRender()
+        {
+            // 并没有选择任何动画
+            if (selectedAnimationType == null)
+            {
+                // 此处应该弹出一个“友好”的对话框警告用户
+                // 未实现
+                return;
+            }
+
+            // 实例化动画
+            selectedAnimationInstance = Activator.CreateInstance(selectedAnimationType, animationContainer);
+            // 此处应该判断一下该动画的检测列表是否与设置值一致
+            // 未实现
+            //MethodInfo getWatchedList = selectedAnimationType.GetMethod("GetWatchedList");
+            //List<String> watchedList = (List<String>)getWatchedList.Invoke(selectedAnimationInstance, null);
+            //判断 
+
+            selectedAnimationBeginRender = selectedAnimationType.GetMethod("BeginRender");
+            if (selectedAnimationBeginRender == null)
+            {
+                // 此处应该弹出一个“友好”的对话框警告用户
+                // 未实现
+                return;
+            }
+
+            // 清空画布
+            animationContainer.Children.Clear();
+
+            isRendering = true;
+        }
+
+        /// <summary>
+        /// 停止运行动画
+        /// 释放资源
+        /// </summary>
+        public void StopRender()
+        {
+            isRendering = false;
+            selectedAnimationInstance = null;
+            selectedAnimationBeginRender = null;
+            // 清空画布
+            animationContainer.Children.Clear();
+        }
+
+        /// <summary>
+        /// 选择要使用的动画
+        /// </summary>
+        /// <param name="animationName"></param>
+        public void SelectAnimation(String animationName)
+        {
+            selectedAnimationType = animationMap[animationName];
+            
+        }
+
+        /// <summary>
+        /// 构造函数
+        /// </summary>
+        /// <param name="animationContainer"></param>
+        /// <param name="selectAnimationWindow"></param>
+        public AnimationPluginManager(Grid animationContainer, SelectAnimationWindow selectAnimationWindow)
+        {
+            this.animationContainer = animationContainer;
             this.selectAnimationWindow = selectAnimationWindow;
         }
 
+        private Boolean isRendering = false;
 
-        private Dictionary<String, Object> animationMap;
+        private Type selectedAnimationType = null;
+        private Object selectedAnimationInstance = null;
+        private MethodInfo selectedAnimationBeginRender = null;
+
+        public Dictionary<String, Type> animationMap = new Dictionary<String, Type>();
+        private Grid animationContainer;
         private SelectAnimationWindow selectAnimationWindow;
 
     }

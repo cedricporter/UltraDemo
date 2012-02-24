@@ -65,14 +65,14 @@ namespace UltraDemoInterface
         private void OK_Click(object sender, RoutedEventArgs e)
         {
             ObjectAnimationUsingKeyFrames visAni = new ObjectAnimationUsingKeyFrames();
-            visAni.KeyFrames.Add(new DiscreteObjectKeyFrame(Visibility.Hidden, KeyTime.FromTimeSpan(TimeSpan.FromSeconds(0.5))));
-            this.BeginAnimation(Window.VisibilityProperty, visAni);
-            DoubleAnimationUsingKeyFrames scaleYAni = new DoubleAnimationUsingKeyFrames();
+            visAni.KeyFrames.Add(new DiscreteObjectKeyFrame(Visibility.Visible, KeyTime.FromTimeSpan(TimeSpan.FromSeconds(0))));
+            BeginAnimation(Window.VisibilityProperty, visAni);
+
+            DoubleAnimationUsingKeyFrames alphaAni = new DoubleAnimationUsingKeyFrames();
             CubicEase ef = new CubicEase();
-            scaleYAni.KeyFrames.Add(new EasingDoubleKeyFrame(Height, KeyTime.FromTimeSpan(TimeSpan.FromSeconds(0)), ef));
-            scaleYAni.KeyFrames.Add(new EasingDoubleKeyFrame(0, KeyTime.FromTimeSpan(TimeSpan.FromSeconds(0.5)), ef));
-            this.BeginAnimation(Window.HeightProperty, scaleYAni);
-            //Hide();
+            alphaAni.KeyFrames.Add(new EasingDoubleKeyFrame(1, KeyTime.FromTimeSpan(TimeSpan.FromSeconds(0)), ef));
+            alphaAni.KeyFrames.Add(new EasingDoubleKeyFrame(0, KeyTime.FromTimeSpan(TimeSpan.FromSeconds(0.5)), ef));
+            BeginAnimation(Window.OpacityProperty, alphaAni);
         }
 
         /// <summary>
@@ -83,14 +83,14 @@ namespace UltraDemoInterface
         private void Cancle_Click(object sender, RoutedEventArgs e)
         {
             ObjectAnimationUsingKeyFrames visAni = new ObjectAnimationUsingKeyFrames();
-            visAni.KeyFrames.Add(new DiscreteObjectKeyFrame(Visibility.Hidden, KeyTime.FromTimeSpan(TimeSpan.FromSeconds(0.5))));
-            this.BeginAnimation(Window.VisibilityProperty, visAni);
-            DoubleAnimationUsingKeyFrames scaleYAni = new DoubleAnimationUsingKeyFrames();
+            visAni.KeyFrames.Add(new DiscreteObjectKeyFrame(Visibility.Visible, KeyTime.FromTimeSpan(TimeSpan.FromSeconds(0))));
+            BeginAnimation(Window.VisibilityProperty, visAni);
+
+            DoubleAnimationUsingKeyFrames alphaAni = new DoubleAnimationUsingKeyFrames();
             CubicEase ef = new CubicEase();
-            scaleYAni.KeyFrames.Add(new EasingDoubleKeyFrame(Height, KeyTime.FromTimeSpan(TimeSpan.FromSeconds(0)), ef));
-            scaleYAni.KeyFrames.Add(new EasingDoubleKeyFrame(0, KeyTime.FromTimeSpan(TimeSpan.FromSeconds(0.5)), ef));
-            this.BeginAnimation(Window.HeightProperty, scaleYAni);
-            //Hide();
+            alphaAni.KeyFrames.Add(new EasingDoubleKeyFrame(1, KeyTime.FromTimeSpan(TimeSpan.FromSeconds(0)), ef));
+            alphaAni.KeyFrames.Add(new EasingDoubleKeyFrame(0, KeyTime.FromTimeSpan(TimeSpan.FromSeconds(0.5)), ef));
+            BeginAnimation(Window.OpacityProperty, alphaAni);
         }
 
         /// <summary>
@@ -104,25 +104,28 @@ namespace UltraDemoInterface
             public List<String> watchedList;
         }
 
+        /// <summary>
+        /// 禁用Alt+F4
+        /// </summary>
+        #region Disable_Alt_F4
+        private bool AltDown = false;
+        private void Window_PreviewKeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.SystemKey == Key.LeftAlt || e.SystemKey == Key.RightAlt)
+                AltDown = false;
+        }
+        private void Window_PreviewKeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.SystemKey == Key.LeftAlt || e.SystemKey == Key.RightAlt)
+            {
+                AltDown = true;
+            }
+            else if (e.SystemKey == Key.F4 && AltDown)
+                e.Handled = true;
+        }
+        #endregion
+
         public Dictionary<String, AnimationInfo> animationInfoMap;
-
-        ///// <summary>
-        ///// 缩放显示窗体动画
-        ///// </summary>
-        ///// <param name="sender"></param>
-        ///// <param name="e"></param>
-        //private void Window_IsVisibleChanged(object sender, DependencyPropertyChangedEventArgs e)
-        //{
-        //    if (IsVisible == false)
-        //        return;
-        //    DoubleAnimationUsingKeyFrames scaleYAni = new DoubleAnimationUsingKeyFrames();
-        //    CubicEase ef = new CubicEase();
-        //    scaleYAni.KeyFrames.Add(new EasingDoubleKeyFrame(0, KeyTime.FromTimeSpan(TimeSpan.FromSeconds(0)), ef));
-        //    scaleYAni.KeyFrames.Add(new EasingDoubleKeyFrame(Height, KeyTime.FromTimeSpan(TimeSpan.FromSeconds(0.5)), ef));
-        //    this.BeginAnimation(Window.HeightProperty, scaleYAni);
-        //}
-        
-
         
     }
 }

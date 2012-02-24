@@ -4,7 +4,8 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="d" x:Class="UltraDemoInterface.SelectAnimationWindow"
         Title="SelectAnimationWindow" Height="400" Width="500"
 		WindowStyle="None" AllowsTransparency="True" WindowStartupLocation="CenterScreen"
-		Template="{StaticResource WindowTemplate}"
+        PreviewKeyDown="Window_PreviewKeyDown" PreviewKeyUp="Window_PreviewKeyUp"
+		Template="{StaticResource WindowTemplate}" ShowInTaskbar="False" Topmost="True"
         >
     <Grid x:Name="WindowRoot" MouseLeftButtonDown="Grid_MouseLeftButtonDown" Background="#00000000">
         <TextBlock x:Name="Description" TextWrapping="Wrap" Text="TextBlock" Width="148" HorizontalAlignment="Right" Margin="0,126,32,74"/>

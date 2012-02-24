@@ -14,20 +14,15 @@ using System.Windows.Shapes;
 namespace UltraDemoInterface
 {
     /// <summary>
-    /// OutputWindow.xaml 的交互逻辑
+    /// MemoryWindow.xaml 的交互逻辑
     /// </summary>
-    public partial class OutputWindow : Window
+    public partial class MemoryWindow : Window
     {
-        public OutputWindow()
+        public MemoryWindow()
         {
             InitializeComponent();
         }
 
-        /// <summary>
-        /// 移动窗口
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
         private void Grid_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             DragMove();

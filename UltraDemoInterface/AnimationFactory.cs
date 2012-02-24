@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Windows;
+using System.Windows.Controls;
 
 /**
 @date		:	2012/02/22
@@ -65,6 +67,11 @@ namespace UltraDemoInterface
         protected String name;
         protected String description;
         protected List<String> watchedList;
+        public Grid animationContainer;
+        //{
+        //    get { return animationContainer; }
+        //    set { animationContainer = (Grid)value; }
+        //}
         //protected static AnimationFactory instance = null;
     }
 }
