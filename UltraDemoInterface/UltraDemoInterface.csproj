@@ -60,6 +60,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="DebugControler.cs" />
     <Compile Include="MemoryWindow.xaml.cs">
       <DependentUpon>MemoryWindow.xaml</DependentUpon>
     </Compile>

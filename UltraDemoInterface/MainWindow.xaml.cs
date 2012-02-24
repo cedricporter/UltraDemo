@@ -29,6 +29,7 @@ namespace UltraDemoInterface
         public MemoryWindow memoryWindow;
         public SelectAnimationWindow selectAnimationWindow;
         public AnimationPluginManager animationPluginManager;
+        public DebugControler debugControler;
         public Grid animationContainer;
 
         //MethodInfo beginRender;
@@ -52,12 +53,12 @@ namespace UltraDemoInterface
             animationContainer = (Grid)FindName("AnimationContainer");
             animationPluginManager = new AnimationPluginManager(this);
             animationPluginManager.LoadPlugins("AnimationPlugins");
+            // 初始化debug控制器
+            debugControler = new DebugControler(this);
 
-            //Type t = animationPluginManager.animationMap["ArrayAnimation"];
-            //anima = Activator.CreateInstance(t, animationContainer);
-            //beginRender = t.GetMethod("BeginRender");
-            ////System.Windows.MessageBox.Show(ins.ToString());
-            CompositionTarget.Rendering += animationPluginManager.RenderAnimationCallback;    
+            // 连接回调函数
+            CompositionTarget.Rendering += animationPluginManager.RenderAnimationCallback;
+            CompositionTarget.Rendering += debugControler.DebugControlerCallback;
         }
 
         /// <summary>
