@@ -12,6 +12,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Windows.Media.Animation;
+using ICSharpCode.AvalonEdit.Editing;
 
 using System.Reflection;
 
@@ -35,9 +36,13 @@ namespace UltraDemoInterface
 
         //Rectangle fuckr;
 
+        private EditorAdapter editorAdapter;
+
         public MainWindow()
         {
             InitializeComponent();
+
+            editorAdapter = new EditorAdapter( textEditor );
 
             // 初始化其他窗口
             outputWindow = new OutputWindow(this);
