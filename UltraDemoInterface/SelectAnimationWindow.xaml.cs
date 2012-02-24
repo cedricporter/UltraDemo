@@ -10,6 +10,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using System.Windows.Media.Animation;
 
 namespace UltraDemoInterface
 {
@@ -18,10 +19,11 @@ namespace UltraDemoInterface
     /// </summary>
     public partial class SelectAnimationWindow : Window
     {
-        public SelectAnimationWindow()
+        public SelectAnimationWindow(MainWindow mainWindow)
         {
             InitializeComponent();
             animationInfoMap = new Dictionary<String, AnimationInfo>();
+            this.mainWindow = mainWindow;
         }
 
         /// <summary>
@@ -44,15 +46,17 @@ namespace UltraDemoInterface
             if (AnimationList.SelectedItem == null)
                 return;
             AnimationInfo selectedItem = animationInfoMap[(AnimationList.SelectedItem as ListBoxItem).Content.ToString()];
+            // 更新description
             Description.Text = selectedItem.description;
+            // 更新watched list
             WatchedList.Items.Clear();
             foreach (String value in selectedItem.watchedList)
             {
                 ListBoxItem item = new ListBoxItem();
                 item.Content = value;
+                item.Template = (ControlTemplate)App.Current.FindResource("ListBoxItemTemplate");
                 WatchedList.Items.Add(item);
             }
-            //WatchedList
         }
 
         /// <summary>
@@ -62,7 +66,7 @@ namespace UltraDemoInterface
         /// <param name="e"></param>
         private void OK_Click(object sender, RoutedEventArgs e)
         {
-            Hide();
+            mainWindow.HideWindow(this);
         }
 
         /// <summary>
@@ -72,7 +76,7 @@ namespace UltraDemoInterface
         /// <param name="e"></param>
         private void Cancle_Click(object sender, RoutedEventArgs e)
         {
-            Hide();
+            mainWindow.HideWindow(this);
         }
 
         /// <summary>
@@ -86,9 +90,29 @@ namespace UltraDemoInterface
             public List<String> watchedList;
         }
 
-        public Dictionary<String, AnimationInfo> animationInfoMap;
-        
+        /// <summary>
+        /// 禁用Alt+F4
+        /// </summary>
+        #region Disable_Alt_F4
+        private bool AltDown = false;
+        private void Window_PreviewKeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.SystemKey == Key.LeftAlt || e.SystemKey == Key.RightAlt)
+                AltDown = false;
+        }
+        private void Window_PreviewKeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.SystemKey == Key.LeftAlt || e.SystemKey == Key.RightAlt)
+            {
+                AltDown = true;
+            }
+            else if (e.SystemKey == Key.F4 && AltDown)
+                e.Handled = true;
+        }
+        #endregion
 
+        public Dictionary<String, AnimationInfo> animationInfoMap;
+        private MainWindow mainWindow;
         
     }
 }

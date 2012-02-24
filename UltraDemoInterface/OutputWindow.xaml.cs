@@ -18,9 +18,44 @@ namespace UltraDemoInterface
     /// </summary>
     public partial class OutputWindow : Window
     {
-        public OutputWindow()
+        public OutputWindow(MainWindow mainWindow)
         {
             InitializeComponent();
+            this.mainWindow = mainWindow;
         }
+
+        /// <summary>
+        /// 移动窗口
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Grid_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            DragMove();
+        }
+
+        /// <summary>
+        /// 禁用Alt+F4
+        /// </summary>
+        #region Disable_Alt_F4
+        private bool AltDown = false;
+        private void Window_PreviewKeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.SystemKey == Key.LeftAlt || e.SystemKey == Key.RightAlt)
+                AltDown = false;
+        }
+        private void Window_PreviewKeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.SystemKey == Key.LeftAlt || e.SystemKey == Key.RightAlt)
+            {
+                AltDown = true;
+            }
+            else if (e.SystemKey == Key.F4 && AltDown)
+                e.Handled = true;
+        }
+        #endregion
+
+
+        private MainWindow mainWindow;
     }
 }

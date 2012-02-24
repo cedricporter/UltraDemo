@@ -34,8 +34,14 @@
     		<GradientStop Color="#CCCCCC" Offset="0.0"/>     
 	    	<GradientStop Color="#999999" Offset="1.0"/> 		
 		</LinearGradientBrush>
-		
-		<!--GeneralDropShadowEffect-->
+
+        <!--LinearBlackBrush-->
+        <LinearGradientBrush x:Key="LinearBlackBrush" StartPoint="0,0" EndPoint="0,1">
+            <GradientStop Color="#676565" Offset="0.0"/>
+            <GradientStop Color="#222121" Offset="1.0"/>
+        </LinearGradientBrush>
+
+        <!--GeneralDropShadowEffect-->
 		<DropShadowEffect x:Key="GeneralDropShadowEffect" Color="#4C7880" Opacity="0.5"
 		ShadowDepth="4" Direction="270"/>
 		
@@ -141,8 +147,28 @@
 				</EasingColorKeyFrame>
 			</ColorAnimationUsingKeyFrames>
 		</Storyboard>
-		
-		<!--ScaleSmallStoryboard-->
+
+        <!--TurnBlackStoryboard-->
+        <Storyboard x:Key="TurnBlackStoryboard">
+            <ColorAnimationUsingKeyFrames Storyboard.TargetName="Background"
+			Storyboard.TargetProperty="Fill.GradientStops[0].Color">
+                <EasingColorKeyFrame KeyTime="0:0:0.2" Value="#676565">
+                    <EasingColorKeyFrame.EasingFunction>
+                        <CubicEase EasingMode="EaseOut"/>
+                    </EasingColorKeyFrame.EasingFunction>
+                </EasingColorKeyFrame>
+            </ColorAnimationUsingKeyFrames>
+            <ColorAnimationUsingKeyFrames Storyboard.TargetName="Background"
+			Storyboard.TargetProperty="Fill.GradientStops[1].Color">
+                <EasingColorKeyFrame KeyTime="0:0:0.2" Value="#222121">
+                    <EasingColorKeyFrame.EasingFunction>
+                        <CubicEase EasingMode="EaseOut"/>
+                    </EasingColorKeyFrame.EasingFunction>
+                </EasingColorKeyFrame>
+            </ColorAnimationUsingKeyFrames>
+        </Storyboard>
+
+        <!--ScaleSmallStoryboard-->
 		<Storyboard x:Key="ScaleSmallStoryboard">
 			<DoubleAnimationUsingKeyFrames Storyboard.TargetName="Grid"
 			Storyboard.TargetProperty="(UIElement.RenderTransform).(ScaleTransform.ScaleX)">
@@ -165,7 +191,7 @@
 				<LinearDoubleKeyFrame KeyTime="0:0:0.1" Value="1"/>
 			</DoubleAnimationUsingKeyFrames>
 		</Storyboard>
-		
+        
         <!--Circle Button-->
 		<ControlTemplate x:Key="CircleButtonTemplate" TargetType="{x:Type Button}">
 			<Grid x:Name="Grid" Width="48" Height="48" 
@@ -247,7 +273,7 @@
 					</VisualStateGroup>
 					<VisualStateGroup x:Name="CheckedStates">
 						<VisualState x:Name="Checked"
-						Storyboard="{StaticResource TurnGrayStoryboard}"/>
+						Storyboard="{StaticResource TurnBlackStoryboard}"/>
 						<!--<VisualState x:Name="Unchecked"
 						Storyboard="{StaticResource TurnWhiteStoryboard}"/>-->
 					</VisualStateGroup>
@@ -255,14 +281,18 @@
 				<Rectangle x:Name="Background" Height="30" Width="60"
 				Stroke="#E1E1E1" StrokeThickness="1"
 				Fill="{StaticResource LinearWhiteBrush}"/>
-				<ContentPresenter RecognizesAccessKey="True"
+				<ContentPresenter Name="Text"  RecognizesAccessKey="True" 
 				HorizontalAlignment="Center" VerticalAlignment="Center"/>
 			</Grid>
 			<ControlTemplate.Triggers>
 				<Trigger Property="IsChecked" Value="True">
-					<Setter TargetName="Background" Property="Fill" Value="{StaticResource LinearGrayBrush}"/>
+					<Setter TargetName="Background" Property="Fill" Value="{StaticResource LinearBlackBrush}"/>
+                    <Setter TargetName="Text" Property="TextBlock.Foreground" Value="White"/>
 				</Trigger>
-			</ControlTemplate.Triggers>
+                <Trigger Property="IsChecked" Value="False">
+                    <Setter TargetName="Text" Property="TextBlock.Foreground" Value="Black"/>
+				</Trigger>
+            </ControlTemplate.Triggers>
 		</ControlTemplate>
 		
 		<!--HorizontalThumbTemplate-->
@@ -329,9 +359,13 @@
             </Grid>
 			<ControlTemplate.Triggers>
 				<Trigger Property="IsSelected" Value="True">
-					<Setter TargetName="Background" Property="Fill" Value="{StaticResource LinearGrayBrush}"/>
-					<Setter TargetName="Background2" Property="Fill" Value="{StaticResource LinearGrayBrush}"/>
+					<Setter TargetName="Background" Property="Fill" Value="{StaticResource LinearBlackBrush}"/>
+					<Setter TargetName="Background2" Property="Fill" Value="{StaticResource LinearBlackBrush}"/>
+                    <Setter TargetName="Content" Property="TextBlock.Foreground" Value="White"/>
 				</Trigger>
+                <Trigger Property="IsSelected" Value="False">
+                    <Setter TargetName="Content" Property="TextBlock.Foreground" Value="Black"/>
+                </Trigger>
             </ControlTemplate.Triggers>
         </ControlTemplate>
 		
@@ -347,7 +381,7 @@
 					<RowDefinition x:Name="RowDefinition1" Height="*"/>
 				</Grid.RowDefinitions>
 				<TabPanel x:Name="HeaderPanel" Grid.Column="0" IsItemsHost="true" Margin="2,2,2,0" Grid.Row="0" KeyboardNavigation.TabIndex="1" Panel.ZIndex="1"/>
-				<Border x:Name="ContentPanel" BorderBrush="{StaticResource LinearGrayBrush}" Background="#999999" Grid.Column="0" KeyboardNavigation.DirectionalNavigation="Contained" Grid.Row="1" KeyboardNavigation.TabIndex="2" KeyboardNavigation.TabNavigation="Local">
+				<Border x:Name="ContentPanel" BorderBrush="{StaticResource LinearBlackBrush}" Background="#999999" Grid.Column="0" KeyboardNavigation.DirectionalNavigation="Contained" Grid.Row="1" KeyboardNavigation.TabIndex="2" KeyboardNavigation.TabNavigation="Local">
 					<ContentPresenter x:Name="PART_SelectedContentHost" Margin="5"/>
 				</Border>
 			</Grid>
@@ -370,7 +404,7 @@
                     </VisualStateGroup>
                     <VisualStateGroup x:Name="CheckedStates">
                         <VisualState x:Name="Checked"
-						Storyboard="{StaticResource TurnGrayStoryboard}"/>
+						Storyboard="{StaticResource TurnBlackStoryboard}"/>
                     </VisualStateGroup>
                 </VisualStateManager.VisualStateGroups>
 				<Rectangle RadiusX="16" RadiusY="16" Height="32" Width="96"
@@ -392,7 +426,7 @@
 					</Trigger.ExitActions>
 				</Trigger>
                 <Trigger Property="IsChecked" Value="True">
-                    <Setter TargetName="Background" Property="Fill" Value="{StaticResource LinearGrayBrush}"/>
+                    <Setter TargetName="Background" Property="Fill" Value="{StaticResource LinearBlackBrush}"/>
                 </Trigger>
             </ControlTemplate.Triggers>
         </ControlTemplate>
@@ -725,6 +759,7 @@
         	</Style.Triggers>
         </Style>
 		
+		<!--WindowTemplate-->
     	<ControlTemplate x:Key="WindowTemplate"  TargetType="{x:Type Window}">
     		<Grid Name="Grid" d:DesignWidth="200" d:DesignHeight="100">
     			<Rectangle RadiusX="16" RadiusY="16" Fill="#333333" Margin="6"
@@ -740,6 +775,105 @@
 			<ControlTemplate.Triggers>
 			</ControlTemplate.Triggers>
     	</ControlTemplate>
-
+		
+		<!--ComboBoxTemplate-->
+        <Style x:Key="ComboBoxReadonlyToggleButton" TargetType="{x:Type ToggleButton}">
+            <Setter Property="OverridesDefaultStyle" Value="true"/>
+            <Setter Property="IsTabStop" Value="false"/>
+            <Setter Property="Focusable" Value="false"/>
+            <Setter Property="ClickMode" Value="Press"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type ToggleButton}">
+                        <Grid Name="Grid">
+                            <Rectangle RadiusX="16" RadiusY="16" Fill="#333333" Effect="{StaticResource GeneralBlurEffect}"/>
+                            <Rectangle Name="Background"  RadiusX="16" RadiusY="16" Fill="{StaticResource LinearWhiteBrush}"/>
+                            <Grid HorizontalAlignment="Right" Width="40">
+                                <Path Name="Arrow"  Fill="{StaticResource LinearBlackBrush}" HorizontalAlignment="Right">
+                                    <Path.Data>
+                                        <CombinedGeometry GeometryCombineMode="Union">
+                                            <CombinedGeometry.Geometry1>
+                                                <RectangleGeometry RadiusX="16" RadiusY="16" Rect="16,0,48,32"/>
+                                            </CombinedGeometry.Geometry1>
+                                            <CombinedGeometry.Geometry2>
+                                                <RectangleGeometry Rect="0,0,32,32"/>
+                                            </CombinedGeometry.Geometry2>
+                                        </CombinedGeometry>
+                                    </Path.Data>
+                                </Path>
+                                <TextBlock Foreground="White" FontSize="20" FontWeight="Bold"  HorizontalAlignment="Center" VerticalAlignment="Center">
+                                    ∨
+                                </TextBlock> 
+                            </Grid>
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsChecked" Value="true">
+                                <Setter Property="Fill" TargetName="Arrow" Value="{StaticResource LinearOrangeBrush}"/>
+                                <Setter Property="Fill" TargetName="Background" Value="White"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <ControlTemplate x:Key="ComboBoxTemplate"  TargetType="{x:Type ComboBox}">
+            <Grid x:Name="MainGrid" SnapsToDevicePixels="true">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition MinWidth="{DynamicResource {x:Static SystemParameters.VerticalScrollBarWidthKey}}" Width="0"/>
+                </Grid.ColumnDefinitions>
+                <Popup x:Name="PART_Popup" AllowsTransparency="true" Grid.ColumnSpan="2" IsOpen="{Binding IsDropDownOpen, RelativeSource={RelativeSource TemplatedParent}}" Margin="1" PopupAnimation="{DynamicResource {x:Static SystemParameters.ComboBoxPopupAnimationKey}}" Placement="Bottom">
+                    <Grid MaxHeight="{TemplateBinding MaxDropDownHeight}">
+                        <Grid.MinWidth>
+                            <Binding ElementName="MainGrid" Path="ActualWidth"/>
+                        </Grid.MinWidth>
+                        <Rectangle RadiusX="16" RadiusY="16" Fill="#333333" Effect="{StaticResource GeneralBlurEffect}" Margin="5,2"/>
+                        <Rectangle Name="Background"  RadiusX="16" RadiusY="16" Fill="White" Margin="5,2"/>
+                        <ScrollViewer x:Name="DropDownScrollViewer" Margin="5,2">
+                            <Grid RenderOptions.ClearTypeHint="Enabled">
+                                <ItemsPresenter Margin="6" x:Name="ItemsPresenter" KeyboardNavigation.DirectionalNavigation="Contained" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}">
+                                </ItemsPresenter>
+                            </Grid>
+                        </ScrollViewer>
+                    </Grid>
+                </Popup>
+                <ToggleButton Grid.ColumnSpan="2" 
+                IsChecked="{Binding IsDropDownOpen, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}" Style="{StaticResource ComboBoxReadonlyToggleButton}"/>
+                <ContentPresenter TextBlock.FontSize="14"  ContentTemplate="{TemplateBinding SelectionBoxItemTemplate}" ContentTemplateSelector="{TemplateBinding ItemTemplateSelector}" Content="{TemplateBinding SelectionBoxItem}" ContentStringFormat="Center" IsHitTestVisible="false"  Margin="24,0,0,0" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="Center"/>
+            </Grid>
+        </ControlTemplate>
+        
+        <!--ListBoxItemTemplate-->
+        <ControlTemplate x:Key="ListBoxItemTemplate"  TargetType="{x:Type ListBoxItem}">
+            <Grid Name="Grid">
+                <Rectangle Name="Background"/>
+                <ContentPresenter Margin="4"  HorizontalAlignment="Left" VerticalAlignment="Center"/>
+            </Grid>
+            <ControlTemplate.Triggers>
+                <Trigger Property="IsSelected" Value="true">
+                    <Setter Property="Fill" TargetName="Background" Value="#FFD654"/>
+                    <Setter Property="Foreground" Value="White"/>
+                </Trigger>
+                <Trigger Property="IsMouseOver" Value="true">
+                    <Setter Property="Fill" TargetName="Background" Value="#FFD654"/>
+                    <Setter Property="Foreground" Value="White"/>
+                </Trigger>
+            </ControlTemplate.Triggers>
+        </ControlTemplate>
+        
+        <!--ListBoxTemplate-->
+        <ControlTemplate x:Key="ListBoxTemplate"  TargetType="{x:Type ListBox}">
+            <Grid Name="Grid">
+                <Rectangle Name="Background"  RadiusX="16" RadiusY="16" Fill="#333333" Margin="5,2"/>
+                <Rectangle RadiusX="16" RadiusY="16" Fill="White" Effect="{StaticResource GeneralBlurEffect}" Margin="5,2"/>
+                
+                <ScrollViewer Focusable="false" Padding="{TemplateBinding Padding}">
+                    <ItemsPresenter Margin="10,12"  SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
+                </ScrollViewer>
+            </Grid>
+            
+        </ControlTemplate>
+        
+        
     </Application.Resources>
 </Application>
