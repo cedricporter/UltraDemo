@@ -14,6 +14,12 @@ COMPILER_API int fnCompiler(void)
 	return 42;
 }
 
+COMPILER_API int compile(const char* code)
+{
+    
+	return 42;
+}
+
 // 这是已导出类的构造函数。
 // 有关类定义的信息，请参阅 Compiler.h
 CCompiler::CCompiler()
