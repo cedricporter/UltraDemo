@@ -66,6 +66,9 @@ namespace UltraDemoInterface
         /// <param name="e"></param>
         private void OK_Click(object sender, RoutedEventArgs e)
         {
+            if (isWindowFading == true)
+                return;
+            isWindowFading = true;
             mainWindow.HideWindow(this);
         }
 
@@ -76,6 +79,9 @@ namespace UltraDemoInterface
         /// <param name="e"></param>
         private void Cancle_Click(object sender, RoutedEventArgs e)
         {
+            if (isWindowFading == true)
+                return;
+            isWindowFading = true;
             mainWindow.HideWindow(this);
         }
 
@@ -113,6 +119,7 @@ namespace UltraDemoInterface
 
         public Dictionary<String, AnimationInfo> animationInfoMap;
         private MainWindow mainWindow;
+        public Boolean isWindowFading;
         
     }
 }

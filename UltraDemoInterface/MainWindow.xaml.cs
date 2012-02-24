@@ -132,7 +132,7 @@ namespace UltraDemoInterface
             DoubleAnimationUsingKeyFrames alphaAni = new DoubleAnimationUsingKeyFrames();
             CubicEase ef = new CubicEase();
             alphaAni.KeyFrames.Add(new EasingDoubleKeyFrame(0, KeyTime.FromTimeSpan(TimeSpan.FromSeconds(0)), ef));
-            alphaAni.KeyFrames.Add(new EasingDoubleKeyFrame(1, KeyTime.FromTimeSpan(TimeSpan.FromSeconds(0.5)), ef));
+            alphaAni.KeyFrames.Add(new EasingDoubleKeyFrame(1, KeyTime.FromTimeSpan(TimeSpan.FromSeconds(0.3)), ef));
             window.BeginAnimation(Window.OpacityProperty, alphaAni);
         }
 
@@ -143,13 +143,13 @@ namespace UltraDemoInterface
         public void HideWindow(Window window)
         {
             ObjectAnimationUsingKeyFrames visAni = new ObjectAnimationUsingKeyFrames();
-            visAni.KeyFrames.Add(new DiscreteObjectKeyFrame(Visibility.Hidden, KeyTime.FromTimeSpan(TimeSpan.FromSeconds(0.5))));
+            visAni.KeyFrames.Add(new DiscreteObjectKeyFrame(Visibility.Hidden, KeyTime.FromTimeSpan(TimeSpan.FromSeconds(0.3))));
             window.BeginAnimation(Window.VisibilityProperty, visAni);
 
             DoubleAnimationUsingKeyFrames alphaAni = new DoubleAnimationUsingKeyFrames();
             CubicEase ef = new CubicEase();
             alphaAni.KeyFrames.Add(new EasingDoubleKeyFrame(1, KeyTime.FromTimeSpan(TimeSpan.FromSeconds(0)), ef));
-            alphaAni.KeyFrames.Add(new EasingDoubleKeyFrame(0, KeyTime.FromTimeSpan(TimeSpan.FromSeconds(0.5)), ef));
+            alphaAni.KeyFrames.Add(new EasingDoubleKeyFrame(0, KeyTime.FromTimeSpan(TimeSpan.FromSeconds(0.3)), ef));
             window.BeginAnimation(Window.OpacityProperty, alphaAni);
         }
 
@@ -160,6 +160,7 @@ namespace UltraDemoInterface
         /// <param name="e"></param>
         private void MenuItem_Click(object sender, RoutedEventArgs e)
         {
+            selectAnimationWindow.isWindowFading = false;
             ShowWindow(selectAnimationWindow);
         }
 
