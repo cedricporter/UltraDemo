@@ -1,0 +1,55 @@
+C:\Users\Fish\Desktop\AvalonEdit_Source\bin\Debug\ICSharpCode.AvalonEdit.dll
+C:\Users\Fish\Desktop\AvalonEdit_Source\bin\Debug\ICSharpCode.AvalonEdit.pdb
+C:\Users\Fish\Desktop\AvalonEdit_Source\ICSharpCode.AvalonEdit\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\Fish\Desktop\AvalonEdit_Source\ICSharpCode.AvalonEdit\obj\Debug\GeneratedInternalTypeHelper.g.cs
+C:\Users\Fish\Desktop\AvalonEdit_Source\ICSharpCode.AvalonEdit\obj\Debug\ICSharpCode.AvalonEdit_MarkupCompile.cache
+C:\Users\Fish\Desktop\AvalonEdit_Source\ICSharpCode.AvalonEdit\obj\Debug\ICSharpCode.AvalonEdit_MarkupCompile.lref
+C:\Users\Fish\Desktop\AvalonEdit_Source\ICSharpCode.AvalonEdit\obj\Debug\CodeCompletion\CompletionList.baml
+C:\Users\Fish\Desktop\AvalonEdit_Source\ICSharpCode.AvalonEdit\obj\Debug\CodeCompletion\InsightWindow.baml
+C:\Users\Fish\Desktop\AvalonEdit_Source\ICSharpCode.AvalonEdit\obj\Debug\TextEditor.baml
+C:\Users\Fish\Desktop\AvalonEdit_Source\ICSharpCode.AvalonEdit\obj\Debug\themes\generic.baml
+C:\Users\Fish\Desktop\AvalonEdit_Source\ICSharpCode.AvalonEdit\obj\Debug\ICSharpCode.AvalonEdit.g.resources
+C:\Users\Fish\Desktop\AvalonEdit_Source\ICSharpCode.AvalonEdit\obj\Debug\ICSharpCode.AvalonEdit.dll
+C:\Users\Fish\Desktop\AvalonEdit_Source\ICSharpCode.AvalonEdit\obj\Debug\ICSharpCode.AvalonEdit.pdb
+C:\Users\Fish\Desktop\AvalonEdit_Source\bin\Debug\ICSharpCode.AvalonEdit.xml
+C:\Users\Fish\Desktop\AvalonEdit_Source - 副本\bin\Debug\ICSharpCode.AvalonEdit.dll
+C:\Users\Fish\Desktop\AvalonEdit_Source - 副本\bin\Debug\ICSharpCode.AvalonEdit.pdb
+C:\Users\Fish\Desktop\AvalonEdit_Source - 副本\ICSharpCode.AvalonEdit\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\Fish\Desktop\AvalonEdit_Source - 副本\ICSharpCode.AvalonEdit\obj\Debug\GeneratedInternalTypeHelper.g.cs
+C:\Users\Fish\Desktop\AvalonEdit_Source - 副本\ICSharpCode.AvalonEdit\obj\Debug\ICSharpCode.AvalonEdit_MarkupCompile.cache
+C:\Users\Fish\Desktop\AvalonEdit_Source - 副本\ICSharpCode.AvalonEdit\obj\Debug\ICSharpCode.AvalonEdit_MarkupCompile.lref
+C:\Users\Fish\Desktop\AvalonEdit_Source - 副本\ICSharpCode.AvalonEdit\obj\Debug\CodeCompletion\CompletionList.baml
+C:\Users\Fish\Desktop\AvalonEdit_Source - 副本\ICSharpCode.AvalonEdit\obj\Debug\CodeCompletion\InsightWindow.baml
+C:\Users\Fish\Desktop\AvalonEdit_Source - 副本\ICSharpCode.AvalonEdit\obj\Debug\TextEditor.baml
+C:\Users\Fish\Desktop\AvalonEdit_Source - 副本\ICSharpCode.AvalonEdit\obj\Debug\themes\generic.baml
+C:\Users\Fish\Desktop\AvalonEdit_Source - 副本\ICSharpCode.AvalonEdit\obj\Debug\ICSharpCode.AvalonEdit.g.resources
+C:\Users\Fish\Desktop\AvalonEdit_Source - 副本\ICSharpCode.AvalonEdit\obj\Debug\ICSharpCode.AvalonEdit.dll
+C:\Users\Fish\Desktop\AvalonEdit_Source - 副本\ICSharpCode.AvalonEdit\obj\Debug\ICSharpCode.AvalonEdit.pdb
+C:\Users\Fish\Desktop\AvalonEdit_Source - 副本\bin\Debug\ICSharpCode.AvalonEdit.xml
+C:\Users\Fish\Desktop\AvalonEdit_Source修改版\AvalonEdit_Source修改版\ICSharpCode.AvalonEdit\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\Fish\Desktop\AvalonEdit_Source修改版\AvalonEdit_Source修改版\ICSharpCode.AvalonEdit\obj\Debug\GeneratedInternalTypeHelper.g.cs
+C:\Users\Fish\Desktop\AvalonEdit_Source修改版\AvalonEdit_Source修改版\ICSharpCode.AvalonEdit\obj\Debug\ICSharpCode.AvalonEdit_MarkupCompile.cache
+C:\Users\Fish\Desktop\AvalonEdit_Source修改版\AvalonEdit_Source修改版\ICSharpCode.AvalonEdit\obj\Debug\ICSharpCode.AvalonEdit_MarkupCompile.lref
+C:\Users\Fish\Desktop\AvalonEdit_Source修改版\AvalonEdit_Source修改版\ICSharpCode.AvalonEdit\obj\Debug\ICSharpCode.AvalonEdit.dll
+C:\Users\Fish\Desktop\AvalonEdit_Source修改版\AvalonEdit_Source修改版\ICSharpCode.AvalonEdit\obj\Debug\ICSharpCode.AvalonEdit.pdb
+C:\Users\Fish\Desktop\AvalonEdit_Source修改版\AvalonEdit_Source修改版\bin\Debug\ICSharpCode.AvalonEdit.dll
+C:\Users\Fish\Desktop\AvalonEdit_Source修改版\AvalonEdit_Source修改版\bin\Debug\ICSharpCode.AvalonEdit.pdb
+C:\Users\Fish\Desktop\AvalonEdit_Source修改版\AvalonEdit_Source修改版\ICSharpCode.AvalonEdit\obj\Debug\CodeCompletion\CompletionList.baml
+C:\Users\Fish\Desktop\AvalonEdit_Source修改版\AvalonEdit_Source修改版\ICSharpCode.AvalonEdit\obj\Debug\CodeCompletion\InsightWindow.baml
+C:\Users\Fish\Desktop\AvalonEdit_Source修改版\AvalonEdit_Source修改版\ICSharpCode.AvalonEdit\obj\Debug\TextEditor.baml
+C:\Users\Fish\Desktop\AvalonEdit_Source修改版\AvalonEdit_Source修改版\ICSharpCode.AvalonEdit\obj\Debug\themes\generic.baml
+C:\Users\Fish\Desktop\AvalonEdit_Source修改版\AvalonEdit_Source修改版\ICSharpCode.AvalonEdit\obj\Debug\ICSharpCode.AvalonEdit.g.resources
+C:\Users\Fish\Desktop\MyWorks\UltraDemo\bin\Debug\ICSharpCode.AvalonEdit.xml
+C:\Users\Fish\Desktop\MyWorks\UltraDemo\bin\Debug\ICSharpCode.AvalonEdit.dll
+C:\Users\Fish\Desktop\MyWorks\UltraDemo\bin\Debug\ICSharpCode.AvalonEdit.pdb
+C:\Users\Fish\Desktop\MyWorks\UltraDemo\ICSharpCode.AvalonEdit\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\Fish\Desktop\MyWorks\UltraDemo\ICSharpCode.AvalonEdit\obj\Debug\GeneratedInternalTypeHelper.g.cs
+C:\Users\Fish\Desktop\MyWorks\UltraDemo\ICSharpCode.AvalonEdit\obj\Debug\ICSharpCode.AvalonEdit_MarkupCompile.cache
+C:\Users\Fish\Desktop\MyWorks\UltraDemo\ICSharpCode.AvalonEdit\obj\Debug\ICSharpCode.AvalonEdit_MarkupCompile.lref
+C:\Users\Fish\Desktop\MyWorks\UltraDemo\ICSharpCode.AvalonEdit\obj\Debug\CodeCompletion\CompletionList.baml
+C:\Users\Fish\Desktop\MyWorks\UltraDemo\ICSharpCode.AvalonEdit\obj\Debug\CodeCompletion\InsightWindow.baml
+C:\Users\Fish\Desktop\MyWorks\UltraDemo\ICSharpCode.AvalonEdit\obj\Debug\TextEditor.baml
+C:\Users\Fish\Desktop\MyWorks\UltraDemo\ICSharpCode.AvalonEdit\obj\Debug\themes\generic.baml
+C:\Users\Fish\Desktop\MyWorks\UltraDemo\ICSharpCode.AvalonEdit\obj\Debug\ICSharpCode.AvalonEdit.g.resources
+C:\Users\Fish\Desktop\MyWorks\UltraDemo\ICSharpCode.AvalonEdit\obj\Debug\ICSharpCode.AvalonEdit.dll
+C:\Users\Fish\Desktop\MyWorks\UltraDemo\ICSharpCode.AvalonEdit\obj\Debug\ICSharpCode.AvalonEdit.pdb

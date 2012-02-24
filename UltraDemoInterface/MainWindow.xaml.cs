@@ -12,6 +12,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Windows.Media.Animation;
+using ICSharpCode.AvalonEdit.Editing;
 
 
 namespace UltraDemoInterface
@@ -30,6 +31,8 @@ namespace UltraDemoInterface
         private OutputWindow outputWindow;
         private SelectAnimationWindow selectAnimationWindow;
 
+        private EditorAdapter editorAdapter;
+
         public MainWindow()
         {
             InitializeComponent();
@@ -37,6 +40,8 @@ namespace UltraDemoInterface
             currOutputWindowTranslate = new TranslateTransform();
             lastMemoryWindowTranslate = new TranslateTransform();
             currMemoryWindowTranslate = new TranslateTransform();
+
+            editorAdapter = new EditorAdapter( textEditor );
 
             // 初始化其他窗口
             //outputWindow = new OutputWindow();
