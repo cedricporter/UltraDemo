@@ -37,7 +37,15 @@ namespace UltraDemoInterface
             MethodInfo getName, getDescription, getWatchedList;
             Object anima, name, description, watchedList;
 
+            // 由杨旭瑜发现的一个bug
+            if (Directory.Exists(path) == false)
+            {
+                System.Windows.MessageBox.Show("你扫描插件的路径：" + path + "不存在，在该路径扫描插件失败。");
+                return;
+            }
+
             files = Directory.GetFiles(path);
+            
             foreach (String file in files)
             {
                 if (Path.GetExtension(file) == ".dll")

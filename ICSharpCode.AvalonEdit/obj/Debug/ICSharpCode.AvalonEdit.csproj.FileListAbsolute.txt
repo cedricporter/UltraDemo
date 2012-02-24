@@ -53,3 +53,17 @@ C:\Users\Fish\Desktop\MyWorks\UltraDemo\ICSharpCode.AvalonEdit\obj\Debug\themes\
 C:\Users\Fish\Desktop\MyWorks\UltraDemo\ICSharpCode.AvalonEdit\obj\Debug\ICSharpCode.AvalonEdit.g.resources
 C:\Users\Fish\Desktop\MyWorks\UltraDemo\ICSharpCode.AvalonEdit\obj\Debug\ICSharpCode.AvalonEdit.dll
 C:\Users\Fish\Desktop\MyWorks\UltraDemo\ICSharpCode.AvalonEdit\obj\Debug\ICSharpCode.AvalonEdit.pdb
+D:\UltraDemo\bin\Debug\ICSharpCode.AvalonEdit.xml
+D:\UltraDemo\bin\Debug\ICSharpCode.AvalonEdit.dll
+D:\UltraDemo\bin\Debug\ICSharpCode.AvalonEdit.pdb
+D:\UltraDemo\ICSharpCode.AvalonEdit\obj\Debug\ResolveAssemblyReference.cache
+D:\UltraDemo\ICSharpCode.AvalonEdit\obj\Debug\GeneratedInternalTypeHelper.g.cs
+D:\UltraDemo\ICSharpCode.AvalonEdit\obj\Debug\ICSharpCode.AvalonEdit_MarkupCompile.cache
+D:\UltraDemo\ICSharpCode.AvalonEdit\obj\Debug\ICSharpCode.AvalonEdit_MarkupCompile.lref
+D:\UltraDemo\ICSharpCode.AvalonEdit\obj\Debug\CodeCompletion\CompletionList.baml
+D:\UltraDemo\ICSharpCode.AvalonEdit\obj\Debug\CodeCompletion\InsightWindow.baml
+D:\UltraDemo\ICSharpCode.AvalonEdit\obj\Debug\TextEditor.baml
+D:\UltraDemo\ICSharpCode.AvalonEdit\obj\Debug\themes\generic.baml
+D:\UltraDemo\ICSharpCode.AvalonEdit\obj\Debug\ICSharpCode.AvalonEdit.g.resources
+D:\UltraDemo\ICSharpCode.AvalonEdit\obj\Debug\ICSharpCode.AvalonEdit.dll
+D:\UltraDemo\ICSharpCode.AvalonEdit\obj\Debug\ICSharpCode.AvalonEdit.pdb
