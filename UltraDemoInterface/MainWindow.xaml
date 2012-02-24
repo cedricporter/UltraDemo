@@ -21,8 +21,6 @@
         <!--Commands-->
         <RoutedUICommand x:Key="OutputWindowButtonHotKey" Text="显示或隐藏输出窗口"/>
         <RoutedUICommand x:Key="MemoryWindowButtonHotKey" Text="显示或隐藏输出窗口"/>
-        <!--Windows-->
-        <local:SelectAnimationWindow x:Key="SelectAnimationWindowIns"/>
 	</Window.Resources>
     
     <Window.InputBindings>
@@ -285,184 +283,6 @@
             </EventTrigger.Actions>
         </EventTrigger>
         
-        <!--显示输出窗口-->
-        <EventTrigger SourceName="OutputWindowButton" RoutedEvent="RadioButton.Checked">
-            <EventTrigger.Actions>
-                <BeginStoryboard>
-                    <Storyboard>
-                        <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)" Storyboard.TargetName="OutputWindow">
-                            <EasingDoubleKeyFrame KeyTime="0" Value="0.01">
-                                <EasingDoubleKeyFrame.EasingFunction>
-                                    <CubicEase EasingMode="EaseOut"/>
-                                </EasingDoubleKeyFrame.EasingFunction>
-                            </EasingDoubleKeyFrame>
-                            <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="1">
-                                <EasingDoubleKeyFrame.EasingFunction>
-                                    <CubicEase EasingMode="EaseOut"/>
-                                </EasingDoubleKeyFrame.EasingFunction>
-                            </EasingDoubleKeyFrame>
-                        </DoubleAnimationUsingKeyFrames>
-                        <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)" Storyboard.TargetName="OutputWindow">
-                            <EasingDoubleKeyFrame KeyTime="0" Value="0.01">
-                                <EasingDoubleKeyFrame.EasingFunction>
-                                    <CubicEase EasingMode="EaseOut"/>
-                                </EasingDoubleKeyFrame.EasingFunction>
-                            </EasingDoubleKeyFrame>
-                            <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="1">
-                                <EasingDoubleKeyFrame.EasingFunction>
-                                    <CubicEase EasingMode="EaseOut"/>
-                                </EasingDoubleKeyFrame.EasingFunction>
-                            </EasingDoubleKeyFrame>
-                        </DoubleAnimationUsingKeyFrames>
-                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="OutputWindow" Storyboard.TargetProperty="Visibility"  Duration="0">
-                            <DiscreteObjectKeyFrame>
-                                <DiscreteObjectKeyFrame.Value>
-                                    <Visibility>Visible</Visibility>
-                                </DiscreteObjectKeyFrame.Value>
-                            </DiscreteObjectKeyFrame>
-                        </ObjectAnimationUsingKeyFrames>
-                    </Storyboard>
-                </BeginStoryboard>
-            </EventTrigger.Actions>
-        </EventTrigger>
-
-        <!--隐藏输出窗口-->
-        <EventTrigger SourceName="OutputWindowButton" RoutedEvent="RadioButton.Unchecked">
-            <EventTrigger.Actions>
-                <BeginStoryboard>
-                    <Storyboard>
-                        <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)" Storyboard.TargetName="OutputWindow">
-                            <EasingDoubleKeyFrame KeyTime="0" Value="1">
-                                <EasingDoubleKeyFrame.EasingFunction>
-                                    <CubicEase EasingMode="EaseIn"/>
-                                </EasingDoubleKeyFrame.EasingFunction>
-                            </EasingDoubleKeyFrame>
-                            <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="0.01">
-                                <EasingDoubleKeyFrame.EasingFunction>
-                                    <CubicEase EasingMode="EaseIn"/>
-                                </EasingDoubleKeyFrame.EasingFunction>
-                            </EasingDoubleKeyFrame>
-                        </DoubleAnimationUsingKeyFrames>
-                        <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)" Storyboard.TargetName="OutputWindow">
-                            <EasingDoubleKeyFrame KeyTime="0" Value="1">
-                                <EasingDoubleKeyFrame.EasingFunction>
-                                    <CubicEase EasingMode="EaseIn"/>
-                                </EasingDoubleKeyFrame.EasingFunction>
-                            </EasingDoubleKeyFrame>
-                            <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="0.01">
-                                <EasingDoubleKeyFrame.EasingFunction>
-                                    <CubicEase EasingMode="EaseIn"/>
-                                </EasingDoubleKeyFrame.EasingFunction>
-                            </EasingDoubleKeyFrame>
-                        </DoubleAnimationUsingKeyFrames>
-                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="OutputWindow" Storyboard.TargetProperty="Visibility"  Duration="0:0:0.5">
-                            <DiscreteObjectKeyFrame>
-                                <DiscreteObjectKeyFrame.Value>
-                                    <Visibility>Hidden</Visibility>
-                                </DiscreteObjectKeyFrame.Value>
-                            </DiscreteObjectKeyFrame>
-                        </ObjectAnimationUsingKeyFrames>
-                    </Storyboard>
-                </BeginStoryboard>
-            </EventTrigger.Actions>
-        </EventTrigger>
-
-        <!--显示内存窗口-->
-        <EventTrigger SourceName="MemoryWindowButton" RoutedEvent="RadioButton.Checked">
-            <EventTrigger.Actions>
-                <BeginStoryboard>
-                    <Storyboard>
-                        <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)" Storyboard.TargetName="MemoryWindow">
-                            <EasingDoubleKeyFrame KeyTime="0" Value="0.01">
-                                <EasingDoubleKeyFrame.EasingFunction>
-                                    <CubicEase EasingMode="EaseOut"/>
-                                </EasingDoubleKeyFrame.EasingFunction>
-                            </EasingDoubleKeyFrame>
-                            <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="1">
-                                <EasingDoubleKeyFrame.EasingFunction>
-                                    <CubicEase EasingMode="EaseOut"/>
-                                </EasingDoubleKeyFrame.EasingFunction>
-                            </EasingDoubleKeyFrame>
-                        </DoubleAnimationUsingKeyFrames>
-                        <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)" Storyboard.TargetName="MemoryWindow">
-                            <EasingDoubleKeyFrame KeyTime="0" Value="0.01">
-                                <EasingDoubleKeyFrame.EasingFunction>
-                                    <CubicEase EasingMode="EaseOut"/>
-                                </EasingDoubleKeyFrame.EasingFunction>
-                            </EasingDoubleKeyFrame>
-                            <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="1">
-                                <EasingDoubleKeyFrame.EasingFunction>
-                                    <CubicEase EasingMode="EaseOut"/>
-                                </EasingDoubleKeyFrame.EasingFunction>
-                            </EasingDoubleKeyFrame>
-                        </DoubleAnimationUsingKeyFrames>
-                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="MemoryWindow" Storyboard.TargetProperty="Visibility"  Duration="0">
-                            <DiscreteObjectKeyFrame>
-                                <DiscreteObjectKeyFrame.Value>
-                                    <Visibility>Visible</Visibility>
-                                </DiscreteObjectKeyFrame.Value>
-                            </DiscreteObjectKeyFrame>
-                        </ObjectAnimationUsingKeyFrames>
-                    </Storyboard>
-                </BeginStoryboard>
-            </EventTrigger.Actions>
-        </EventTrigger>
-
-        <!--隐藏内存窗口-->
-        <EventTrigger SourceName="MemoryWindowButton" RoutedEvent="RadioButton.Unchecked">
-            <EventTrigger.Actions>
-                <BeginStoryboard>
-                    <Storyboard>
-                        <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)" Storyboard.TargetName="MemoryWindow">
-                            <EasingDoubleKeyFrame KeyTime="0" Value="1">
-                                <EasingDoubleKeyFrame.EasingFunction>
-                                    <CubicEase EasingMode="EaseIn"/>
-                                </EasingDoubleKeyFrame.EasingFunction>
-                            </EasingDoubleKeyFrame>
-                            <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="0.01">
-                                <EasingDoubleKeyFrame.EasingFunction>
-                                    <CubicEase EasingMode="EaseIn"/>
-                                </EasingDoubleKeyFrame.EasingFunction>
-                            </EasingDoubleKeyFrame>
-                        </DoubleAnimationUsingKeyFrames>
-                        <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)" Storyboard.TargetName="MemoryWindow">
-                            <EasingDoubleKeyFrame KeyTime="0" Value="1">
-                                <EasingDoubleKeyFrame.EasingFunction>
-                                    <CubicEase EasingMode="EaseIn"/>
-                                </EasingDoubleKeyFrame.EasingFunction>
-                            </EasingDoubleKeyFrame>
-                            <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="0.01">
-                                <EasingDoubleKeyFrame.EasingFunction>
-                                    <CubicEase EasingMode="EaseIn"/>
-                                </EasingDoubleKeyFrame.EasingFunction>
-                            </EasingDoubleKeyFrame>
-                        </DoubleAnimationUsingKeyFrames>
-                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="MemoryWindow" Storyboard.TargetProperty="Visibility"  Duration="0:0:0.5">
-                            <DiscreteObjectKeyFrame>
-                                <DiscreteObjectKeyFrame.Value>
-                                    <Visibility>Hidden</Visibility>
-                                </DiscreteObjectKeyFrame.Value>
-                            </DiscreteObjectKeyFrame>
-                        </ObjectAnimationUsingKeyFrames>
-                    </Storyboard>
-                </BeginStoryboard>
-            </EventTrigger.Actions>
-        </EventTrigger>
-        
-        <!--显示动画选择窗口-->
-
-        <!--<EventTrigger SourceName="OutputWindow" RoutedEvent="Grid.MouseMove">
-            <EventTrigger.Actions>
-                <BeginStoryboard>
-                    <Storyboard>
-                        <DoubleAnimationUsingKeyFrames Storyboard.TargetName="OutputWindow" Storyboard.TargetProperty="Canvas"  Duration="0">
-                            <DiscreteDoubleKeyFrame Value="10"/>
-                        </DoubleAnimationUsingKeyFrames>
-                    </Storyboard>
-                </BeginStoryboard>
-            </EventTrigger.Actions>
-        </EventTrigger>-->
-        
     </Window.Triggers>
     
     <Grid x:Name="WindowRoot">
@@ -511,8 +331,8 @@
         </Grid>
     	<Grid x:Name="MainContainer" Margin="0,34,0,0" RenderTransformOrigin="0.5,0.5">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition x:Name="GridLeftCol"  Width="*"></ColumnDefinition>
-                <ColumnDefinition x:Name="GridRightCol"  Width="0*"></ColumnDefinition>
+                <ColumnDefinition x:Name="GridLeftCol"  Width="0*"></ColumnDefinition>
+                <ColumnDefinition x:Name="GridRightCol"  Width="*"></ColumnDefinition>
             </Grid.ColumnDefinitions>
     		<Grid.RenderTransform>
     			<TransformGroup>
@@ -531,44 +351,6 @@
     					<TranslateTransform/>
     				</TransformGroup>
     			</Grid.RenderTransform>
-                <Grid x:Name="OutputWindow" Width="200" Height="200" Visibility="Hidden" Panel.ZIndex="-1" RenderTransformOrigin="0,0">
-                    <Grid.RenderTransform>
-                        <TransformGroup>
-                            <ScaleTransform>
-                                <ScaleTransform.CenterX>
-                                    <Binding ElementName="OutputWindow"  Path="Width" Converter="{StaticResource NumericalConverter}" ConverterParameter="*,0.5"/>
-                                </ScaleTransform.CenterX>
-                                <ScaleTransform.CenterY>
-                                    <Binding ElementName="OutputWindow"  Path="Height" Converter="{StaticResource NumericalConverter}" ConverterParameter="*,0.5"/>
-                                </ScaleTransform.CenterY>
-                            </ScaleTransform>
-                            <SkewTransform/>
-                            <RotateTransform/>
-                            <TranslateTransform/>
-                        </TransformGroup>
-                    </Grid.RenderTransform>
-                    <Rectangle Fill="#FF333333" Margin="0" RadiusX="16" RadiusY="16" Effect="{StaticResource GeneralBlurEffect}"/>
-                    <Rectangle x:Name="OBackground" MouseLeftButtonUp="OBackground_MouseLeftButtonUp"  MouseMove="OBackground_MouseMove" MouseLeftButtonDown="OBackground_MouseLeftButtonDown"  Fill="{StaticResource LinearWhiteBrush}" Margin="0" RadiusX="16" RadiusY="16"/>
-                </Grid>
-                <Grid x:Name="MemoryWindow" Width="200" Height="200" Visibility="Hidden" Panel.ZIndex="-1">
-                    <Grid.RenderTransform>
-                        <TransformGroup>
-                            <ScaleTransform>
-                                <ScaleTransform.CenterX>
-                                    <Binding ElementName="MemoryWindow"  Path="Width" Converter="{StaticResource NumericalConverter}" ConverterParameter="*,0.5"/>
-                                </ScaleTransform.CenterX>
-                                <ScaleTransform.CenterY>
-                                    <Binding ElementName="MemoryWindow"  Path="Height" Converter="{StaticResource NumericalConverter}" ConverterParameter="*,0.5"/>
-                                </ScaleTransform.CenterY>
-                            </ScaleTransform>
-                            <SkewTransform/>
-                            <RotateTransform/>
-                            <TranslateTransform/>
-                        </TransformGroup>
-                    </Grid.RenderTransform>
-                    <Rectangle Fill="#FF333333" Margin="0" RadiusX="16" RadiusY="16" Effect="{StaticResource GeneralBlurEffect}"/>
-                    <Rectangle x:Name="MBackground" MouseLeftButtonUp="MBackground_MouseLeftButtonUp"  MouseMove="MBackground_MouseMove" MouseLeftButtonDown="MBackground_MouseLeftButtonDown"  Fill="{StaticResource LinearWhiteBrush}" Margin="0" RadiusX="16" RadiusY="16"/>
-                </Grid>
                 <Grid x:Name="DemoControlBar" Height="50" Margin="0" VerticalAlignment="Bottom">
     				<Rectangle Fill="#FF333333" Effect="{StaticResource GeneralBlurEffect}" Margin="0" RadiusX="16" RadiusY="16"/>
     				<Rectangle Fill="{StaticResource LinearWhiteBrush}" Margin="0" RadiusX="16" RadiusY="16"/>
@@ -586,10 +368,11 @@
     				<Button x:Name="StopButton" HorizontalAlignment="Left" Margin="123.5,0,0,0" Template="{StaticResource CircleButtonTemplate}" ToolTip="停止">
     					<Path Stroke="#333333" Fill="#666666" Data="M 0,0 L 0,10 L 10,10 L 10,0 Z"/>			
 					</Button>
-                    <CheckBox x:Name="OutputWindowButton" Content="输出窗口" Margin="0,0,150,0" Template="{StaticResource EllipseToggleButton}" HorizontalAlignment="Right" d:LayoutOverrides="Height"/>
-                        <CheckBox x:Name="MemoryWindowButton" Content="内存窗口" Margin="0,0,30,0" Template="{StaticResource EllipseToggleButton}" HorizontalAlignment="Right" d:LayoutOverrides="Height"/>
+                    <CheckBox x:Name="OutputWindowButton" Content="输出窗口" Margin="0,0,150,0" Template="{StaticResource EllipseToggleButton}" HorizontalAlignment="Right" d:LayoutOverrides="Height" Checked="OutputWindowButton_Checked" Unchecked="OutputWindowButton_Unchecked"/>
+                    <CheckBox x:Name="MemoryWindowButton" Content="内存窗口" Margin="0,0,30,0" Template="{StaticResource EllipseToggleButton}" HorizontalAlignment="Right" d:LayoutOverrides="Height" Checked="MemoryWindowButton_Checked" Unchecked="MemoryWindowButton_Unchecked"/>
     				<Slider Margin="216,11,342.5,8" Template="{StaticResource HorizontalSliderTemplate}" Width="225"/>
     			</Grid>
+                <Grid x:Name="AnimationContainer" Margin="40,40,40,60"/>
     		</Grid>
     		<Grid x:Name="EditorContainer" Grid.Column="0"  RenderTransformOrigin="0.5,0.5">
     			<Grid.RenderTransform>
