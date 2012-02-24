@@ -18,9 +18,10 @@ namespace UltraDemoInterface
     /// </summary>
     public partial class MemoryWindow : Window
     {
-        public MemoryWindow()
+        public MemoryWindow(MainWindow mainWindow)
         {
             InitializeComponent();
+            this.mainWindow = mainWindow;
         }
 
         private void Grid_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
@@ -49,5 +50,7 @@ namespace UltraDemoInterface
         }
         #endregion
 
+
+        private MainWindow mainWindow;
     }
 }

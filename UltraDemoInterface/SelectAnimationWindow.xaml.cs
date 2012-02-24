@@ -19,10 +19,11 @@ namespace UltraDemoInterface
     /// </summary>
     public partial class SelectAnimationWindow : Window
     {
-        public SelectAnimationWindow()
+        public SelectAnimationWindow(MainWindow mainWindow)
         {
             InitializeComponent();
             animationInfoMap = new Dictionary<String, AnimationInfo>();
+            this.mainWindow = mainWindow;
         }
 
         /// <summary>
@@ -45,7 +46,9 @@ namespace UltraDemoInterface
             if (AnimationList.SelectedItem == null)
                 return;
             AnimationInfo selectedItem = animationInfoMap[(AnimationList.SelectedItem as ListBoxItem).Content.ToString()];
+            // 更新description
             Description.Text = selectedItem.description;
+            // 更新watched list
             WatchedList.Items.Clear();
             foreach (String value in selectedItem.watchedList)
             {
@@ -54,7 +57,6 @@ namespace UltraDemoInterface
                 item.Template = (ControlTemplate)App.Current.FindResource("ListBoxItemTemplate");
                 WatchedList.Items.Add(item);
             }
-            //WatchedList
         }
 
         /// <summary>
@@ -64,15 +66,7 @@ namespace UltraDemoInterface
         /// <param name="e"></param>
         private void OK_Click(object sender, RoutedEventArgs e)
         {
-            ObjectAnimationUsingKeyFrames visAni = new ObjectAnimationUsingKeyFrames();
-            visAni.KeyFrames.Add(new DiscreteObjectKeyFrame(Visibility.Visible, KeyTime.FromTimeSpan(TimeSpan.FromSeconds(0))));
-            BeginAnimation(Window.VisibilityProperty, visAni);
-
-            DoubleAnimationUsingKeyFrames alphaAni = new DoubleAnimationUsingKeyFrames();
-            CubicEase ef = new CubicEase();
-            alphaAni.KeyFrames.Add(new EasingDoubleKeyFrame(1, KeyTime.FromTimeSpan(TimeSpan.FromSeconds(0)), ef));
-            alphaAni.KeyFrames.Add(new EasingDoubleKeyFrame(0, KeyTime.FromTimeSpan(TimeSpan.FromSeconds(0.5)), ef));
-            BeginAnimation(Window.OpacityProperty, alphaAni);
+            mainWindow.HideWindow(this);
         }
 
         /// <summary>
@@ -82,15 +76,7 @@ namespace UltraDemoInterface
         /// <param name="e"></param>
         private void Cancle_Click(object sender, RoutedEventArgs e)
         {
-            ObjectAnimationUsingKeyFrames visAni = new ObjectAnimationUsingKeyFrames();
-            visAni.KeyFrames.Add(new DiscreteObjectKeyFrame(Visibility.Visible, KeyTime.FromTimeSpan(TimeSpan.FromSeconds(0))));
-            BeginAnimation(Window.VisibilityProperty, visAni);
-
-            DoubleAnimationUsingKeyFrames alphaAni = new DoubleAnimationUsingKeyFrames();
-            CubicEase ef = new CubicEase();
-            alphaAni.KeyFrames.Add(new EasingDoubleKeyFrame(1, KeyTime.FromTimeSpan(TimeSpan.FromSeconds(0)), ef));
-            alphaAni.KeyFrames.Add(new EasingDoubleKeyFrame(0, KeyTime.FromTimeSpan(TimeSpan.FromSeconds(0.5)), ef));
-            BeginAnimation(Window.OpacityProperty, alphaAni);
+            mainWindow.HideWindow(this);
         }
 
         /// <summary>
@@ -126,6 +112,7 @@ namespace UltraDemoInterface
         #endregion
 
         public Dictionary<String, AnimationInfo> animationInfoMap;
+        private MainWindow mainWindow;
         
     }
 }

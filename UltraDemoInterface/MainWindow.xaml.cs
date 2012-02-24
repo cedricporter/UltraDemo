@@ -23,18 +23,12 @@ namespace UltraDemoInterface
     /// </summary>
     public partial class MainWindow : Window
     {
-        //private Point lastMousePos;
-        //private TranslateTransform lastOutputWindowTranslate;
-        //private TranslateTransform currOutputWindowTranslate;
-        //private TranslateTransform lastMemoryWindowTranslate;
-        //private TranslateTransform currMemoryWindowTranslate;
-        
-        //private Double lastMemoryWindowHeight;
 
-        private OutputWindow outputWindow;
-        private MemoryWindow memoryWindow;
-        private SelectAnimationWindow selectAnimationWindow;
-        private AnimationPluginManager animationPluginManager;
+        public OutputWindow outputWindow;
+        public MemoryWindow memoryWindow;
+        public SelectAnimationWindow selectAnimationWindow;
+        public AnimationPluginManager animationPluginManager;
+        public Grid animationContainer;
 
         //MethodInfo beginRender;
         //Object anima;
@@ -46,23 +40,12 @@ namespace UltraDemoInterface
             InitializeComponent();
 
             // 初始化其他窗口
-            outputWindow = new OutputWindow();
-            memoryWindow = new MemoryWindow();
-            selectAnimationWindow = new SelectAnimationWindow();
-            //selectAnimationWindow.Show();
-
-            //testing
-            //Grid animationContainer = (Grid)FindName("AnimationContainer");
-            //fuckr = new Rectangle();
-            //Color bg = new Color();
-            //bg.A = 255;
-            //fuckr.Width = 100;
-            //fuckr.Height = 100;
-            //fuckr.Fill = new SolidColorBrush(bg);
-            //animationContainer.Children.Add(fuckr);
-
-            Grid animationContainer = (Grid)FindName("AnimationContainer");
-            animationPluginManager = new AnimationPluginManager(animationContainer, selectAnimationWindow);
+            outputWindow = new OutputWindow(this);
+            memoryWindow = new MemoryWindow(this);
+            selectAnimationWindow = new SelectAnimationWindow(this);
+            // 初始化动画插件管理类
+            animationContainer = (Grid)FindName("AnimationContainer");
+            animationPluginManager = new AnimationPluginManager(this);
             animationPluginManager.LoadPlugins("AnimationPlugins");
 
             //Type t = animationPluginManager.animationMap["ArrayAnimation"];
@@ -135,7 +118,7 @@ namespace UltraDemoInterface
         /// 显示窗口
         /// </summary>
         /// <param name="window">要显示的窗口</param>
-        private void ShowWindow(Window window)
+        public void ShowWindow(Window window)
         {
             ObjectAnimationUsingKeyFrames visAni = new ObjectAnimationUsingKeyFrames();
             visAni.KeyFrames.Add(new DiscreteObjectKeyFrame(Visibility.Visible, KeyTime.FromTimeSpan(TimeSpan.FromSeconds(0))));
@@ -152,7 +135,7 @@ namespace UltraDemoInterface
         /// 隐藏窗口
         /// </summary>
         /// <param name="window">要隐藏的窗口</param>
-        private void HideWindow(Window window)
+        public void HideWindow(Window window)
         {
             ObjectAnimationUsingKeyFrames visAni = new ObjectAnimationUsingKeyFrames();
             visAni.KeyFrames.Add(new DiscreteObjectKeyFrame(Visibility.Hidden, KeyTime.FromTimeSpan(TimeSpan.FromSeconds(0.5))));

@@ -22,7 +22,7 @@ using System.Windows.Media;
 namespace UltraDemoInterface
 {
 
-    class AnimationPluginManager
+    public class AnimationPluginManager
     {
         /// <summary>
         /// 从指定装载获取动画插件。
@@ -52,9 +52,7 @@ namespace UltraDemoInterface
                         if (token.Length > 0)
                         {
                             // 找到了入口
-                            Object[] args = new Object[1];
-                            args[0] = animationContainer;
-                            anima = Activator.CreateInstance(t,animationContainer);
+                            anima = Activator.CreateInstance(t, mainWindow.animationContainer);
                             getName = t.GetMethod("GetName");
                             getDescription = t.GetMethod("GetDescription");
                             getWatchedList = t.GetMethod("GetWatchedList");
@@ -66,11 +64,11 @@ namespace UltraDemoInterface
                             SelectAnimationWindow.AnimationInfo aniInfo = new SelectAnimationWindow.AnimationInfo();
                             aniInfo.description = description.ToString();
                             aniInfo.watchedList = (List<String>)watchedList;
-                            selectAnimationWindow.animationInfoMap[name.ToString()] = aniInfo;
+                            mainWindow.selectAnimationWindow.animationInfoMap[name.ToString()] = aniInfo;
                             ListBoxItem item = new ListBoxItem();
                             item.Content = name.ToString();
                             item.Template = (ControlTemplate)App.Current.FindResource("ListBoxItemTemplate");
-                            selectAnimationWindow.AnimationList.Items.Add(item);
+                            mainWindow.selectAnimationWindow.AnimationList.Items.Add(item);
 
                             //将动画类型装入动画列表
                             animationMap[name.ToString()] = t;
@@ -119,7 +117,7 @@ namespace UltraDemoInterface
             }
 
             // 实例化动画
-            selectedAnimationInstance = Activator.CreateInstance(selectedAnimationType, animationContainer);
+            selectedAnimationInstance = Activator.CreateInstance(selectedAnimationType, mainWindow.animationContainer);
             // 此处应该判断一下该动画的检测列表是否与设置值一致
             // 未实现
             //MethodInfo getWatchedList = selectedAnimationType.GetMethod("GetWatchedList");
@@ -135,7 +133,7 @@ namespace UltraDemoInterface
             }
 
             // 清空画布
-            animationContainer.Children.Clear();
+            mainWindow.animationContainer.Children.Clear();
 
             isRendering = true;
         }
@@ -150,7 +148,7 @@ namespace UltraDemoInterface
             selectedAnimationInstance = null;
             selectedAnimationBeginRender = null;
             // 清空画布
-            animationContainer.Children.Clear();
+            mainWindow.animationContainer.Children.Clear();
         }
 
         /// <summary>
@@ -160,7 +158,7 @@ namespace UltraDemoInterface
         public void SelectAnimation(String animationName)
         {
             selectedAnimationType = animationMap[animationName];
-            
+            System.Windows.MessageBox.Show(selectedAnimationType.ToString());
         }
 
         /// <summary>
@@ -168,10 +166,9 @@ namespace UltraDemoInterface
         /// </summary>
         /// <param name="animationContainer"></param>
         /// <param name="selectAnimationWindow"></param>
-        public AnimationPluginManager(Grid animationContainer, SelectAnimationWindow selectAnimationWindow)
+        public AnimationPluginManager(MainWindow mainWindow)
         {
-            this.animationContainer = animationContainer;
-            this.selectAnimationWindow = selectAnimationWindow;
+            this.mainWindow = mainWindow;
         }
 
         private Boolean isRendering = false;
@@ -179,10 +176,9 @@ namespace UltraDemoInterface
         private Type selectedAnimationType = null;
         private Object selectedAnimationInstance = null;
         private MethodInfo selectedAnimationBeginRender = null;
-
         public Dictionary<String, Type> animationMap = new Dictionary<String, Type>();
-        private Grid animationContainer;
-        private SelectAnimationWindow selectAnimationWindow;
+
+        private MainWindow mainWindow;
 
     }
 }

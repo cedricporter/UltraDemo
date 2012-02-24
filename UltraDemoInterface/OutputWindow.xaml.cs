@@ -18,9 +18,10 @@ namespace UltraDemoInterface
     /// </summary>
     public partial class OutputWindow : Window
     {
-        public OutputWindow()
+        public OutputWindow(MainWindow mainWindow)
         {
             InitializeComponent();
+            this.mainWindow = mainWindow;
         }
 
         /// <summary>
@@ -54,5 +55,7 @@ namespace UltraDemoInterface
         }
         #endregion
 
+
+        private MainWindow mainWindow;
     }
 }
