@@ -17,8 +17,15 @@ COMPILER_API unsigned long *get_dreg(ETCompiler::ETController* ctrl)
     return ctrl->Getdreg();
 }
 
+COMPILER_API ETCompiler::PropertiesInsertItem* get_first_item(ETCompiler::ETController* ctrl)
+{
+    return ctrl->GetFirstItem();
+}
 
-
+COMPILER_API ETCompiler::PropertiesInsertItem* get_next_item(ETCompiler::ETController* ctrl)
+{
+    return ctrl->GetNextItem();
+}
 
 
 /************************************************************************/
@@ -50,8 +57,8 @@ COMPILER_API int initial_machine(ETCompiler::ETController* ctrl, const char* cod
 COMPILER_API bool step(ETCompiler::ETController* ctrl)
 {
     bool ret = ctrl->Step();
-    if (!ret)
-        MessageBox(0, "Fuck", "f", 0);
+    //if (!ret)
+    //    MessageBox(0, "Fuck", "f", 0);
 
     return ret;
     //return ctrl->Step();

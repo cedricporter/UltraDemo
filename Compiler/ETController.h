@@ -4,6 +4,7 @@
 #include "SymbolTable.h"
 #include "Imm2asm.h"
 #include <string>
+#include "def.h"
 
 namespace ETCompiler
 {
@@ -12,6 +13,13 @@ namespace ETCompiler
     private:
         IParser     *m_pParser;
         ETMachine   m_machine;
+        IDebugger   *m_memoryWatcher;
+        WatchPropertiesListType::iterator currentIter;
+
+    public:
+        WatchPropertiesListType m_memoryList;
+
+
     public:
         ETController();
 
@@ -25,6 +33,11 @@ namespace ETCompiler
 
         int GetCurrentLine();
 
+        WatchPropertiesListType& GetMemoryList();
+
+        PropertiesInsertItem* GetFirstItem();
+
+        PropertiesInsertItem* GetNextItem();
     };
 
 
