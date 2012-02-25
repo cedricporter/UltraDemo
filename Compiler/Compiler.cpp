@@ -39,11 +39,11 @@ COMPILER_API void destroy_controller(ETCompiler::ETController* ctrl)
 
 // 初始化解释器
 //@param code 源代码
-COMPILER_API int initial_machine(ETCompiler::ETController* ctrl, const char* code)
+COMPILER_API int initial_machine(ETCompiler::ETController* ctrl, const char* code, char* error_message)
 {
-    ctrl->Initialiaze_Machine(code);
+    int ret = ctrl->Initialiaze_Machine(code, error_message);
 
-    return 0;
+    return ret;
 }
 
 // 单步执行

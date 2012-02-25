@@ -33,11 +33,21 @@ ETCompiler::ETController::ETController()
 	//regist( pMemViewDebugger, func4 );
 }
 
-int ETCompiler::ETController::Initialiaze_Machine( const char* code )
+int ETCompiler::ETController::Initialiaze_Machine( const char* code, char* error_message )
 {
     m_pParser->Reset();
     m_pParser->LoadFromString(code);
-    m_pParser->Parse(true);
+
+    try
+    {
+        m_pParser->Parse(true);
+    }
+    catch (char* e)
+    {
+        strcpy(error_message, e);
+        return -1;
+    }
+
     m_machine.Reset();
 
     Imm2asm i2a;

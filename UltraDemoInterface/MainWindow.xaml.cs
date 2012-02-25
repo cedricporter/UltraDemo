@@ -261,7 +261,11 @@ namespace UltraDemoInterface
         private void MenuCompile_Click(object sender, RoutedEventArgs e)
         {
             //System.Windows.MessageBox.Show(editorAdapter.GetAllText());
-            etController.Initilialize_Machine(editorAdapter.GetAllText());
+            StringBuilder error_message = new StringBuilder( 128 );
+            if ( etController.Initilialize_Machine(editorAdapter.GetAllText(), error_message) != 0 )
+            {
+                System.Windows.MessageBox.Show( error_message.ToString() );
+            }
         }
 
     }

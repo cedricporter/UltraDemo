@@ -15,7 +15,7 @@ namespace ETCompiler
     public:
         ETController();
 
-        int Initialiaze_Machine(const char* code);
+        int Initialiaze_Machine(const char* code, char* error_message);
 
         bool Step();
 

@@ -21,7 +21,7 @@ namespace UltraDemoInterface
         private static extern void destroy_controller(IntPtr ctrl);
 
         [DllImport("Compiler.dll", EntryPoint="initial_machine")]
-        private static extern int initial_machine(IntPtr ctrl, string code);
+        private static extern int initial_machine(IntPtr ctrl, string code, StringBuilder error_message);
 
         [DllImport("Compiler.dll", EntryPoint="step")]
         private static extern bool step(IntPtr ctrl);
@@ -45,9 +45,9 @@ namespace UltraDemoInterface
             return step( controller );
         }
 
-        public int Initilialize_Machine(string code)
+        public int Initilialize_Machine(string code, StringBuilder error_message)
         {
-            return initial_machine( controller, code );
+            return initial_machine( controller, code, error_message );
         }
 
         public int GetCurrentLine()
