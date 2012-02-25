@@ -133,6 +133,10 @@ namespace ETCompiler
 			SAFE_DELETE( m_pRoot );
 		}
 
+        virtual int GetCurrentLine()
+        {
+            return m_pScanner->GetLineno();
+        }
 
 		// 从文件加载
 		virtual int LoadFromFile( const CETString& filename ) = 0;
