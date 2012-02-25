@@ -44,16 +44,13 @@ namespace UltraDemoInterface
                         if (currTime - lastTime < timeInterval)
                             break;
                         lastTime = currTime;
-
-                        // do something
-
+                        ExecuteOneLine();
                     }
                     break;
 
                 case DebugControlerState.DCS_STEP:
                     {
-                        // do something
-
+                        ExecuteOneLine();
                         state = DebugControlerState.DCS_STOP;
                     }
                     break;
@@ -67,6 +64,36 @@ namespace UltraDemoInterface
                     // 啥也不做
                     break;
             }
+        }
+
+        /// <summary>
+        /// 解释执行一行源代码
+        /// </summary>
+        public void ExecuteOneLine()
+        {
+            Double currLineNumber = FetchLineNumber();
+            while (currLineNumber == lastLineNumber)
+            {
+                // do something
+                //FetchMemoryValue();
+                //FetchOutput();
+                currLineNumber = FetchLineNumber();
+            }
+        }
+
+        public Double FetchLineNumber()
+        {
+            return Double.NaN;
+        }
+
+        public Dictionary<String, String>[] FetchMemoryValue()
+        {
+            return null;
+        }
+
+        public String FetchOutput()
+        {
+            return null;
         }
 
         /// <summary>
@@ -84,6 +111,7 @@ namespace UltraDemoInterface
         {
             // 初始化
             lastTime = currTime;
+            lastLineNumber = 0;
 
             state = DebugControlerState.DCS_RUN;
         }
@@ -132,6 +160,7 @@ namespace UltraDemoInterface
         Double timeInterval = 500;
         Double currTime = Double.NaN;
         Double lastTime = Double.NaN;
+        Double lastLineNumber = 0;
 
     }
 }
