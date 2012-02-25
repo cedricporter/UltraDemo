@@ -87,6 +87,7 @@
     <ClInclude Include="ETMachine.h" />
     <ClInclude Include="FileReader.h" />
     <ClInclude Include="Imm2asm.h" />
+    <ClInclude Include="JiafeiDebugger.h" />
     <ClInclude Include="Parser.h" />
     <ClInclude Include="SAMPLE.hpp" />
     <ClInclude Include="Scanner.h" />
@@ -113,6 +114,7 @@
     <ClCompile Include="ETMachine.cpp" />
     <ClCompile Include="FileReader.cpp" />
     <ClCompile Include="Imm2asm.cpp" />
+    <ClCompile Include="JiafeiDebugger.cpp" />
     <ClCompile Include="parser.cpp" />
     <ClCompile Include="Scanner.cpp" />
     <ClCompile Include="StateMachine.cpp" />

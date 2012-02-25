@@ -1,4 +1,6 @@
+#include "def.h"
 #include "ETController.h"
+#include "JiafeiDebugger.h"
 
 ETCompiler::ETController::ETController()
 {
@@ -16,21 +18,21 @@ ETCompiler::ETController::ETController()
     };
 
 
-	//// 负责内存信息显示
-	//pMemViewDebugger = new MemoryViewDebugger;
-	//auto func4 = [&]( LPVOID param )->LPVOID
-	//{
-	//	switch ( (int)param )
-	//	{
-	//	case 0:
-	//		return m_pParser;	// 返回语法器
-	//	case 1:
-	//		return &m_pMemSpy;	// 返回内存监控窗口
-	//	}
+	// 负责内存信息显示
+	m_memoryWatcher = new MemoryViewDebugger;
+	auto func4 = [&]( LPVOID param )->LPVOID
+	{
+		switch ( (int)param )
+		{
+		case 0:
+			return m_pParser;	// 返回语法器
+		case 1:
+			return this;	    // 返回控制器，用于内存变量保存下来给C#使用
+		}
 
-	//	return NULL;
-	//};
-	//regist( pMemViewDebugger, func4 );
+		return NULL;
+	};
+	regist( m_memoryWatcher, func4 );
 }
 
 int ETCompiler::ETController::Initialiaze_Machine( const char* code, char* error_message )
@@ -79,4 +81,25 @@ unsigned long * ETCompiler::ETController::Getreg()
 int ETCompiler::ETController::GetCurrentLine()
 {
     return m_machine.GetCurLine();
+}
+
+ETCompiler::WatchPropertiesListType& ETCompiler::ETController::GetMemoryList()
+{
+    return m_memoryList;
+}
+
+ETCompiler::PropertiesInsertItem* ETCompiler::ETController::GetFirstItem()
+{
+    currentIter = m_memoryList.begin();
+    return &*currentIter;
+}
+
+ETCompiler::PropertiesInsertItem* ETCompiler::ETController::GetNextItem()
+{
+    ++currentIter;
+    if (currentIter != m_memoryList.end())
+    {
+        return &*currentIter;
+    }
+    return NULL;
 }

@@ -9,5 +9,7 @@ step @5
 get_current_line @6
 get_reg @7
 get_dreg @8
+get_first_item @9
+get_next_item @10
 
 
