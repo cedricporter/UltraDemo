@@ -19,7 +19,8 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
     <ConfigurationType>DynamicLibrary</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <CharacterSet>Unicode</CharacterSet>
+    <CharacterSet>NotSet</CharacterSet>
+    <UseOfMfc>false</UseOfMfc>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
     <ConfigurationType>DynamicLibrary</ConfigurationType>
@@ -45,14 +46,16 @@
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
-      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;_USRDLL;COMPILER_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <CallingConvention>StdCall</CallingConvention>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <ModuleDefinitionFile>Compiler.def</ModuleDefinitionFile>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -69,18 +72,35 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
+      <ModuleDefinitionFile>Compiler.def</ModuleDefinitionFile>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <None Include="Compiler.def" />
     <None Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Compiler.h" />
+    <ClInclude Include="Debugger.h" />
+    <ClInclude Include="def.h" />
+    <ClInclude Include="ETController.h" />
+    <ClInclude Include="ETMachine.h" />
+    <ClInclude Include="FileReader.h" />
+    <ClInclude Include="Imm2asm.h" />
+    <ClInclude Include="Parser.h" />
+    <ClInclude Include="SAMPLE.hpp" />
+    <ClInclude Include="Scanner.h" />
+    <ClInclude Include="StateMachine.h" />
     <ClInclude Include="stdafx.h" />
+    <ClInclude Include="SymbolTable.h" />
     <ClInclude Include="targetver.h" />
+    <ClInclude Include="Token.h" />
+    <ClInclude Include="TreeDef.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Compiler.cpp" />
+    <ClCompile Include="debugger.cpp" />
+    <ClCompile Include="def.cpp" />
     <ClCompile Include="dllmain.cpp">
       <CompileAsManaged Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</CompileAsManaged>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
@@ -89,10 +109,20 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
       </PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="ETController.cpp" />
+    <ClCompile Include="ETMachine.cpp" />
+    <ClCompile Include="FileReader.cpp" />
+    <ClCompile Include="Imm2asm.cpp" />
+    <ClCompile Include="parser.cpp" />
+    <ClCompile Include="Scanner.cpp" />
+    <ClCompile Include="StateMachine.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="SymbolTable.cpp" />
+    <ClCompile Include="Token.cpp" />
+    <ClCompile Include="TreeDef.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

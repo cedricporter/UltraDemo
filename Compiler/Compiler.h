@@ -20,3 +20,4 @@ public:
 extern COMPILER_API int nCompiler;
 
 COMPILER_API int fnCompiler(void);
+

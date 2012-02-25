@@ -16,6 +16,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="ReadMe.txt" />
+    <None Include="Compiler.def">
+      <Filter>源文件</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h">
@@ -27,6 +30,45 @@
     <ClInclude Include="Compiler.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="Debugger.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="def.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="FileReader.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Imm2asm.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Parser.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="SAMPLE.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Scanner.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="StateMachine.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="SymbolTable.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Token.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="TreeDef.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="ETMachine.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="ETController.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -36,6 +78,42 @@
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="dllmain.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="debugger.cpp">
+      <Filter>头文件</Filter>
+    </ClCompile>
+    <ClCompile Include="def.cpp">
+      <Filter>头文件</Filter>
+    </ClCompile>
+    <ClCompile Include="FileReader.cpp">
+      <Filter>头文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Imm2asm.cpp">
+      <Filter>头文件</Filter>
+    </ClCompile>
+    <ClCompile Include="parser.cpp">
+      <Filter>头文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Scanner.cpp">
+      <Filter>头文件</Filter>
+    </ClCompile>
+    <ClCompile Include="StateMachine.cpp">
+      <Filter>头文件</Filter>
+    </ClCompile>
+    <ClCompile Include="SymbolTable.cpp">
+      <Filter>头文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Token.cpp">
+      <Filter>头文件</Filter>
+    </ClCompile>
+    <ClCompile Include="TreeDef.cpp">
+      <Filter>头文件</Filter>
+    </ClCompile>
+    <ClCompile Include="ETMachine.cpp">
+      <Filter>头文件</Filter>
+    </ClCompile>
+    <ClCompile Include="ETController.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>
