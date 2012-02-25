@@ -57,3 +57,5 @@
 /Debug/Compiler.lib
 /ICSharpCode.AvalonEdit/obj
 /bin
+/TestLoader/obj
+/TestLoader/bin
