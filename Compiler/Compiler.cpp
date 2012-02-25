@@ -7,6 +7,7 @@
 #include "ETMachine.h"
 #include "SymbolTable.h"
 #include "Imm2asm.h"
+#include <string>
 
 
 
@@ -16,7 +17,7 @@ COMPILER_API int nCompiler=0;
 // 这是导出函数的一个示例。
 
 // 编译
-COMPILER_API int compile(const wchar_t* code)
+COMPILER_API std::string compile(const wchar_t* code)
 {
     using namespace ETCompiler;
 
@@ -24,11 +25,14 @@ COMPILER_API int compile(const wchar_t* code)
 
 	CParser parser;
 
+    std::string outString;
+
 	//IParser& parser = myParser;
 	parser.LoadFromFile( "SAMPLE.hpp" );
 	parser.Parse( true );
 
-	std::cout << parser.GetImmCode();
+    //std::cout << parser.GetImmCode();
+	outString += parser.GetImmCode();
 
 	std::ofstream out( "code.txt" );
 	out << parser.GetImmCode() << std::endl;
@@ -37,7 +41,8 @@ COMPILER_API int compile(const wchar_t* code)
 	std::string asmcode = i2a.TranslateToAsm( parser.GetImmCode(), parser.GetTables() );
 
 
-	std::cout << asmcode << std::endl;
+	outString += asmcode;
+    outString += "\n";
 
 
 	machine.LoadCode( asmcode );
@@ -45,9 +50,9 @@ COMPILER_API int compile(const wchar_t* code)
 
 	while ( machine.Step() ) ;
 
-	std::cout << machine.GetOutputLog();
+	outString += machine.GetOutputLog();
     
-	return 42;
+	return outString;
 }
 
 // 这是已导出类的构造函数。

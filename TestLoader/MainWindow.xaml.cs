@@ -21,7 +21,7 @@ namespace TestLoader
     public partial class MainWindow : Window
     {
         [DllImport("Compiler.dll", EntryPoint="compile", CharSet=CharSet.Unicode)]
-        public static extern int compile([MarshalAs(UnmanagedType.LPWStr)] string code);
+        public static extern string compile([MarshalAs(UnmanagedType.LPWStr)] string code);
 
         public MainWindow()
         {
