@@ -50,6 +50,7 @@ namespace UltraDemoInterface
         [StructLayout( LayoutKind.Sequential )]
         public struct MemItem
         {
+            [MarshalAs(UnmanagedType.ByValTStr, SizeConst = 64)]
             public string name;
             public UInt32 val;
         }
@@ -86,7 +87,7 @@ namespace UltraDemoInterface
 
             IntPtr ret = get_first_item(controller);
 
-            while (ret != null)
+            while (ret != IntPtr.Zero)
             {
                 MemItem memitem = (MemItem)Marshal.PtrToStructure(ret, typeof(MemItem));
                 Item item = new Item(memitem.name, memitem.val.ToString());

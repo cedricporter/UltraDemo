@@ -53,7 +53,7 @@ namespace ETCompiler
 
 	struct PropertiesInsertItem
 	{
-		std::string varname;
+		char        varname[64];
 		dword		val;
 
 		bool operator==( const PropertiesInsertItem& rhs )

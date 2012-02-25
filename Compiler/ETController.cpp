@@ -91,6 +91,8 @@ ETCompiler::WatchPropertiesListType& ETCompiler::ETController::GetMemoryList()
 ETCompiler::PropertiesInsertItem* ETCompiler::ETController::GetFirstItem()
 {
     currentIter = m_memoryList.begin();
+    if (currentIter == m_memoryList.end())
+        return NULL;
     return &*currentIter;
 }
 
