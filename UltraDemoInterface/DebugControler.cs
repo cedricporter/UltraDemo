@@ -72,11 +72,20 @@ namespace UltraDemoInterface
         public void ExecuteOneLine()
         {
             bool isRunning = mainWindow.etController.Step();
-            currLineNumber = mainWindow.etController.GetCurrentLine();
-            List<Item> li = mainWindow.etController.GetMemoryItems();
-            // 通知编辑窗口更新行号
-            // ...
-            mainWindow.editorAdapter.ShowLine(true, currLineNumber);
+            
+            // 更新内存窗口
+            if (mainWindow.memoryWindow.IsVisible == true)
+            {
+                List<Item> li = mainWindow.etController.GetMemoryItems();
+                mainWindow.memoryWindow.MemoryDataGrid.ItemsSource = li;
+            }
+            
+            // 高亮编辑器的相应行
+            if (mainWindow.DemoViewButton.IsChecked != true)
+            {
+                currLineNumber = mainWindow.etController.GetCurrentLine();
+                mainWindow.editorAdapter.ShowLine(true, currLineNumber);
+            }
 
             if (isRunning == false)
                 Stop();

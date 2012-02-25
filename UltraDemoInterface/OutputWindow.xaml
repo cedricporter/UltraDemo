@@ -7,7 +7,7 @@
 		Template="{StaticResource WindowTemplate}" ShowInTaskbar="False" Topmost="True">
     
     <Grid Background="#00000000" MouseLeftButtonDown="Grid_MouseLeftButtonDown">
-    	<RichTextBox x:Name="OutputBox" Margin="32,54,32,32" IsReadOnly="True" VerticalScrollBarVisibility="Visible" Style="{DynamicResource RichTextBoxStyle1}">
+    	<RichTextBox x:Name="OutputBox" Margin="32,54,32,32" IsReadOnly="True" VerticalScrollBarVisibility="Auto" Style="{StaticResource RichTextBoxStyle1}">
     		<FlowDocument>
                 <Paragraph>
                     ddddddddddddddddddddddddddddddddddddddd

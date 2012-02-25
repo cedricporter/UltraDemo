@@ -9,7 +9,7 @@
     <Grid  Background="#00000000" MouseLeftButtonDown="Grid_MouseLeftButtonDown">
     	<TextBlock HorizontalAlignment="Left" Margin="32,22,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="14.667"><Run Language="zh-cn" Text="内存监视"/></TextBlock>
 
-        <DataGrid x:Name="MemoryDataGrid" Margin="32,54,32,32" Background="White" BorderBrush="#FF7C7C7C">
+        <DataGrid x:Name="MemoryDataGrid" Margin="32,54,32,32" Background="White" BorderBrush="#FF7C7C7C" VerticalScrollBarVisibility="Auto" Style="{StaticResource MemoryDataGridStyle}">
         	<DataGrid.Columns>
                 <DataGridTextColumn Header="变量名称" Width="*" Binding="{Binding name}"/>
                 <DataGridTextColumn Header="变量值" Width="*" Binding="{Binding val}"/>
