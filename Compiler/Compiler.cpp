@@ -17,7 +17,7 @@ COMPILER_API int nCompiler=0;
 // 这是导出函数的一个示例。
 
 // 编译
-COMPILER_API std::string compile(const wchar_t* code)
+COMPILER_API int compile(const wchar_t* code, char* outResult)
 {
     using namespace ETCompiler;
 
@@ -51,8 +51,10 @@ COMPILER_API std::string compile(const wchar_t* code)
 	while ( machine.Step() ) ;
 
 	outString += machine.GetOutputLog();
-    
-	return outString;
+
+    strcpy(outResult, outString.c_str());
+
+    return 0;
 }
 
 // 这是已导出类的构造函数。

@@ -20,15 +20,19 @@ namespace TestLoader
     /// </summary>
     public partial class MainWindow : Window
     {
-        [DllImport("Compiler.dll", EntryPoint="compile", CharSet=CharSet.Unicode)]
-        public static extern string compile([MarshalAs(UnmanagedType.LPWStr)] string code);
+        [DllImport("Compiler.dll", EntryPoint="compile", CharSet=CharSet.Ansi)]
+        public static extern int compile(string code, StringBuilder ret);
 
         public MainWindow()
         {
             InitializeComponent();
             try
             {
-                System.Windows.MessageBox.Show( compile( "Hello" ).ToString() );
+                string code = "ET";
+                StringBuilder ret = new StringBuilder(50000);
+                ret.Append( "ET, ET" );
+                compile(code, ret);
+                System.Windows.MessageBox.Show( ret.ToString() );
             }
             catch (System.Exception ex)
             {
