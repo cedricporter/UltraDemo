@@ -1,5 +1,37 @@
 #include "ETController.h"
 
+ETCompiler::ETController::ETController()
+{
+    m_pParser = new CParser;
+
+    /************************************************************************/
+    /* 注册调试器                                                            */
+    /************************************************************************/
+
+    // 注册函数
+    auto regist = [&]( IDebugger* debug, std::function< LPVOID(LPVOID) > pfunc )
+    {
+        debug->SetCallBack( pfunc );				// 为调试器设置回调函数
+        m_machine.AddDebugger( debug );			// 将调试器注册到ET机器中
+    };
+
+
+	//// 负责内存信息显示
+	//pMemViewDebugger = new MemoryViewDebugger;
+	//auto func4 = [&]( LPVOID param )->LPVOID
+	//{
+	//	switch ( (int)param )
+	//	{
+	//	case 0:
+	//		return m_pParser;	// 返回语法器
+	//	case 1:
+	//		return &m_pMemSpy;	// 返回内存监控窗口
+	//	}
+
+	//	return NULL;
+	//};
+	//regist( pMemViewDebugger, func4 );
+}
 
 int ETCompiler::ETController::Initialiaze_Machine( const char* code )
 {
@@ -21,8 +53,6 @@ int ETCompiler::ETController::Initialiaze_Machine( const char* code )
 
 bool ETCompiler::ETController::Step()
 {
-    //while (m_machine.Step());
-    //return 0;
     return m_machine.Step();
 }
 

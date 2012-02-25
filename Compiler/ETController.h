@@ -13,10 +13,7 @@ namespace ETCompiler
         IParser     *m_pParser;
         ETMachine   m_machine;
     public:
-        ETController()
-        {
-            m_pParser = new CParser;
-        }
+        ETController();
 
         int Initialiaze_Machine(const char* code);
 
