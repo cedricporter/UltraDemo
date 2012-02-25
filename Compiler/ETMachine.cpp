@@ -7,9 +7,6 @@
 #include "stdafx.h"
 #include "ETMachine.h"
 
-#ifdef _DEBUG
-#define new DEBUG_NEW
-#endif
 
 namespace ETCompiler
 {

@@ -63,6 +63,9 @@
     <ClInclude Include="TreeDef.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="ETMachine.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -102,6 +105,9 @@
       <Filter>头文件</Filter>
     </ClCompile>
     <ClCompile Include="TreeDef.cpp">
+      <Filter>头文件</Filter>
+    </ClCompile>
+    <ClCompile Include="ETMachine.cpp">
       <Filter>头文件</Filter>
     </ClCompile>
   </ItemGroup>
