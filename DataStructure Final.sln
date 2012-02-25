@@ -16,6 +16,7 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UltraDemoInterface", "UltraDemoInterface\UltraDemoInterface.csproj", "{EA2DA8F3-EC72-4EA3-A72D-D3DFF2FFA04D}"
 	ProjectSection(ProjectDependencies) = postProject
 		{7C8C6522-33B4-4A2C-83C5-8208B4941047} = {7C8C6522-33B4-4A2C-83C5-8208B4941047}
+		{B1062EA0-BF01-43F9-97DB-D64A08DDA83C} = {B1062EA0-BF01-43F9-97DB-D64A08DDA83C}
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NewArrayAnimationPlugin", "NewArrayAnimationPlugin\NewArrayAnimationPlugin.csproj", "{B1062EA0-BF01-43F9-97DB-D64A08DDA83C}"
