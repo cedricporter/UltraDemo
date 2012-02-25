@@ -18,20 +18,8 @@
         <GridLength x:Key="SingleWidth">*</GridLength>
         <GridLength x:Key="DoubleWidth">2*</GridLength>
         <GridLength x:Key="AutoWidth">Auto</GridLength>
-        <!--Commands-->
-        <RoutedUICommand x:Key="OutputWindowButtonHotKey" Text="显示或隐藏输出窗口"/>
-        <RoutedUICommand x:Key="MemoryWindowButtonHotKey" Text="显示或隐藏输出窗口"/>
 	</Window.Resources>
-    
-    <Window.InputBindings>
-        <KeyBinding Gesture="Alt+O" Command="{StaticResource OutputWindowButtonHotKey}"/>
-        <KeyBinding Gesture="Alt+M" Command="{StaticResource MemoryWindowButtonHotKey}"/>
-    </Window.InputBindings>
-    
-    <Window.CommandBindings>
-        <CommandBinding Command="{StaticResource OutputWindowButtonHotKey}" Executed="CommandBinding_OutputWindowButtonHotKey_Executed"/>
-        <CommandBinding Command="{StaticResource MemoryWindowButtonHotKey}" Executed="CommandBinding_MemoryWindowButtonHotKey_Executed"/>
-    </Window.CommandBindings>
+
     
     <Window.Triggers>
         
@@ -331,8 +319,8 @@
         </Grid>
     	<Grid x:Name="MainContainer" Margin="0,34,0,0" RenderTransformOrigin="0.5,0.5">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition x:Name="GridLeftCol"  Width="*"></ColumnDefinition>
-                <ColumnDefinition x:Name="GridRightCol"  Width="0*"></ColumnDefinition>
+                <ColumnDefinition x:Name="GridLeftCol"  Width="0*"></ColumnDefinition>
+                <ColumnDefinition x:Name="GridRightCol"  Width="*"></ColumnDefinition>
             </Grid.ColumnDefinitions>
     		<Grid.RenderTransform>
     			<TransformGroup>
@@ -354,24 +342,25 @@
                 <Grid x:Name="DemoControlBar" Height="50" Margin="0" VerticalAlignment="Bottom">
     				<Rectangle Fill="#FF333333" Effect="{StaticResource GeneralBlurEffect}" Margin="0" RadiusX="16" RadiusY="16"/>
     				<Rectangle Fill="{StaticResource LinearWhiteBrush}" Margin="0" RadiusX="16" RadiusY="16"/>
-    				<Button x:Name="PauseButton" HorizontalAlignment="Left" Margin="35.5,0,0,0" Template="{StaticResource CircleButtonTemplate}" ToolTip="暂停" Visibility="Hidden">
-    					<Path Stroke="#333333" Fill="#666666"
-						Data="M 0,0 L 0,12 L 3,12 L 3,0 Z M 6,0 L 6,12 L 9,12 L 9,0 Z"/>
-    				</Button>
-    				<Button x:Name="RunButton" HorizontalAlignment="Left" Margin="35.5,0,0,0" Template="{StaticResource CircleButtonTemplate}" ToolTip="运行">
-    					<Path Stroke="#333333" Fill="#666666" Data="M 0,0 L 0,12 L 10,6 Z"/>
-					</Button>
-    				<Button x:Name="StepButton" HorizontalAlignment="Left" Margin="79.5,0,0,0" Template="{StaticResource CircleButtonTemplate}" ToolTip="单步">
+                    <CheckBox x:Name="RunButton" HorizontalAlignment="Left" Margin="31.5,0,0,0" Template="{StaticResource PlayButtonTemplate}" ToolTip="运行/暂停"
+                    Checked="RunButton_Checked" Unchecked="RunButton_Unchecked"/>
+                    <Button x:Name="StepButton" HorizontalAlignment="Left" Margin="79.5,0,0,0" Template="{StaticResource CircleButtonTemplate}" ToolTip="单步"
+                    Click="StepButton_Click">
     					<Path Stroke="#333333" Fill="#666666"
 						Data="M 0,0 L 0,12 L 8,6 L 0,0 M 8,0 L 8,12 L 10,12 L 10,0 Z"/>		
 					</Button>
-    				<Button x:Name="StopButton" HorizontalAlignment="Left" Margin="123.5,0,0,0" Template="{StaticResource CircleButtonTemplate}" ToolTip="停止">
-    					<Path Stroke="#333333" Fill="#666666" Data="M 0,0 L 0,10 L 10,10 L 10,0 Z"/>			
-					</Button>
+    				<Button x:Name="StopButton" HorizontalAlignment="Left" Margin="123.5,0,0,0" Template="{StaticResource CircleButtonTemplate}" ToolTip="停止"
+                    Click="StopButton_Click">
+                        <Path Stroke="#333333" Fill="#666666" Data="M 0,0 L 0,10 L 10,10 L 10,0 Z"/>
+                    </Button>
                     <CheckBox x:Name="OutputWindowButton" Content="输出窗口" Margin="0,0,150,0" Template="{StaticResource EllipseToggleButton}" HorizontalAlignment="Right" d:LayoutOverrides="Height" Checked="OutputWindowButton_Checked" Unchecked="OutputWindowButton_Unchecked"/>
                     <CheckBox x:Name="MemoryWindowButton" Content="内存窗口" Margin="0,0,30,0" Template="{StaticResource EllipseToggleButton}" HorizontalAlignment="Right" d:LayoutOverrides="Height" Checked="MemoryWindowButton_Checked" Unchecked="MemoryWindowButton_Unchecked"/>
-    				<Slider Margin="216,11,342.5,8" Template="{StaticResource HorizontalSliderTemplate}" Width="225"/>
-    			</Grid>
+                    <Canvas Margin="187,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Width="0" Height="0">
+                        <Slider x:Name="SpeedControlSlider" Margin="0" Canvas.Left="0" Canvas.Top="11" Template="{StaticResource HorizontalSliderTemplate}" Width="225" HorizontalAlignment="Left"
+                        ValueChanged="Slider_ValueChanged" MouseEnter="SpeedControlSlider_MouseEnter" MouseLeave="SpeedControlSlider_MouseLeave"  Maximum="500" SmallChange="1" ToolTip="调节代码运行速度"/>
+                        <TextBlock x:Name="TimeIntervalText" TextWrapping="Wrap" Canvas.Top="-3" Text="500" Canvas.Left="-1" Visibility="Hidden"/>
+                    </Canvas>
+                </Grid>
                 <Grid x:Name="AnimationContainer" Margin="40,40,40,60"/>
     		</Grid>
     		<Grid x:Name="EditorContainer" Grid.Column="0"  RenderTransformOrigin="0.5,0.5">
@@ -388,20 +377,22 @@
     					<Grid Background="#FFE5E5E5">
                             <AvalonEdit:TextEditor
                                 Name="textEditor"
+                                Background="White"
 			                    FontFamily="Consolas"
 			                    FontSize="10pt"
 			                    SyntaxHighlighting="C++"
                                 LineNumbersForeground="Black"
-                                Background="LightGray"
                                 ShowLineNumbers="True">
-
                             </AvalonEdit:TextEditor>
                         </Grid>
     				</TabItem>
-    				<TabItem Header="TabItem" Template="{StaticResource WindowTabItem}">
-    					<Grid Background="#FFE5E5E5"/>
+    				<TabItem Header="中间代码" Template="{StaticResource WindowTabItem}">
+    					<Grid/>
     				</TabItem>
-    			</TabControl>
+                    <TabItem Header="汇编代码" Template="{StaticResource WindowTabItem}">
+                        <Grid/>
+                    </TabItem>
+                </TabControl>
     		</Grid>
             <!--<GridSplitter Grid.Column="1" VerticalAlignment="Stretch" Width="10"/>-->
     	</Grid>
