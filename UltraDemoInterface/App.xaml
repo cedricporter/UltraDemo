@@ -713,8 +713,9 @@
         					<ScrollViewer x:Name="PART_ContentHost" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
         				</Microsoft_Windows_Themes:ListBoxChrome>-->
                         <Grid>
-                            <Rectangle RadiusX="16" RadiusY="16" Fill="White"/>
-                            <ScrollViewer x:Name="PART_ContentHost" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
+                            <Rectangle RadiusX="16" RadiusY="16" Fill="#333333"/>
+                            <Rectangle RadiusX="16" RadiusY="16" Fill="White" Effect="{StaticResource GeneralBlurEffect}"/>
+                            <ScrollViewer Margin="10"  x:Name="PART_ContentHost" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
                         </Grid>
         				<ControlTemplate.Triggers>
         					<!--<Trigger Property="IsEnabled" Value="false">

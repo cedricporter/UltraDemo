@@ -273,6 +273,9 @@ namespace UltraDemoInterface
             {
                 TipBoxText.Text = "编译成功！";
                 (FindResource("ShowTipBox") as Storyboard).Begin();
+                //List<Item> li = etController.GetMemoryItems();
+                //System.Windows.MessageBox.Show(etController.GetMemoryItems().ToString());
+                //memoryWindow.MemoryDataGrid.ItemsSource = etController.GetMemoryItems();
             }
         }
 

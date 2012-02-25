@@ -73,6 +73,7 @@ namespace UltraDemoInterface
         {
             bool isRunning = mainWindow.etController.Step();
             currLineNumber = mainWindow.etController.GetCurrentLine();
+            List<Item> li = mainWindow.etController.GetMemoryItems();
             // 通知编辑窗口更新行号
             // ...
             mainWindow.editorAdapter.ShowLine(true, currLineNumber);
@@ -97,7 +98,6 @@ namespace UltraDemoInterface
             // 初始化
             lastTime = currTime;
             currLineNumber = 0;
-
             state = DebugControlerState.DCS_RUN;
         }
 
