@@ -32,6 +32,8 @@ namespace UltraDemoInterface
         public DebugControler debugControler;
         public Grid animationContainer;
 
+        Boolean isRunning = false;
+
         //MethodInfo beginRender;
         //Object anima;
 
@@ -74,50 +76,6 @@ namespace UltraDemoInterface
                 memoryWindow.Close();
             if (selectAnimationWindow != null)
                 selectAnimationWindow.Close();
-        }
-
-        /// <summary>
-        /// 输出窗口按钮快捷键
-        /// </summary>
-        private void CommandBinding_OutputWindowButtonHotKey_Executed(object sender, ExecutedRoutedEventArgs e)
-        {
-            if (EditorViewButton.IsChecked == true)
-                return;
-            if (OutputWindowButton.IsChecked == false)
-            {
-                OutputWindowButton.RaiseEvent(new RoutedEventArgs(RadioButton.CheckedEvent));
-                //System.Windows.MessageBox.Show(OutputWindowButton.Background.CanFreeze.ToString());
-                try { OutputWindowButton.IsChecked = true; }
-                catch { }
-            }
-            else
-            {
-                OutputWindowButton.RaiseEvent(new RoutedEventArgs(RadioButton.UncheckedEvent));
-                //System.Windows.MessageBox.Show(OutputWindowButton.Background.CanFreeze.ToString());
-                try { OutputWindowButton.IsChecked = false; }
-                catch { }
-            }
-        }
-
-        /// <summary>
-        /// 内存窗口按钮快捷键
-        /// </summary>
-        private void CommandBinding_MemoryWindowButtonHotKey_Executed(object sender, ExecutedRoutedEventArgs e)
-        {
-            if (EditorViewButton.IsChecked == true)
-                return;
-            if (MemoryWindowButton.IsChecked == false)
-            {
-                MemoryWindowButton.RaiseEvent(new RoutedEventArgs(RadioButton.CheckedEvent));
-                try { MemoryWindowButton.IsChecked = true; }
-                catch { }
-            }
-            else
-            {
-                MemoryWindowButton.RaiseEvent(new RoutedEventArgs(RadioButton.UncheckedEvent));
-                try { MemoryWindowButton.IsChecked = false; }
-                catch { }
-            }
         }
 
         /// <summary>
@@ -203,6 +161,95 @@ namespace UltraDemoInterface
         private void MemoryWindowButton_Unchecked(object sender, RoutedEventArgs e)
         {
             HideWindow(memoryWindow);
+        }
+
+        /// <summary>
+        /// 运行/从暂停恢复
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void RunButton_Checked(object sender, RoutedEventArgs e)
+        {
+            // 运行
+            if (isRunning == false)
+            {
+                isRunning = true;
+                animationPluginManager.BeginRender();
+                debugControler.Run();
+                StepButton.IsEnabled = false;
+            }
+            // 从暂停恢复
+            else
+            {
+                debugControler.Run();
+                StepButton.IsEnabled = false;
+            }
+        }
+
+        /// <summary>
+        /// 暂停
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void RunButton_Unchecked(object sender, RoutedEventArgs e)
+        {
+            debugControler.Pause();
+            StepButton.IsEnabled = true;
+        }
+
+        /// <summary>
+        /// 单步
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void StepButton_Click(object sender, RoutedEventArgs e)
+        {
+            debugControler.Step();
+        }
+
+        /// <summary>
+        /// 停止
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void StopButton_Click(object sender, RoutedEventArgs e)
+        {
+            isRunning = false;
+            debugControler.Stop();
+            animationPluginManager.StopRender();
+            StepButton.IsEnabled = true;
+            RunButton.IsChecked = false;
+        }
+
+        /// <summary>
+        /// 调节代码运行速度
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Slider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+            Double timeInterval = SpeedControlSlider.Maximum - e.NewValue;
+            debugControler.SetTimeInterval(timeInterval);
+            Canvas.SetLeft(TimeIntervalText, e.NewValue / 2.42);
+            TimeIntervalText.Text = ((int)timeInterval).ToString();
+        }
+        /// <summary>
+        /// 显示Slider的数值提示
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void SpeedControlSlider_MouseEnter(object sender, MouseEventArgs e)
+        {
+            TimeIntervalText.Visibility = Visibility.Visible;
+        }
+        /// <summary>
+        /// 隐藏Slider的数值提示
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void SpeedControlSlider_MouseLeave(object sender, MouseEventArgs e)
+        {
+            TimeIntervalText.Visibility = Visibility.Hidden;
         }
 
     }

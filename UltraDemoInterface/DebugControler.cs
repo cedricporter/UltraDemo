@@ -129,7 +129,7 @@ namespace UltraDemoInterface
         MainWindow mainWindow;
 
         DebugControlerState state = DebugControlerState.DCS_STOP;
-        Double timeInterval = Double.NaN;
+        Double timeInterval = 500;
         Double currTime = Double.NaN;
         Double lastTime = Double.NaN;
 
