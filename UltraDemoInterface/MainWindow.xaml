@@ -18,6 +18,21 @@
         <GridLength x:Key="SingleWidth">*</GridLength>
         <GridLength x:Key="DoubleWidth">2*</GridLength>
         <GridLength x:Key="AutoWidth">Auto</GridLength>
+        <!--Storyboards-->
+        <Storyboard x:Key="ShowTipBox">
+        	<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="TipBox">
+        		<EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+        		<EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="1"/>
+        		<EasingDoubleKeyFrame KeyTime="0:0:1.3" Value="1"/>
+        		<EasingDoubleKeyFrame KeyTime="0:0:1.6" Value="0"/>
+        	</DoubleAnimationUsingKeyFrames>
+        	<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="TipBox">
+        		<DiscreteObjectKeyFrame KeyTime="0" Value="{x:Static Visibility.Hidden}"/>
+        		<DiscreteObjectKeyFrame KeyTime="0:0:0.3" Value="{x:Static Visibility.Visible}"/>
+        		<DiscreteObjectKeyFrame KeyTime="0:0:1.3" Value="{x:Static Visibility.Visible}"/>
+        		<DiscreteObjectKeyFrame KeyTime="0:0:1.6" Value="{x:Static Visibility.Hidden}"/>
+        	</ObjectAnimationUsingKeyFrames>
+        </Storyboard>
 	</Window.Resources>
 
     
@@ -270,7 +285,7 @@
                 </BeginStoryboard>
             </EventTrigger.Actions>
         </EventTrigger>
-        
+
     </Window.Triggers>
     
     <Grid x:Name="WindowRoot">
@@ -375,24 +390,26 @@
     			<TabControl x:Name="EditorTabControl" Margin="0">
     				<TabItem Header="源代码" Template="{StaticResource WindowTabItem}">
     					<Grid Background="#FFE5E5E5">
-                            <AvalonEdit:TextEditor
-                                Name="textEditor"
-                                Background="White"
-			                    FontFamily="Consolas"
-			                    FontSize="10pt"
-			                    SyntaxHighlighting="C++"
-                                LineNumbersForeground="Black"
-                                ShowLineNumbers="True">
-                            </AvalonEdit:TextEditor>
-                        </Grid>
+    						<AvalonEdit:TextEditor
+    							x:Name="textEditor"
+    							Background="White"
+    							FontFamily="Consolas"
+    							FontSize="10pt"
+    							SyntaxHighlighting="C++"
+    							LineNumbersForeground="Black"
+    							ShowLineNumbers="True"/>
+    					</Grid>
     				</TabItem>
     				<TabItem Header="中间代码" Template="{StaticResource WindowTabItem}">
     					<Grid/>
     				</TabItem>
-                    <TabItem Header="汇编代码" Template="{StaticResource WindowTabItem}">
-                        <Grid/>
-                    </TabItem>
+    				<TabItem Header="汇编代码" Template="{StaticResource WindowTabItem}">
+    					<Grid/>
+    				</TabItem>
                 </TabControl>
+    			<Border x:Name="TipBox" BorderThickness="1" Height="35" Width="243" Background="#7E000000" Margin="0" HorizontalAlignment="Center" VerticalAlignment="Center" Visibility="Hidden">
+    				<TextBlock x:Name="TipBoxText" TextWrapping="Wrap" Margin="0" d:LayoutOverrides="Width, Height" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White" FontSize="14.667"><Run Language="zh-cn" Text="编译完成！"/></TextBlock>
+    			</Border>
     		</Grid>
             <!--<GridSplitter Grid.Column="1" VerticalAlignment="Stretch" Width="10"/>-->
     	</Grid>

@@ -260,11 +260,19 @@ namespace UltraDemoInterface
         /// <param name="e"></param>
         private void MenuCompile_Click(object sender, RoutedEventArgs e)
         {
-            //System.Windows.MessageBox.Show(editorAdapter.GetAllText());
+            TipBoxText.Text = "正在编译…";
+            (FindResource("ShowTipBox") as Storyboard).Begin();
             StringBuilder error_message = new StringBuilder( 128 );
-            if ( etController.Initilialize_Machine(editorAdapter.GetAllText(), error_message) != 0 )
+            int isCompileFinished = etController.Initilialize_Machine(editorAdapter.GetAllText(), error_message);
+            
+            if ( isCompileFinished != 0 )
             {
                 System.Windows.MessageBox.Show( error_message.ToString() );
+            }
+            else
+            {
+                TipBoxText.Text = "编译成功！";
+                (FindResource("ShowTipBox") as Storyboard).Begin();
             }
         }
 
