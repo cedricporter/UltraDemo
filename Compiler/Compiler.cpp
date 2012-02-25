@@ -3,18 +3,66 @@
 
 #include "stdafx.h"
 #include "Compiler.h"
-#include "Parser.h" 
-#include "ETMachine.h"
-#include "SymbolTable.h"
-#include "Imm2asm.h"
-#include <string>
+#include "ETController.h"
+
+// 获取通用寄存器
+COMPILER_API unsigned long *get_reg(ETCompiler::ETController* ctrl)
+{
+    return ctrl->Getreg();
+}
+
+// 获取调试寄存器
+COMPILER_API unsigned long *get_dreg(ETCompiler::ETController* ctrl)
+{
+    return ctrl->Getdreg();
+}
 
 
 
-// 这是导出变量的一个示例
-COMPILER_API int nCompiler=0;
 
-// 这是导出函数的一个示例。
+
+/************************************************************************/
+/* 解释器相关导出函数                                                    */
+/************************************************************************/
+
+// 创建解释器
+COMPILER_API ETCompiler::ETController* create_controller()
+{
+    return new ETCompiler::ETController;
+}
+
+// 销毁解释器
+COMPILER_API void destroy_controller(ETCompiler::ETController* ctrl)
+{
+    delete ctrl;
+}
+
+// 初始化解释器
+//@param code 源代码
+COMPILER_API int initial_machine(ETCompiler::ETController* ctrl, const char* code)
+{
+    ctrl->Initialiaze_Machine(code);
+
+    return 0;
+}
+
+// 单步执行
+COMPILER_API bool step(ETCompiler::ETController* ctrl)
+{
+    bool ret = ctrl->Step();
+    if (!ret)
+        MessageBox(0, "Fuck", "f", 0);
+
+    return ret;
+    //return ctrl->Step();
+}
+
+// 获取当前行号
+COMPILER_API int get_current_line(ETCompiler::ETController* ctrl)
+{
+    return ctrl->GetCurrentLine();
+}
+
 
 // 编译
 COMPILER_API int compile(const wchar_t* code, char* outResult)

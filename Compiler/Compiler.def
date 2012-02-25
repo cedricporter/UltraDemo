@@ -2,3 +2,12 @@ LIBRARY Compiler
 
 EXPORTS
 compile @1
+create_controller @2
+destroy_controller @3
+initial_machine @4
+step @5
+get_current_line @6
+get_reg @7
+get_dreg @8
+
+

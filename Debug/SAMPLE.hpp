@@ -23,7 +23,7 @@ int f( int n, int start, int goal, int tmp, int max )
 
 int main()
 {	
-	f( 5, 1, 3, 2, 5 );
+	f( 3, 1, 3, 2, 3 );
 
 
 	return 0;

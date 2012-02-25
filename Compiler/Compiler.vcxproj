@@ -46,7 +46,7 @@
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
-      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;_USRDLL;COMPILER_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
@@ -83,6 +83,7 @@
     <ClInclude Include="Compiler.h" />
     <ClInclude Include="Debugger.h" />
     <ClInclude Include="def.h" />
+    <ClInclude Include="ETController.h" />
     <ClInclude Include="ETMachine.h" />
     <ClInclude Include="FileReader.h" />
     <ClInclude Include="Imm2asm.h" />
@@ -108,6 +109,7 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
       </PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="ETController.cpp" />
     <ClCompile Include="ETMachine.cpp" />
     <ClCompile Include="FileReader.cpp" />
     <ClCompile Include="Imm2asm.cpp" />

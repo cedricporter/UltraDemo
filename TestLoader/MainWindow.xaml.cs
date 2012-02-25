@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,19 +21,22 @@ namespace TestLoader
     /// </summary>
     public partial class MainWindow : Window
     {
-        [DllImport("Compiler.dll", EntryPoint="compile", CharSet=CharSet.Ansi)]
-        public static extern int compile(string code, StringBuilder ret);
+        ETController controller = new ETController();
 
         public MainWindow()
         {
             InitializeComponent();
+
+            System.IO.StreamReader sr = new System.IO.StreamReader("SAMPLE.hpp");
+            controller.Initilialize_Machine( sr.ReadToEnd() );
             try
             {
-                string code = "ET";
-                StringBuilder ret = new StringBuilder(50000);
-                ret.Append( "ET, ET" );
-                compile(code, ret);
-                System.Windows.MessageBox.Show( ret.ToString() );
+                string outString = "";
+                while (controller.Step())
+                {
+                    //System.Diagnostics.Debug.WriteLine( controller.GetCurrentLine().ToString() );
+                }
+                System.Windows.MessageBox.Show( outString );
             }
             catch (System.Exception ex)
             {

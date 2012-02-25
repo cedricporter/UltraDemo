@@ -66,6 +66,9 @@
     <ClInclude Include="ETMachine.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="ETController.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -109,6 +112,9 @@
     </ClCompile>
     <ClCompile Include="ETMachine.cpp">
       <Filter>头文件</Filter>
+    </ClCompile>
+    <ClCompile Include="ETController.cpp">
+      <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
