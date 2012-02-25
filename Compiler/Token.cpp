@@ -7,10 +7,6 @@
 #include "stdafx.h"
 #include "Token.h"
 
-#ifdef _DEBUG
-#define new DEBUG_NEW
-#endif
-
 namespace ETCompiler
 {
 

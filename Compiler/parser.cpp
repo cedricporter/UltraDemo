@@ -8,10 +8,6 @@
 #include "Parser.h"
 #include <fstream>
 
-#ifdef _DEBUG
-#define new DEBUG_NEW
-#endif
-
 namespace ETCompiler
 {
 

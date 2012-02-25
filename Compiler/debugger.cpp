@@ -13,9 +13,6 @@
 #include <string>
 #include "MessageDefinition.h"
 
-#ifdef _DEBUG
-#define new DEBUG_NEW
-#endif
 
 namespace ETCompiler
 {

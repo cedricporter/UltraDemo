@@ -15,7 +15,7 @@
 #include <string>
 #include <tchar.h>
 #include <vector>
-#include <afx.h>
+//#include <afx.h>
 
 #undef _UNICODE
 

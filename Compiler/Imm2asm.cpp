@@ -1,9 +1,6 @@
 #include "stdafx.h"
 #include "Imm2asm.h"
 
-#ifdef _DEBUG
-#define new DEBUG_NEW
-#endif
 
 namespace ETCompiler
 {

@@ -9,9 +9,6 @@
 #include "Scanner.h"
 #include "parser.h"
 
-#ifdef _DEBUG
-#define new DEBUG_NEW
-#endif
 
 namespace ETCompiler
 {

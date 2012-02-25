@@ -9,10 +9,6 @@
 #include <algorithm>
 #include <iostream>
 
-#ifdef _DEBUG
-#define new DEBUG_NEW
-#endif
-
 #if SCANNER_REPORT
 #define PRINT_TOKEN() 	PrintToken();
 #else
