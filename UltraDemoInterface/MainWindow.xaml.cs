@@ -267,7 +267,7 @@ namespace UltraDemoInterface
             
             if ( isCompileFinished != 0 )
             {
-                System.Windows.MessageBox.Show( error_message.ToString() );
+                System.Windows.MessageBox.Show( isCompileFinished.ToString() + "  " + error_message.ToString() );
             }
             else
             {
