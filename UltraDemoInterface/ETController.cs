@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Runtime.InteropServices;
 
-namespace TestLoader
+namespace UltraDemoInterface
 {
-    class ETController
+    public class ETController
     {
         [DllImport("Compiler.dll", EntryPoint="get_dreg")]
         private static extern System.UInt64[] get_dreg(IntPtr ctrl);
@@ -54,8 +54,6 @@ namespace TestLoader
         {
             return get_current_line( controller );
         }
-
-
 
     }
 }

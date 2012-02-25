@@ -288,9 +288,9 @@
                     <MenuItem Command="SaveAs"/>
                 </MenuItem>
                 <MenuItem Header="_编译" Style="{StaticResource TopBarMenuItemStyle}">
-                    <MenuItem Header="编译代码">
+                    <MenuItem Name="MenuCompile"  Header="编译代码" Click="MenuCompile_Click">
                     </MenuItem>
-                    <MenuItem Header="选择动画" Click="MenuItem_Click">
+                    <MenuItem Name="MenuSelectAnimation"  Header="选择动画" Click="MenuSelectAnimation_Click">
                     </MenuItem>
                 </MenuItem>
                 <MenuItem Header="_运行" Style="{StaticResource TopBarMenuItemStyle}">
@@ -319,8 +319,8 @@
         </Grid>
     	<Grid x:Name="MainContainer" Margin="0,34,0,0" RenderTransformOrigin="0.5,0.5">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition x:Name="GridLeftCol"  Width="0*"></ColumnDefinition>
-                <ColumnDefinition x:Name="GridRightCol"  Width="*"></ColumnDefinition>
+                <ColumnDefinition x:Name="GridLeftCol"  Width="*"></ColumnDefinition>
+                <ColumnDefinition x:Name="GridRightCol"  Width="0*"></ColumnDefinition>
             </Grid.ColumnDefinitions>
     		<Grid.RenderTransform>
     			<TransformGroup>

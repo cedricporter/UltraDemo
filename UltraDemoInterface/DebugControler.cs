@@ -71,29 +71,14 @@ namespace UltraDemoInterface
         /// </summary>
         public void ExecuteOneLine()
         {
-            Double currLineNumber = FetchLineNumber();
-            while (currLineNumber == lastLineNumber)
-            {
-                // do something
-                //FetchMemoryValue();
-                //FetchOutput();
-                currLineNumber = FetchLineNumber();
-            }
-        }
+            bool isRunning = mainWindow.etController.Step();
+            currLineNumber = mainWindow.etController.GetCurrentLine();
+            // 通知编辑窗口更新行号
+            // ...
+            mainWindow.editorAdapter.ShowLine(true, currLineNumber);
 
-        public Double FetchLineNumber()
-        {
-            return Double.NaN;
-        }
-
-        public Dictionary<String, String>[] FetchMemoryValue()
-        {
-            return null;
-        }
-
-        public String FetchOutput()
-        {
-            return null;
+            if (isRunning == false)
+                Stop();
         }
 
         /// <summary>
@@ -111,7 +96,7 @@ namespace UltraDemoInterface
         {
             // 初始化
             lastTime = currTime;
-            lastLineNumber = 0;
+            currLineNumber = 0;
 
             state = DebugControlerState.DCS_RUN;
         }
@@ -160,7 +145,7 @@ namespace UltraDemoInterface
         Double timeInterval = 500;
         Double currTime = Double.NaN;
         Double lastTime = Double.NaN;
-        Double lastLineNumber = 0;
+        int currLineNumber = 0;
 
     }
 }

@@ -30,7 +30,9 @@ namespace UltraDemoInterface
         public SelectAnimationWindow selectAnimationWindow;
         public AnimationPluginManager animationPluginManager;
         public DebugControler debugControler;
+        public ETController etController;
         public Grid animationContainer;
+        public EditorAdapter editorAdapter;
 
         Boolean isRunning = false;
 
@@ -38,8 +40,6 @@ namespace UltraDemoInterface
         //Object anima;
 
         //Rectangle fuckr;
-
-        private EditorAdapter editorAdapter;
 
         public MainWindow()
         {
@@ -55,8 +55,9 @@ namespace UltraDemoInterface
             animationContainer = (Grid)FindName("AnimationContainer");
             animationPluginManager = new AnimationPluginManager(this);
             animationPluginManager.LoadPlugins("AnimationPlugins");
-            // 初始化debug控制器
+            // 初始化控制器
             debugControler = new DebugControler(this);
+            etController = new ETController();
 
             // 连接回调函数
             CompositionTarget.Rendering += animationPluginManager.RenderAnimationCallback;
@@ -117,7 +118,7 @@ namespace UltraDemoInterface
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void MenuItem_Click(object sender, RoutedEventArgs e)
+        private void MenuSelectAnimation_Click(object sender, RoutedEventArgs e)
         {
             selectAnimationWindow.isWindowFading = false;
             ShowWindow(selectAnimationWindow);
@@ -250,6 +251,17 @@ namespace UltraDemoInterface
         private void SpeedControlSlider_MouseLeave(object sender, MouseEventArgs e)
         {
             TimeIntervalText.Visibility = Visibility.Hidden;
+        }
+
+        /// <summary>
+        /// 编译代码
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void MenuCompile_Click(object sender, RoutedEventArgs e)
+        {
+            //System.Windows.MessageBox.Show(editorAdapter.GetAllText());
+            etController.Initilialize_Machine(editorAdapter.GetAllText());
         }
 
     }
