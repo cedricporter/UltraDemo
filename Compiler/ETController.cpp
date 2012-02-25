@@ -47,7 +47,7 @@ int ETCompiler::ETController::Initialiaze_Machine( const char* code, char* error
     catch (char* e)
     {
         strcpy(error_message, e);
-        return m_pParser->
+        return m_pParser->GetCurrentLine();
     }
 
     m_machine.Reset();
