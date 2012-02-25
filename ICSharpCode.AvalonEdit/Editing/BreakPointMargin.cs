@@ -110,9 +110,6 @@ namespace ICSharpCode.AvalonEdit.Editing
                         drawingContext.DrawEllipse( SolidBrush, pen, new Point( 10, line.VisualTop - TxEditor.TextArea.TextView.VerticalOffset + LineHeight / 2), 5, 5 );
                 }
             }
-
-            
-
         }
 
 		

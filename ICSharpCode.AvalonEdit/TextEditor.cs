@@ -1152,5 +1152,9 @@ namespace ICSharpCode.AvalonEdit
 				}
 			}
 		}
+
+
+
+
 	}
 }

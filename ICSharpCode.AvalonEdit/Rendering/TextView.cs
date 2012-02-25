@@ -55,7 +55,9 @@ namespace ICSharpCode.AvalonEdit.Rendering
 			
 			layers = new LayerCollection(this);
 			InsertLayer(textLayer, KnownLayer.Text, LayerInsertionPosition.Replace);
-			
+
+            IsShowLine = false;
+            ShowLineNum = 1;
 			this.hoverLogic = new MouseHoverLogic(this);
 			this.hoverLogic.MouseHover += (sender, e) => RaiseHoverEventPair(e, PreviewMouseHoverEvent, MouseHoverEvent);
 			this.hoverLogic.MouseHoverStopped += (sender, e) => RaiseHoverEventPair(e, PreviewMouseHoverStoppedEvent, MouseHoverStoppedEvent);
@@ -765,7 +767,9 @@ namespace ICSharpCode.AvalonEdit.Rendering
 		public bool VisualLinesValid {
 			get { return visibleVisualLines != null; }
 		}
-		
+
+        private bool IsShowLine;
+        int ShowLineNum;
 		/// <summary>
 		/// Occurs when the TextView is about to be measured and will regenerate its visual lines.
 		/// This event may be used to mark visual lines as invalid that would otherwise be reused.
@@ -1126,7 +1130,19 @@ namespace ICSharpCode.AvalonEdit.Rendering
 		public IList<IBackgroundRenderer> BackgroundRenderers {
 			get { return backgroundRenderers; }
 		}
-		
+        /// <summary>
+        /// Make a concretate line striking
+        /// </summary>
+        /// <param name="IsShow"></param>
+        /// <param name="LineNum"></param>
+        public void ShowLine( bool IsShow = false, int LineNum = 1 )
+        {
+            IsShowLine = IsShow;
+            ShowLineNum = LineNum;
+            InvalidateVisual();
+        
+        }
+
 		void BackgroundRenderer_Added(IBackgroundRenderer renderer)
 		{
 			ConnectToTextView(renderer);
@@ -1143,7 +1159,26 @@ namespace ICSharpCode.AvalonEdit.Rendering
 		protected override void OnRender(DrawingContext drawingContext)
 		{
 			RenderBackground(drawingContext, KnownLayer.Background);
+            if (IsShowLine)
+            {
+                double lineheight = 0;
+                foreach ( VisualLine line in allVisualLines )
+                {
+                    lineheight = line.Height;
+                    break;
+                }
+                Brush brush = Brushes.AliceBlue;
+                Pen pen = new Pen();
+                double x =0;
+                double y = 0;
+                x = this.ActualWidth;
+                y = ShowLineNum * lineheight - scrollOffset.Y;
+                Rect rect = new Rect( new Point( 0, y - lineheight ), new Point( x, y ) );
+                drawingContext.DrawRectangle( brush, pen, rect );
+            }
+
 		}
+
 		
 		internal void RenderBackground(DrawingContext drawingContext, KnownLayer layer)
 		{
@@ -1817,5 +1852,7 @@ namespace ICSharpCode.AvalonEdit.Rendering
 				Redraw();
 			}
 		}
+
+
 	}
 }

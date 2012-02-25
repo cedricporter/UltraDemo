@@ -50,12 +50,13 @@ namespace ICSharpCode.AvalonEdit.Editing
         }
 		
 		/// <inheritdoc/>
-		protected override void OnRender(DrawingContext drawingContext)
-		{
-			TextView textView = this.TextView;
-			Size renderSize = this.RenderSize;
-			if (textView != null && textView.VisualLinesValid) {
-				var foreground = (Brush)GetValue(Control.ForegroundProperty);
+        protected override void OnRender( DrawingContext drawingContext )
+        {
+            TextView textView = this.TextView;
+            Size renderSize = this.RenderSize;
+            if ( textView != null && textView.VisualLinesValid )
+            {
+                var foreground = (Brush)GetValue( Control.ForegroundProperty );
                 foreach ( VisualLine line in textView.VisualLines )
                 {
                     int lineNumber = line.FirstDocumentLine.LineNumber;

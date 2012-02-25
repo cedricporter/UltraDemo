@@ -50,7 +50,7 @@ namespace ICSharpCode.AvalonEdit.Editing
         /// </summary>
         /// <param name="p"></param>
         /// <returns></returns>
-        public int getCurrentLineNum(Point p)
+        public int getCurrentLineNum( Point p )
         {
             return (int)( ( textEditor.VerticalOffset + p.Y ) / getLineHeight() ) + 1;
         }
@@ -63,7 +63,7 @@ namespace ICSharpCode.AvalonEdit.Editing
         {
             return bkM.GetBreakPointList();
         }
-        
+
         /// <summary>
         /// Get the text in the editor
         /// </summary>
@@ -78,7 +78,7 @@ namespace ICSharpCode.AvalonEdit.Editing
         /// </summary>
         /// <param name="LineNum"></param>
         /// <returns></returns>
-        public string GetTextByLineNum(int LineNum)
+        public string GetTextByLineNum( int LineNum )
         {
             if ( LineNum > textEditor.LineCount )
                 return "";
@@ -93,17 +93,42 @@ namespace ICSharpCode.AvalonEdit.Editing
         /// </summary>
         /// <param name="LineNum"></param>
         /// <returns></returns>
-        public bool SelectOneLine(int LineNum)
+        public bool SelectOneLine( int LineNum )
         {
             if ( LineNum > textEditor.LineCount )
                 return false;
+            int minVline = (int)( ( textEditor.VerticalOffset ) / getLineHeight() ) + 1;
+            int maxVline = minVline + textEditor.LineCount;
+            if ( LineNum > maxVline || LineNum < minVline )
+            {
+                textEditor.ScrollToLine( LineNum );
+            }
             int offset = textEditor.TextArea.TextView.Document.GetLineByNumber( LineNum ).Offset;
             int length = textEditor.TextArea.TextView.Document.GetLineByNumber( LineNum ).Length;
             textEditor.Select( offset, length );
             return true;
         }
 
-        
+        /// <summary>
+        /// Present a line by highlight the background
+        /// </summary>
+        /// <param name="IsShow"></param>
+        /// <param name="LineNum"></param>
+        public void ShowLine( bool IsShow, int LineNum )
+        {
+            int minVline = (int)( ( textEditor.VerticalOffset) / getLineHeight() ) + 1;
+            int maxVline = minVline + textEditor.LineCount;
+            if (LineNum > maxVline || LineNum < minVline)
+            {
+                textEditor.ScrollToLine( LineNum );
+            }
+            textEditor.TextArea.TextView.ShowLine( IsShow, LineNum );
+        }
+
+
+
 
     }
+
+    
 }
