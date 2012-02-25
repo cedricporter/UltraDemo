@@ -1,0 +1,4 @@
+LIBRARY Compiler
+
+EXPORTS
+compile @1
