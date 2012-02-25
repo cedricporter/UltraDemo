@@ -22,6 +22,9 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ICSharpCode.AvalonEdit", "ICSharpCode.AvalonEdit\ICSharpCode.AvalonEdit.csproj", "{6C55B776-26D4-4DB3-A6AB-87E783B2F3D1}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestLoader", "TestLoader\TestLoader.csproj", "{8A2AF592-144C-4617-BFF9-7B8C22029C4C}"
+	ProjectSection(ProjectDependencies) = postProject
+		{7C8C6522-33B4-4A2C-83C5-8208B4941047} = {7C8C6522-33B4-4A2C-83C5-8208B4941047}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

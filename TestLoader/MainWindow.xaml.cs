@@ -11,6 +11,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Runtime.InteropServices;
 
 namespace TestLoader
 {
@@ -19,9 +20,20 @@ namespace TestLoader
     /// </summary>
     public partial class MainWindow : Window
     {
+        [DllImport("Compiler.dll", EntryPoint="compile", CharSet=CharSet.Unicode)]
+        public static extern int compile([MarshalAs(UnmanagedType.LPWStr)] string code);
+
         public MainWindow()
         {
             InitializeComponent();
+            try
+            {
+                System.Windows.MessageBox.Show( compile( "Hello" ).ToString() );
+            }
+            catch (System.Exception ex)
+            {
+                System.Windows.MessageBox.Show( ex.Message.ToString() );
+            }
         }
     }
 }

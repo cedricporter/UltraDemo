@@ -9,12 +9,9 @@
 COMPILER_API int nCompiler=0;
 
 // 这是导出函数的一个示例。
-COMPILER_API int fnCompiler(void)
-{
-	return 42;
-}
 
-COMPILER_API int compile(const char* code)
+// 编译
+COMPILER_API int compile(const wchar_t* code)
 {
     
 	return 42;
