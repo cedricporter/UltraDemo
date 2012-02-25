@@ -8,8 +8,8 @@ namespace UltraDemoInterface
 {
     public class Item
     {
-        public string name;
-        public string val;
+        public string name { get; set; }
+        public string val { get; set; }
 
         public Item(string n, string v)
         {

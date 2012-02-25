@@ -289,6 +289,9 @@
     </Window.Triggers>
     
     <Grid x:Name="WindowRoot">
+    	<Border x:Name="TipBox" BorderThickness="1" Background="#7E000000" Margin="0" HorizontalAlignment="Center" VerticalAlignment="Center" Padding="15" Panel.ZIndex="10" Visibility="Hidden" MinWidth="240">
+    		<TextBlock x:Name="TipBoxText" TextWrapping="Wrap" Margin="0" d:LayoutOverrides="Width, Height" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White" FontSize="14.667"><Run Language="zh-cn" Text="编译完成！"/></TextBlock>
+    	</Border>
     	<Grid x:Name="TopBar" Margin="0" VerticalAlignment="Top" Height="30" Panel.ZIndex="10">
     		<Rectangle Fill="#FF333333" RadiusY="16" RadiusX="16" Effect="{StaticResource GeneralDropShadowEffect}"/>
     		<Rectangle Fill="{StaticResource LinearWhiteBrush}" RadiusY="16" RadiusX="16" VerticalAlignment="Bottom" Height="60"/>
@@ -303,10 +306,8 @@
                     <MenuItem Command="SaveAs"/>
                 </MenuItem>
                 <MenuItem Header="_编译" Style="{StaticResource TopBarMenuItemStyle}">
-                    <MenuItem Name="MenuCompile"  Header="编译代码" Click="MenuCompile_Click">
-                    </MenuItem>
-                    <MenuItem Name="MenuSelectAnimation"  Header="选择动画" Click="MenuSelectAnimation_Click">
-                    </MenuItem>
+                    <MenuItem x:Name="MenuCompile"  Header="编译代码" Click="MenuCompile_Click"/>
+                    <MenuItem x:Name="MenuSelectAnimation"  Header="选择动画" Click="MenuSelectAnimation_Click"/>
                 </MenuItem>
                 <MenuItem Header="_运行" Style="{StaticResource TopBarMenuItemStyle}">
                     <MenuItem Header="运行">
@@ -334,8 +335,8 @@
         </Grid>
     	<Grid x:Name="MainContainer" Margin="0,34,0,0" RenderTransformOrigin="0.5,0.5">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition x:Name="GridLeftCol"  Width="*"></ColumnDefinition>
-                <ColumnDefinition x:Name="GridRightCol"  Width="0*"></ColumnDefinition>
+                <ColumnDefinition x:Name="GridLeftCol"  Width="0*"/>
+                <ColumnDefinition x:Name="GridRightCol"  Width="*"/>
             </Grid.ColumnDefinitions>
     		<Grid.RenderTransform>
     			<TransformGroup>
@@ -372,7 +373,7 @@
                     <CheckBox x:Name="MemoryWindowButton" Content="内存窗口" Margin="0,0,30,0" Template="{StaticResource EllipseToggleButton}" HorizontalAlignment="Right" d:LayoutOverrides="Height" Checked="MemoryWindowButton_Checked" Unchecked="MemoryWindowButton_Unchecked"/>
                     <Canvas Margin="187,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Width="0" Height="0">
                         <Slider x:Name="SpeedControlSlider" Margin="0" Canvas.Left="0" Canvas.Top="11" Template="{StaticResource HorizontalSliderTemplate}" Width="225" HorizontalAlignment="Left"
-                        ValueChanged="Slider_ValueChanged" MouseEnter="SpeedControlSlider_MouseEnter" MouseLeave="SpeedControlSlider_MouseLeave"  Maximum="500" SmallChange="1" ToolTip="调节代码运行速度"/>
+                        ValueChanged="Slider_ValueChanged" MouseEnter="SpeedControlSlider_MouseEnter" MouseLeave="SpeedControlSlider_MouseLeave"  Maximum="500" SmallChange="1" ToolTip="调节代码运行速度" />
                         <TextBlock x:Name="TimeIntervalText" TextWrapping="Wrap" Canvas.Top="-3" Text="500" Canvas.Left="-1" Visibility="Hidden"/>
                     </Canvas>
                 </Grid>
@@ -407,9 +408,6 @@
     					<Grid/>
     				</TabItem>
                 </TabControl>
-    			<Border x:Name="TipBox" BorderThickness="1" Height="35" Width="243" Background="#7E000000" Margin="0" HorizontalAlignment="Center" VerticalAlignment="Center" Visibility="Hidden">
-    				<TextBlock x:Name="TipBoxText" TextWrapping="Wrap" Margin="0" d:LayoutOverrides="Width, Height" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White" FontSize="14.667"><Run Language="zh-cn" Text="编译完成！"/></TextBlock>
-    			</Border>
     		</Grid>
             <!--<GridSplitter Grid.Column="1" VerticalAlignment="Stretch" Width="10"/>-->
     	</Grid>

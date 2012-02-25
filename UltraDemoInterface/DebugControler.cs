@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Windows.Media;
+using System.Windows.Media.Animation;
+using System.Windows.Controls;
 
 /**
 @date		:	2012/02/24
@@ -71,20 +73,32 @@ namespace UltraDemoInterface
         /// </summary>
         public void ExecuteOneLine()
         {
+            // 调用Dll的单步
             bool isRunning = mainWindow.etController.Step();
-            
             // 更新内存窗口
             if (mainWindow.memoryWindow.IsVisible == true)
             {
-                List<Item> li = mainWindow.etController.GetMemoryItems();
-                mainWindow.memoryWindow.MemoryDataGrid.ItemsSource = li;
-            }
-            
+                mainWindow.memoryWindow.MemoryDataGrid.ItemsSource = mainWindow.etController.GetMemoryItems();
+            } 
             // 高亮编辑器的相应行
             if (mainWindow.DemoViewButton.IsChecked != true)
             {
                 currLineNumber = mainWindow.etController.GetCurrentLine();
                 mainWindow.editorAdapter.ShowLine(true, currLineNumber);
+            }
+            // 更新断点列表并提供断点服务
+            breakPointList = mainWindow.editorAdapter.getBreakPointList();
+            foreach (int bp in breakPointList)
+            {
+                if (bp == currLineNumber)
+                {
+                    state = DebugControlerState.DCS_STOP;
+                    mainWindow.StepButton.IsEnabled = true;
+                    mainWindow.RunButton.IsChecked = false;
+                    mainWindow.TipBoxText.Text = "到达断点！";
+                    (mainWindow.FindResource("ShowTipBox") as Storyboard).Begin();
+                    break;
+                }
             }
 
             if (isRunning == false)
@@ -106,7 +120,6 @@ namespace UltraDemoInterface
         {
             // 初始化
             lastTime = currTime;
-            currLineNumber = 0;
             state = DebugControlerState.DCS_RUN;
         }
 
@@ -115,6 +128,8 @@ namespace UltraDemoInterface
         /// </summary>
         public void Step()
         {
+            // 初始化
+            lastTime = currTime;
             state = DebugControlerState.DCS_STEP;
         }
 
@@ -141,6 +156,9 @@ namespace UltraDemoInterface
         {
             state = DebugControlerState.DCS_STOP;
             // 释放资源
+            currLineNumber = 0;
+            mainWindow.memoryWindow.MemoryDataGrid.ItemsSource = null;
+            breakPointList = null;
         }
 
         public DebugControler(MainWindow mainWindow)
@@ -155,6 +173,7 @@ namespace UltraDemoInterface
         Double currTime = Double.NaN;
         Double lastTime = Double.NaN;
         int currLineNumber = 0;
+        List<int> breakPointList = null;
 
     }
 }

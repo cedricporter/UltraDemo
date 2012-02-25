@@ -230,6 +230,8 @@ namespace UltraDemoInterface
         private void Slider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
             Double timeInterval = SpeedControlSlider.Maximum - e.NewValue;
+            if (timeInterval < 10)
+                timeInterval = 10;
             debugControler.SetTimeInterval(timeInterval);
             Canvas.SetLeft(TimeIntervalText, e.NewValue / 2.42);
             TimeIntervalText.Text = ((int)timeInterval).ToString();
@@ -263,19 +265,19 @@ namespace UltraDemoInterface
             TipBoxText.Text = "正在编译…";
             (FindResource("ShowTipBox") as Storyboard).Begin();
             StringBuilder error_message = new StringBuilder( 128 );
-            int isCompileFinished = etController.Initilialize_Machine(editorAdapter.GetAllText(), error_message);
-            
-            if ( isCompileFinished != 0 )
+            int errorLineNumber = etController.Initilialize_Machine(editorAdapter.GetAllText(), error_message);
+
+            if (errorLineNumber != 0)
             {
-                System.Windows.MessageBox.Show( isCompileFinished.ToString() + "  " + error_message.ToString() );
+                TipBoxText.Text = "发生编译错误！错误信息：" + error_message.ToString();
+                (FindResource("ShowTipBox") as Storyboard).Begin();
+                editorAdapter.ShowLine(true, errorLineNumber);
+                //System.Windows.MessageBox.Show( isCompileFinished.ToString() + "  " + error_message.ToString() );
             }
             else
             {
                 TipBoxText.Text = "编译成功！";
                 (FindResource("ShowTipBox") as Storyboard).Begin();
-                //List<Item> li = etController.GetMemoryItems();
-                //System.Windows.MessageBox.Show(etController.GetMemoryItems().ToString());
-                //memoryWindow.MemoryDataGrid.ItemsSource = etController.GetMemoryItems();
             }
         }
 

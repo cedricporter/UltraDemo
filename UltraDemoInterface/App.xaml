@@ -513,7 +513,7 @@
         <ControlTemplate x:Key="{ComponentResourceKey ResourceId=TopLevelHeaderTemplateKey, TypeInTargetAssembly={x:Type MenuItem}}" TargetType="{x:Type MenuItem}">
             <Grid SnapsToDevicePixels="true">
                 <Rectangle x:Name="OuterBorder"  Width="60" Height="30" Fill="#4B777F" Effect="{StaticResource GeneralBlurEffect}" Visibility="Hidden"/>
-        		<Rectangle x:Name="Bg" Width="60" Height="30"/>
+        		<Rectangle x:Name="Background" Width="60" Height="30" Fill="{StaticResource LinearWhiteBrush}"/>
                 <DockPanel VerticalAlignment="Center" HorizontalAlignment="Center">
         			<ContentPresenter ContentSource="Header" VerticalAlignment="Center"  Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
         		</DockPanel>
@@ -530,22 +530,28 @@
         				</ContentControl>
         			</Microsoft_Windows_Themes:SystemDropShadowChrome>
         		</Popup>
-        	</Grid>
+            </Grid>
         	<ControlTemplate.Triggers>
         		<Trigger Property="IsSuspendingPopupAnimation" Value="true">
         			<Setter Property="PopupAnimation" TargetName="PART_Popup" Value="None"/>
         		</Trigger>
         		<Trigger Property="IsHighlighted" Value="true">
-        			<Setter Property="Fill" TargetName="Bg" Value="{StaticResource LinearOrangeBrush}"/>
+                    <Trigger.EnterActions>
+                        <BeginStoryboard Storyboard="{StaticResource TurnOrangeStoryboard}"/>
+                    </Trigger.EnterActions>
+                    <Trigger.ExitActions>
+                        <BeginStoryboard Storyboard="{StaticResource TurnWhiteStoryboard}"/>
+                    </Trigger.ExitActions>
+                    <!--<Setter Property="Fill" TargetName="Background" Value="{StaticResource LinearOrangeBrush}"/>-->
         			<Setter Property="Visibility" TargetName="OuterBorder" Value="Visible"/>
         		</Trigger>
         		<Trigger Property="IsKeyboardFocused" Value="true">
-        			<Setter Property="Stroke" TargetName="Bg" Value="#E0717070"/>
-        			<Setter Property="Fill" TargetName="Bg" Value="{StaticResource MenuItemPressedFill}"/>
+                    <Setter Property="Stroke" TargetName="Background" Value="#E0717070"/>
+                    <Setter Property="Fill" TargetName="Background" Value="{StaticResource MenuItemPressedFill}"/>
         		</Trigger>
         		<Trigger Property="IsSubmenuOpen" Value="true">
-        			<Setter Property="Stroke" TargetName="Bg" Value="#E0717070"/>
-        			<Setter Property="Fill" TargetName="Bg" Value="{StaticResource MenuItemPressedFill}"/>
+                    <Setter Property="Stroke" TargetName="Background" Value="#E0717070"/>
+                    <Setter Property="Fill" TargetName="Background" Value="{StaticResource MenuItemPressedFill}"/>
                     <Setter Property="Visibility" TargetName="OuterBorder" Value="Hidden"/>
         		</Trigger>
         	</ControlTemplate.Triggers>
@@ -867,6 +873,18 @@
         			<Setter Property="ScrollViewer.CanContentScroll" Value="false"/>
         		</Trigger>
         	</Style.Triggers>
+        </Style>
+        <Style x:Key="ColumnHeaderGripperStyle" TargetType="{x:Type Thumb}">
+        	<Setter Property="Width" Value="8"/>
+        	<Setter Property="Background" Value="Transparent"/>
+        	<Setter Property="Cursor" Value="SizeWE"/>
+        	<Setter Property="Template">
+        		<Setter.Value>
+        			<ControlTemplate TargetType="{x:Type Thumb}">
+        				<Border Background="{TemplateBinding Background}" Padding="{TemplateBinding Padding}"/>
+        			</ControlTemplate>
+        		</Setter.Value>
+        	</Setter>
         </Style>
         
         
