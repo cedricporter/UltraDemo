@@ -110,19 +110,23 @@ namespace ICSharpCode.AvalonEdit.Editing
         }
 
         /// <summary>
-        /// Present a line by highlight the background
+        /// Present a line by highlight the background, but can show a line that not exist
         /// </summary>
         /// <param name="IsShow"></param>
         /// <param name="LineNum"></param>
-        public void ShowLine( bool IsShow, int LineNum )
+        public void ShowLine( bool IsShow, int LineNum, Color c )
         {
+            if (LineNum > textEditor.LineCount)
+            {
+                return;
+            }
             int minVline = (int)( ( textEditor.VerticalOffset) / getLineHeight() ) + 1;
             int maxVline = minVline + textEditor.LineCount;
             if (LineNum > maxVline || LineNum < minVline)
             {
                 textEditor.ScrollToLine( LineNum );
             }
-            textEditor.TextArea.TextView.ShowLine( IsShow, LineNum );
+            textEditor.TextArea.TextView.ShowLine( IsShow, LineNum, c );
         }
 
 

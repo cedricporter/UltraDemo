@@ -271,7 +271,14 @@ namespace UltraDemoInterface
             {
                 TipBoxText.Text = "发生编译错误！错误信息：" + error_message.ToString();
                 (FindResource("ShowTipBox") as Storyboard).Begin();
-                editorAdapter.ShowLine(true, errorLineNumber);
+                // 定义高亮行的颜色
+                Color c = new Color();
+                c.R = 255;
+                c.G = 214;
+                c.B = 84;
+                c.A = 255;
+
+                editorAdapter.ShowLine(true, errorLineNumber, c);
                 //System.Windows.MessageBox.Show( isCompileFinished.ToString() + "  " + error_message.ToString() );
             }
             else

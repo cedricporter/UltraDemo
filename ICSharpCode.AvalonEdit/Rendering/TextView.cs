@@ -768,8 +768,9 @@ namespace ICSharpCode.AvalonEdit.Rendering
 			get { return visibleVisualLines != null; }
 		}
 
-        private bool IsShowLine;
-        int ShowLineNum;
+        private bool IsShowLine = false;
+        private int ShowLineNum;
+        private Color showlinecolor;
 		/// <summary>
 		/// Occurs when the TextView is about to be measured and will regenerate its visual lines.
 		/// This event may be used to mark visual lines as invalid that would otherwise be reused.
@@ -1135,10 +1136,11 @@ namespace ICSharpCode.AvalonEdit.Rendering
         /// </summary>
         /// <param name="IsShow"></param>
         /// <param name="LineNum"></param>
-        public void ShowLine( bool IsShow = false, int LineNum = 1 )
+        public void ShowLine( bool IsShow, int LineNum, Color c )
         {
             IsShowLine = IsShow;
             ShowLineNum = LineNum;
+            showlinecolor = c;
             InvalidateVisual();
         
         }
@@ -1167,7 +1169,9 @@ namespace ICSharpCode.AvalonEdit.Rendering
                     lineheight = line.Height;
                     break;
                 }
-                Brush brush = Brushes.AliceBlue;
+               
+                SolidColorBrush brush = new SolidColorBrush(showlinecolor);
+               // Brush brush = Brushes.AliceBlue;
                 Pen pen = new Pen();
                 double x =0;
                 double y = 0;

@@ -84,7 +84,13 @@ namespace UltraDemoInterface
             if (mainWindow.DemoViewButton.IsChecked != true)
             {
                 currLineNumber = mainWindow.etController.GetCurrentLine();
-                mainWindow.editorAdapter.ShowLine(true, currLineNumber);
+                // 定义高亮行的颜色
+                Color c = new Color();
+                c.R = 255;
+                c.G = 214;
+                c.B = 84;
+                c.A = 255;
+                mainWindow.editorAdapter.ShowLine(true, currLineNumber, c);
             }
             // 更新断点列表并提供断点服务
             breakPointList = mainWindow.editorAdapter.getBreakPointList();
