@@ -165,6 +165,10 @@ namespace UltraDemoInterface
             currLineNumber = 0;
             mainWindow.memoryWindow.MemoryDataGrid.ItemsSource = null;
             breakPointList = null;
+
+            System.Windows.MessageBox.Show("解释器停止");
+            // 停止渲染
+            //mainWindow.animationPluginManager.StopRender();
         }
 
         public DebugControler(MainWindow mainWindow)

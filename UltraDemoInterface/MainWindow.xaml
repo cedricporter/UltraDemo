@@ -346,15 +346,15 @@
     				<TranslateTransform/>
     			</TransformGroup>
     		</Grid.RenderTransform>
-    		<Grid x:Name="DemoContainer" Grid.Column="2"  Margin="0" RenderTransformOrigin="0.5,0.5">
-    			<Grid.RenderTransform>
+    		<Grid x:Name="DemoContainer" Grid.Column="2"  Margin="0" RenderTransformOrigin="0.5,0.5" SizeChanged="DemoContainer_SizeChanged">
+    			<!--<Grid.RenderTransform>
     				<TransformGroup>
     					<ScaleTransform/>
     					<SkewTransform/>
     					<RotateTransform/>
     					<TranslateTransform/>
     				</TransformGroup>
-    			</Grid.RenderTransform>
+    			</Grid.RenderTransform>-->
                 <Grid x:Name="DemoControlBar" Height="50" Margin="0" VerticalAlignment="Bottom">
     				<Rectangle Fill="#FF333333" Effect="{StaticResource GeneralBlurEffect}" Margin="0" RadiusX="16" RadiusY="16"/>
     				<Rectangle Fill="{StaticResource LinearWhiteBrush}" Margin="0" RadiusX="16" RadiusY="16"/>
@@ -377,7 +377,7 @@
                         <TextBlock x:Name="TimeIntervalText" TextWrapping="Wrap" Canvas.Top="-3" Text="500" Canvas.Left="-1" Visibility="Hidden"/>
                     </Canvas>
                 </Grid>
-                <Grid x:Name="AnimationContainer" Margin="40,40,40,60"/>
+                <Grid x:Name="AnimationContainer" Margin="40,40,40,60" Initialized="AnimationContainer_Initialized"/>
     		</Grid>
     		<Grid x:Name="EditorContainer" Grid.Column="0"  RenderTransformOrigin="0.5,0.5">
     			<Grid.RenderTransform>
