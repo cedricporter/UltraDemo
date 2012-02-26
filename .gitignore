@@ -75,7 +75,11 @@
 /Debug/Icons
 /Debug/it
 /Debug/ja
+<<<<<<< HEAD
 /NewHanoiAnimationPlugin/obj/Debug/DesignTimeResolveAssemblyReferencesInput.cache
 /NewHanoiAnimationPlugin/obj/Debug/NewHanoiAnimationPlugin.csproj.FileListAbsolute.txt
 /NewHanoiAnimationPlugin/obj/Debug/NewHanoiAnimationPlugin.dll
 /NewHanoiAnimationPlugin/obj/Debug/NewHanoiAnimationPlugin.pdb
+=======
+/NewHanoiAnimationPlugin/obj
+>>>>>>> 33a6b5f0ac2094c39902f6608c638f8c26d56a5c

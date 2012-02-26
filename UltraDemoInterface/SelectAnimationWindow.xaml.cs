@@ -71,6 +71,9 @@ namespace UltraDemoInterface
             isWindowFading = true;
             mainWindow.HideWindow(this);
             mainWindow.animationPluginManager.SelectAnimation((AnimationList.SelectedItem as ListBoxItem).Content.ToString());
+
+            List<string> interestingList = mainWindow.animationPluginManager.GetSelectedAnimationWatchedList();
+            mainWindow.etController.SetInterestringList( interestingList );
         }
 
         /// <summary>

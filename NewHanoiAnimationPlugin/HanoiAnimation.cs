@@ -126,15 +126,16 @@ namespace UltraDemoInterface
             from = (int*)map["watchedStart"];
             to = (int*)map["watchedGoal"];
 
-            if (size != null)
+            if (size != (int*)0)
             {
                 if (isInitialized == false)
                 {
                     isInitialized = true;
-                    Initialize();
-                    oldSize = *size;
+                    oldSize = (int)(*size);
                     oldFrom = *from;
                     oldTo = *to;
+                    Initialize();
+                    
                     //MoveItem(pole1, pole3);
                     //MoveItem(pole1, pole2);
                     //MoveItem(pole3, pole2);
