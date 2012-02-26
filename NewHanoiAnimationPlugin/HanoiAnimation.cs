@@ -16,7 +16,7 @@ namespace UltraDemoInterface
         Stack<Rectangle> pole1 = new Stack<Rectangle>();
         Stack<Rectangle> pole2 = new Stack<Rectangle>();
         Stack<Rectangle> pole3 = new Stack<Rectangle>();
-        Dictionary<int, Stack<Rectangle>> poleMap = new Dictionary<int, Stack<Rectangle>>();
+        Dictionary<String, Stack<Rectangle>> poleMap = new Dictionary<String, Stack<Rectangle>>();
 
         public HanoiAnimation(Grid animationContainer)
         {
@@ -28,9 +28,9 @@ namespace UltraDemoInterface
             watchedList.Add("watchedStart");
             watchedList.Add("watchedGoal");
 
-            poleMap[1] = pole1;
-            poleMap[2] = pole2;
-            poleMap[3] = pole3;
+            poleMap["1"] = pole1;
+            poleMap["2"] = pole2;
+            poleMap["3"] = pole3;
         }
 
         // 监测关键变量
@@ -131,7 +131,7 @@ namespace UltraDemoInterface
                 if (isInitialized == false)
                 {
                     isInitialized = true;
-                    oldSize = (int)(*size);
+                    oldSize = *size;
                     oldFrom = *from;
                     oldTo = *to;
                     Initialize();
@@ -140,11 +140,11 @@ namespace UltraDemoInterface
                     //MoveItem(pole1, pole2);
                     //MoveItem(pole3, pole2);
                 }
-                if (*from != oldFrom || *to != oldTo)
+                if ((*from != oldFrom || *to != oldTo) && poleMap[(*from).ToString()].Count > 0 && poleMap[(*to).ToString()].Count < oldSize)
                 {
-                    MoveItem(poleMap[*from], poleMap[*to]);
                     oldFrom = *from;
-                    oldTo = *to;    
+                    oldTo = *to;  
+                    MoveItem(poleMap[oldFrom.ToString()], poleMap[oldTo.ToString()]); 
                 }
             }          
         }
