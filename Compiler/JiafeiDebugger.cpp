@@ -70,7 +70,7 @@ namespace ETCompiler
 			for ( auto symbol = table->GetLocalVarTable().begin(); symbol != table->GetLocalVarTable().end(); ++symbol )
 			{
 				strcpy_s(temp.varname, symbol->second.name.c_str());
-				temp.val=*(dword_pointer)( ((uchar_pointer)pebp) - symbol->second.offset);
+				temp.val=(dword)(dword_pointer)( ((uchar_pointer)pebp) - symbol->second.offset);
 				ValList->push_back(temp);
 			}
 
@@ -78,7 +78,7 @@ namespace ETCompiler
 			for ( auto symbol = table->GetParamTable().begin(); symbol != table->GetParamTable().end(); ++symbol )
 			{
 				strcpy_s(temp.varname, symbol->second.name.c_str());
-				temp.val=*(dword_pointer)( ((uchar_pointer)pebp) - symbol->second.offset + 4);
+				temp.val=(dword)(dword_pointer)( ((uchar_pointer)pebp) - symbol->second.offset + 4);
 				ValList->push_back(temp);
 			}
 
@@ -164,7 +164,7 @@ namespace ETCompiler
 					if ( *iter == symbol->second.name)
 					{
 						strcpy_s(temp.varname, symbol->second.name.c_str());
-						temp.val=*(dword_pointer)( ((uchar_pointer)pebp) - symbol->second.offset);
+						temp.val=(dword)(dword_pointer)( ((uchar_pointer)pebp) - symbol->second.offset);
 						ValList->push_back(temp);
 					}
 				}
@@ -179,7 +179,7 @@ namespace ETCompiler
 					if ( *iter == symbol->second.name)
 					{
 						strcpy_s(temp.varname, symbol->second.name.c_str());
-						temp.val=*(dword_pointer)( ((uchar_pointer)pebp) - symbol->second.offset+4);
+						temp.val=(dword)(dword_pointer)( ((uchar_pointer)pebp) - symbol->second.offset+4);
 						ValList->push_back(temp);
 					}
 				}
