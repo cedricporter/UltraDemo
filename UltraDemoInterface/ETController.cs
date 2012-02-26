@@ -99,6 +99,9 @@ namespace UltraDemoInterface
 
         public List<MemItem> GetInterestingVariables()
         {
+            if ( insteretingVariableNameList == null )
+                return null;
+
             List<MemItem> list = new List<MemItem>();
 
             IntPtr ret = get_first_item(controller);
