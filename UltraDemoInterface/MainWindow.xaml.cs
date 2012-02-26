@@ -268,8 +268,7 @@ namespace UltraDemoInterface
             TipBoxText.Text = "正在编译…";
             (FindResource("ShowTipBox") as Storyboard).Begin();
             StringBuilder error_message = new StringBuilder( 128 );
-            List<string> interestingList = animationPluginManager.GetSelectedAnimationWatchedList();
-            int errorLineNumber = etController.Initilialize_Machine(editorAdapter.GetAllText(), error_message, interestingList);
+            int errorLineNumber = etController.Initilialize_Machine(editorAdapter.GetAllText(), error_message);
 
             if (errorLineNumber != 0)
             {

@@ -74,9 +74,13 @@ namespace UltraDemoInterface
             return ret;
         }
 
-        public int Initilialize_Machine(string code, StringBuilder error_message, List<string> interestList)
+        public void SetInterestringList(List<string> list)
         {
-            insteretingVariableNameList = interestList;
+            insteretingVariableNameList = list;
+        }
+
+        public int Initilialize_Machine(string code, StringBuilder error_message)
+        {
             return initial_machine( controller, code, error_message );
         }
 
