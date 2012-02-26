@@ -25,20 +25,20 @@ namespace UltraDemoInterface
             //System.Windows.MessageBox.Show("ArrayAnimation Created");
 
             //testing
-            fuckr = new Rectangle();
-            Color bg = new Color();
-            bg.A = 255;
-            fuckr.Width = 100;
-            fuckr.Height = 100;
-            fuckr.Fill = new SolidColorBrush(bg);
-            animationContainer.Children.Add(fuckr);
+            //fuckr = new Rectangle();
+            //Color bg = new Color();
+            //bg.A = 255;
+            //fuckr.Width = 100;
+            //fuckr.Height = 100;
+            //fuckr.Fill = new SolidColorBrush(bg);
+            //animationContainer.Children.Add(fuckr);
             
         }
 
         public override void BeginRender(Object sender, EventArgs e)
         {
             //System.Windows.MessageBox.Show("ArrayAnimation Rendering");
-            fuckr.Width++;
+            //fuckr.Width++;
         }
     }
 }

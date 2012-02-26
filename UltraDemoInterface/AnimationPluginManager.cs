@@ -104,7 +104,8 @@ namespace UltraDemoInterface
         {
             if (isRendering == false)
                 return;
-            Object[] args = { sender, e };
+            Dictionary<String, UInt32> map = mainWindow.etController.GetInterestingVariables();
+            Object[] args = { sender, e, map };
             selectedAnimationBeginRender.Invoke(selectedAnimationInstance, args);
         }
 

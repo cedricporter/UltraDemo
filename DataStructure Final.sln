@@ -17,6 +17,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UltraDemoInterface", "Ultra
 	ProjectSection(ProjectDependencies) = postProject
 		{7C8C6522-33B4-4A2C-83C5-8208B4941047} = {7C8C6522-33B4-4A2C-83C5-8208B4941047}
 		{B1062EA0-BF01-43F9-97DB-D64A08DDA83C} = {B1062EA0-BF01-43F9-97DB-D64A08DDA83C}
+		{6D4BB5D8-9FC5-4434-B090-0ED6B04CDE4B} = {6D4BB5D8-9FC5-4434-B090-0ED6B04CDE4B}
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NewArrayAnimationPlugin", "NewArrayAnimationPlugin\NewArrayAnimationPlugin.csproj", "{B1062EA0-BF01-43F9-97DB-D64A08DDA83C}"
@@ -29,6 +30,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestLoader", "TestLoader\Te
 	ProjectSection(ProjectDependencies) = postProject
 		{7C8C6522-33B4-4A2C-83C5-8208B4941047} = {7C8C6522-33B4-4A2C-83C5-8208B4941047}
 	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NewHanoiAnimationPlugin", "NewHanoiAnimationPlugin\NewHanoiAnimationPlugin.csproj", "{6D4BB5D8-9FC5-4434-B090-0ED6B04CDE4B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -172,6 +175,18 @@ Global
 		{8A2AF592-144C-4617-BFF9-7B8C22029C4C}.Release|Win32.ActiveCfg = Release|x86
 		{8A2AF592-144C-4617-BFF9-7B8C22029C4C}.Release|x86.ActiveCfg = Release|x86
 		{8A2AF592-144C-4617-BFF9-7B8C22029C4C}.Release|x86.Build.0 = Release|x86
+		{6D4BB5D8-9FC5-4434-B090-0ED6B04CDE4B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6D4BB5D8-9FC5-4434-B090-0ED6B04CDE4B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6D4BB5D8-9FC5-4434-B090-0ED6B04CDE4B}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{6D4BB5D8-9FC5-4434-B090-0ED6B04CDE4B}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{6D4BB5D8-9FC5-4434-B090-0ED6B04CDE4B}.Debug|Win32.ActiveCfg = Debug|Any CPU
+		{6D4BB5D8-9FC5-4434-B090-0ED6B04CDE4B}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{6D4BB5D8-9FC5-4434-B090-0ED6B04CDE4B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6D4BB5D8-9FC5-4434-B090-0ED6B04CDE4B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6D4BB5D8-9FC5-4434-B090-0ED6B04CDE4B}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{6D4BB5D8-9FC5-4434-B090-0ED6B04CDE4B}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{6D4BB5D8-9FC5-4434-B090-0ED6B04CDE4B}.Release|Win32.ActiveCfg = Release|Any CPU
+		{6D4BB5D8-9FC5-4434-B090-0ED6B04CDE4B}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

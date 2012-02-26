@@ -168,8 +168,8 @@ namespace UltraDemoInterface
 
             System.Windows.MessageBox.Show("解释器停止");
             // 停止渲染
-            //mainWindow.animationPluginManager.StopRender();
-            System.Windows.MessageBox.Show( mainWindow.etController.GetOutput() );
+            mainWindow.animationPluginManager.StopRender();
+            //System.Windows.MessageBox.Show( mainWindow.etController.GetOutput() );
         }
 
         public DebugControler(MainWindow mainWindow)

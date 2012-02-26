@@ -108,13 +108,13 @@ namespace UltraDemoInterface
             return list; 
         }
 
-        public List<MemItem> GetInterestingVariables()
-        {
+        public Dictionary<String, UInt32> GetInterestingVariables()
+        {           
             if ( insteretingVariableNameList == null )
                 return null;
 
-            List<MemItem> list = new List<MemItem>();
-
+            Dictionary<String, UInt32> map = new Dictionary<String, UInt32>();
+            
             IntPtr ret = get_first_item(controller);
 
             while (ret != IntPtr.Zero)
@@ -125,17 +125,18 @@ namespace UltraDemoInterface
                 {
                     if ( varname == n )
                     {
-                        list.Add( memitem );
+                        map[memitem.name] = memitem.val;
+                        //map.Add(new KeyValuePair<string, UInt32>(memitem.name, memitem.val));
                         break;
                     }
                 }
-                list.Add(memitem);
+  
                 ret = get_next_item(controller);
             }
 
-            if ( list.Count != insteretingVariableNameList.Count )
-                list = null;
-            return list;
+            if (map.Count != insteretingVariableNameList.Count)
+                map = null;
+            return map;
         }
 
 
