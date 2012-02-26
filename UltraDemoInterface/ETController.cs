@@ -41,6 +41,9 @@ namespace UltraDemoInterface
         [DllImport("Compiler.dll", EntryPoint="get_current_line", CallingConvention= CallingConvention.Cdecl)]
         private static extern int get_current_line(IntPtr ctrl);
 
+        [DllImport("Compiler.dll", EntryPoint="get_output", CallingConvention= CallingConvention.Cdecl)]
+        private static extern int get_output(IntPtr ctrl, StringBuilder outputString);
+
         [StructLayout( LayoutKind.Sequential )]
         public struct MemItem
         {
@@ -50,6 +53,7 @@ namespace UltraDemoInterface
         }
 
         private List<string> insteretingVariableNameList;
+        private StringBuilder outString = new StringBuilder( 1024 * 32 );
 
         IntPtr controller;
         public ETController()
@@ -79,6 +83,12 @@ namespace UltraDemoInterface
         public int GetCurrentLine()
         {
             return get_current_line( controller );
+        }
+
+        public string GetOutput()
+        {
+            get_output(controller, outString);
+            return outString.ToString();
         }
 
         public List<Item> GetMemoryItems()

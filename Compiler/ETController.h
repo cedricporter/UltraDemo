@@ -33,6 +33,8 @@ namespace ETCompiler
 
         int GetCurrentLine();
 
+        const char* GetOutput();
+
         // 返回内存变量列表
         WatchPropertiesListType& GetMemoryList();
 

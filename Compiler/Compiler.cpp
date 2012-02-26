@@ -70,6 +70,12 @@ COMPILER_API int get_current_line(ETCompiler::ETController* ctrl)
     return ctrl->GetCurrentLine();
 }
 
+COMPILER_API const int get_output(ETCompiler::ETController* ctrl, char* output)
+{
+    strcpy(output, ctrl->GetOutput());
+    return 0;
+}
+
 
 // Брвы
 COMPILER_API int compile(const wchar_t* code, char* outResult)

@@ -11,5 +11,6 @@ get_reg @7
 get_dreg @8
 get_first_item @9
 get_next_item @10
+get_output @11
 
 

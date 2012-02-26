@@ -105,3 +105,8 @@ ETCompiler::PropertiesInsertItem* ETCompiler::ETController::GetNextItem()
     }
     return NULL;
 }
+
+const char* ETCompiler::ETController::GetOutput()
+{
+    return m_machine.GetOutputLog().c_str();
+}
