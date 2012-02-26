@@ -106,7 +106,17 @@ namespace UltraDemoInterface
                 return;
             Dictionary<String, UInt32> map = mainWindow.etController.GetInterestingVariables();
             Object[] args = { sender, e, map };
-            selectedAnimationBeginRender.Invoke(selectedAnimationInstance, args);
+            try
+            {
+                selectedAnimationBeginRender.Invoke( selectedAnimationInstance, args );
+            }
+            catch ( Exception ex )
+            {
+                StopRender();
+                mainWindow.debugControler.Stop();
+                System.Windows.MessageBox.Show( "404 动画模块死掉了" );
+                System.Windows.MessageBox.Show( ex.ToString() );
+            }
         }
 
         /// <summary>
