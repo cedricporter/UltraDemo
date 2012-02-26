@@ -65,13 +65,14 @@ namespace UltraDemoInterface
         public int Step()
         {
             int ret = step( controller );
-            if ( ret == 0 )
-                System.Windows.MessageBox.Show( "Done." );
+            //if ( ret == 0 )
+            //    System.Windows.MessageBox.Show( "Done." );
             return ret;
         }
 
-        public int Initilialize_Machine(string code, StringBuilder error_message)
+        public int Initilialize_Machine(string code, StringBuilder error_message, List<string> interestList)
         {
+            insteretingVariableNameList = interestList;
             return initial_machine( controller, code, error_message );
         }
 
