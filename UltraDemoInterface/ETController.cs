@@ -49,6 +49,8 @@ namespace UltraDemoInterface
             public UInt32 val;
         }
 
+        private List<string> insteretingVariableNameList;
+
         IntPtr controller;
         public ETController()
         {
@@ -95,6 +97,32 @@ namespace UltraDemoInterface
             return list; 
         }
 
+        public List<MemItem> GetInterestingVariables()
+        {
+            List<MemItem> list = new List<MemItem>();
+
+            IntPtr ret = get_first_item(controller);
+
+            while (ret != IntPtr.Zero)
+            {
+                MemItem memitem = (MemItem)Marshal.PtrToStructure(ret, typeof(MemItem));
+                string varname = memitem.name;
+                foreach (string n in insteretingVariableNameList)
+                {
+                    if ( varname == n )
+                    {
+                        list.Add( memitem );
+                        break;
+                    }
+                }
+                list.Add(memitem);
+                ret = get_next_item(controller);
+            }
+
+            if ( list.Count != insteretingVariableNameList.Count )
+                list = null;
+            return list;
+        }
 
 
     }

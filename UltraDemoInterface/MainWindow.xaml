@@ -335,8 +335,8 @@
         </Grid>
     	<Grid x:Name="MainContainer" Margin="0,34,0,0" RenderTransformOrigin="0.5,0.5">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition x:Name="GridLeftCol"  Width="0*"/>
-                <ColumnDefinition x:Name="GridRightCol"  Width="*"/>
+                <ColumnDefinition x:Name="GridLeftCol"  Width="*"/>
+                <ColumnDefinition x:Name="GridRightCol"  Width="0*"/>
             </Grid.ColumnDefinitions>
     		<Grid.RenderTransform>
     			<TransformGroup>
