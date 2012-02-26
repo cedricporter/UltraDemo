@@ -35,6 +35,8 @@ namespace UltraDemoInterface
         public EditorAdapter editorAdapter;
 
         Boolean isRunning = false;
+        Double originWindowWidth = 1;
+        Double originWindowHeight = 1;
 
         //MethodInfo beginRender;
         //Object anima;
@@ -233,6 +235,7 @@ namespace UltraDemoInterface
             if (timeInterval < 10)
                 timeInterval = 10;
             debugControler.SetTimeInterval(timeInterval);
+            animationPluginManager.SetTimeInterval(timeInterval);
             Canvas.SetLeft(TimeIntervalText, e.NewValue / 2.42);
             TimeIntervalText.Text = ((int)timeInterval).ToString();
         }
@@ -286,6 +289,31 @@ namespace UltraDemoInterface
                 TipBoxText.Text = "编译成功！";
                 (FindResource("ShowTipBox") as Storyboard).Begin();
             }
+        }
+
+        /// <summary>
+        /// 记录动画窗口的初始大小
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void AnimationContainer_Initialized(object sender, EventArgs e)
+        {
+            originWindowHeight = Height;
+            originWindowWidth = Width;
+        }
+
+        /// <summary>
+        /// 当窗口大小改变时，改变动画窗口的大小
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void DemoContainer_SizeChanged(object sender, SizeChangedEventArgs e)
+        {
+            double xRatio = ActualWidth / originWindowWidth;
+            double yRatio = ActualHeight / originWindowHeight;
+            double ratio = xRatio < yRatio ? xRatio : yRatio;
+            ScaleTransform scTrans = new ScaleTransform(ratio, ratio, AnimationContainer.ActualWidth / 2.0, AnimationContainer.ActualHeight / 2.0);
+            AnimationContainer.RenderTransform = scTrans;
         }
 
     }

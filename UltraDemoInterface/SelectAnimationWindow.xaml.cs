@@ -70,6 +70,7 @@ namespace UltraDemoInterface
                 return;
             isWindowFading = true;
             mainWindow.HideWindow(this);
+            mainWindow.animationPluginManager.SelectAnimation((AnimationList.SelectedItem as ListBoxItem).Content.ToString());
         }
 
         /// <summary>

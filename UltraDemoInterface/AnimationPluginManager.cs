@@ -80,6 +80,7 @@ namespace UltraDemoInterface
 
                             //将动画类型装入动画列表
                             animationMap[name.ToString()] = t;
+                            watchedListMap[t] = (List<String>)watchedList;
                         }
                     }
                 }
@@ -101,13 +102,10 @@ namespace UltraDemoInterface
         /// <param name="e">RenderingEventArgs</param>
         public void RenderAnimationCallback(Object sender, EventArgs e)
         {
-            //if (isRendering == false)
-            //    return;
-
-
-            //TimeSpan renderingTime = (e as RenderingEventArgs).RenderingTime;
-            ////System.Windows.MessageBox.Show(sender.ToString());
-            //System.Windows.MessageBox.Show(renderingTime.Milliseconds.ToString());
+            if (isRendering == false)
+                return;
+            Object[] args = { sender, e };
+            selectedAnimationBeginRender.Invoke(selectedAnimationInstance, args);
         }
 
         /// <summary>
@@ -121,6 +119,7 @@ namespace UltraDemoInterface
             {
                 // 此处应该弹出一个“友好”的对话框警告用户
                 // 未实现
+                System.Windows.MessageBox.Show("并没有选择任何动画");
                 return;
             }
 
@@ -132,13 +131,22 @@ namespace UltraDemoInterface
             //List<String> watchedList = (List<String>)getWatchedList.Invoke(selectedAnimationInstance, null);
             //判断 
 
+            // 获取渲染方法
             selectedAnimationBeginRender = selectedAnimationType.GetMethod("BeginRender");
             if (selectedAnimationBeginRender == null)
             {
-                // 此处应该弹出一个“友好”的对话框警告用户
-                // 未实现
+                System.Windows.MessageBox.Show("未找到BeginRender函数入口");
                 return;
             }
+            // 获取设置时间间隔方法
+            selectedAnimationSetTimeInterval = selectedAnimationType.GetMethod("SetTimeInterval");
+            if (selectedAnimationSetTimeInterval == null)
+            {
+                System.Windows.MessageBox.Show("未找到SetTimeInterval函数入口");
+                return;
+            }
+            Object[] args = {timeInterval};
+            selectedAnimationSetTimeInterval.Invoke(selectedAnimationInstance, args);
 
             // 清空画布
             mainWindow.animationContainer.Children.Clear();
@@ -155,8 +163,11 @@ namespace UltraDemoInterface
             isRendering = false;
             selectedAnimationInstance = null;
             selectedAnimationBeginRender = null;
+            selectedAnimationSetTimeInterval = null;
             // 清空画布
             mainWindow.animationContainer.Children.Clear();
+
+            System.Windows.MessageBox.Show("动画渲染停止");
         }
 
         /// <summary>
@@ -166,8 +177,34 @@ namespace UltraDemoInterface
         public void SelectAnimation(String animationName)
         {
             selectedAnimationType = animationMap[animationName];
-            System.Windows.MessageBox.Show(selectedAnimationType.ToString());
+            //System.Windows.MessageBox.Show(selectedAnimationType.ToString());
         }
+
+        /// <summary>
+        /// 设置动画的时间间隔
+        /// </summary>
+        /// <param name="interval"></param>
+        public void SetTimeInterval(Double interval)
+        {
+            this.timeInterval = interval;
+            if (isRendering == true)
+            {
+                Object[] args = { timeInterval };
+                selectedAnimationSetTimeInterval.Invoke(selectedAnimationInstance, args);
+            }
+        }
+
+        /// <summary>
+        /// 返回当前动画的关注列表
+        /// </summary>
+        /// <returns></returns>
+        public List<String> GetSelectedAnimationWatchedList()
+        {
+            if (selectedAnimationType == null)
+                return null;
+            return watchedListMap[selectedAnimationType];
+        }
+        
 
         /// <summary>
         /// 构造函数
@@ -184,7 +221,10 @@ namespace UltraDemoInterface
         private Type selectedAnimationType = null;
         private Object selectedAnimationInstance = null;
         private MethodInfo selectedAnimationBeginRender = null;
+        private MethodInfo selectedAnimationSetTimeInterval = null;
+        private Double timeInterval = 500;
         public Dictionary<String, Type> animationMap = new Dictionary<String, Type>();
+        public Dictionary<Type, List<String>> watchedListMap = new Dictionary<Type, List<String>>();
 
         private MainWindow mainWindow;
 
