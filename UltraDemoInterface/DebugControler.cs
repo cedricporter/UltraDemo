@@ -74,7 +74,7 @@ namespace UltraDemoInterface
         public void ExecuteOneLine()
         {
             // 调用Dll的单步
-            bool isRunning = mainWindow.etController.Step();
+            int isRunning = mainWindow.etController.Step();
             // 更新内存窗口
             if (mainWindow.memoryWindow.IsVisible == true)
             {
@@ -107,7 +107,7 @@ namespace UltraDemoInterface
                 }
             }
 
-            if (isRunning == false)
+            if (isRunning == 0)
                 Stop();
         }
 

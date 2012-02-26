@@ -33,10 +33,13 @@ namespace ETCompiler
 
         int GetCurrentLine();
 
+        // 返回内存变量列表
         WatchPropertiesListType& GetMemoryList();
 
+        // 返回第一个元素
         PropertiesInsertItem* GetFirstItem();
 
+        // 返回下一个
         PropertiesInsertItem* GetNextItem();
     };
 

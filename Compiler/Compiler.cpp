@@ -54,11 +54,11 @@ COMPILER_API int initial_machine(ETCompiler::ETController* ctrl, const char* cod
 }
 
 // µ¥²½Ö´ÐÐ
-COMPILER_API bool step(ETCompiler::ETController* ctrl)
+COMPILER_API int step(ETCompiler::ETController* ctrl)
 {
-    bool ret = ctrl->Step();
-    //if (!ret)
-    //    MessageBox(0, "Fuck", "f", 0);
+    int ret = ctrl->Step();
+  /*  if (!ret)
+        MessageBox(0, "Fuck", "f", 0);*/
 
     return ret;
     //return ctrl->Step();

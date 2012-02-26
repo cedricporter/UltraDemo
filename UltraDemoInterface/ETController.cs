@@ -20,31 +20,25 @@ namespace UltraDemoInterface
 
     public class ETController
     {
-        [DllImport("Compiler.dll", EntryPoint="get_dreg")]
-        private static extern System.UInt64[] get_dreg(IntPtr ctrl);
-
-        [DllImport("Compiler.dll", EntryPoint="get_reg")]
-        private static extern System.UInt64[] get_reg(IntPtr ctrl);
-
-        [DllImport("Compiler.dll", EntryPoint="create_controller")]
+        [DllImport("Compiler.dll", EntryPoint="create_controller", CallingConvention = CallingConvention.Cdecl)]
         private static extern IntPtr create_controller();
 
-        [DllImport("Compiler.dll", EntryPoint="get_first_item")]
+        [DllImport("Compiler.dll", EntryPoint="get_first_item", CallingConvention = CallingConvention.Cdecl)]
         private static extern IntPtr get_first_item(IntPtr ctrl);
 
-        [DllImport("Compiler.dll", EntryPoint="get_next_item")]
+        [DllImport("Compiler.dll", EntryPoint="get_next_item", CallingConvention= CallingConvention.Cdecl)]
         private static extern IntPtr get_next_item(IntPtr ctrl);
 
-        [DllImport("Compiler.dll", EntryPoint="destroy_controller")]
+        [DllImport("Compiler.dll", EntryPoint="destroy_controller", CallingConvention= CallingConvention.Cdecl)]
         private static extern void destroy_controller(IntPtr ctrl);
 
-        [DllImport("Compiler.dll", EntryPoint="initial_machine")]
+        [DllImport("Compiler.dll", EntryPoint="initial_machine", CallingConvention= CallingConvention.Cdecl)]
         private static extern int initial_machine(IntPtr ctrl, string code, StringBuilder error_message);
 
-        [DllImport("Compiler.dll", EntryPoint="step")]
-        private static extern bool step(IntPtr ctrl);
+        [DllImport("Compiler.dll", EntryPoint="step", CallingConvention= CallingConvention.Cdecl)]
+        private static extern int step(IntPtr ctrl);
 
-        [DllImport("Compiler.dll", EntryPoint="get_current_line")]
+        [DllImport("Compiler.dll", EntryPoint="get_current_line", CallingConvention= CallingConvention.Cdecl)]
         private static extern int get_current_line(IntPtr ctrl);
 
         [StructLayout( LayoutKind.Sequential )]
@@ -66,9 +60,12 @@ namespace UltraDemoInterface
             destroy_controller( controller );
         }
 
-        public bool Step()
+        public int Step()
         {
-            return step( controller );
+            int ret = step( controller );
+            if ( ret == 0 )
+                System.Windows.MessageBox.Show( "Done." );
+            return ret;
         }
 
         public int Initilialize_Machine(string code, StringBuilder error_message)
