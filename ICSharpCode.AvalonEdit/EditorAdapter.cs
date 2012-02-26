@@ -24,7 +24,7 @@ namespace ICSharpCode.AvalonEdit.Editing
     {
         private TextEditor textEditor;
         private BreakPointMargin bkM;
-
+        private EditorHelper editorHelper;
 
         /// <summary>
         /// Constructor
@@ -33,6 +33,7 @@ namespace ICSharpCode.AvalonEdit.Editing
         public EditorAdapter( TextEditor textEditor )
         {
             this.textEditor =  textEditor;
+            editorHelper = new EditorHelper( textEditor );
             bkM = (BreakPointMargin)textEditor.TextArea.LeftMargins[ 0 ];
         }
 
@@ -114,6 +115,7 @@ namespace ICSharpCode.AvalonEdit.Editing
         /// </summary>
         /// <param name="IsShow"></param>
         /// <param name="LineNum"></param>
+        /// <param name="c"></param>
         public void ShowLine( bool IsShow, int LineNum, Color c )
         {
             if (LineNum > textEditor.LineCount)

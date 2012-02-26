@@ -83,6 +83,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Editing\BreakPointMargin.cs" />
+    <Compile Include="Editing\EditorHelper.cs" />
     <Compile Include="EditorAdapter.cs" />
     <Compile Include="Properties\GlobalAssemblyInfo.cs" />
     <Compile Include="AvalonEditCommands.cs" />
