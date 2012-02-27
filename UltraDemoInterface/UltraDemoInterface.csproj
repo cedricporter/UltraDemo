@@ -146,6 +146,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="bug list.txt" />
     <Content Include="Icons\pause.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

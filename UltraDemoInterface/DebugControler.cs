@@ -5,6 +5,7 @@ using System.Text;
 using System.Windows.Media;
 using System.Windows.Media.Animation;
 using System.Windows.Controls;
+using System.Windows.Documents;
 
 /**
 @date		:	2012/02/24
@@ -105,6 +106,15 @@ namespace UltraDemoInterface
                     (mainWindow.FindResource("ShowTipBox") as Storyboard).Begin();
                     break;
                 }
+            }
+            // 更新输出窗口信息
+            if (mainWindow.outputWindow.IsVisible)
+            {
+                Run myRun = new Run(mainWindow.etController.GetOutput());
+                Paragraph myParagraph = new Paragraph();
+                myParagraph.Inlines.Add(myRun);
+                mainWindow.outputWindow.OutputBox.Document.Blocks.Clear();
+                mainWindow.outputWindow.OutputBox.Document.Blocks.Add(myParagraph);
             }
 
             if (isRunning == 0)

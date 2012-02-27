@@ -139,6 +139,7 @@ namespace UltraDemoInterface
                     //MoveItem(pole1, pole3);
                     //MoveItem(pole1, pole2);
                     //MoveItem(pole3, pole2);
+                    MoveItem(poleMap[oldFrom.ToString()], poleMap[oldTo.ToString()]); 
                 }
                 if ((*from != oldFrom || *to != oldTo) && poleMap[(*from).ToString()].Count > 0 && poleMap[(*to).ToString()].Count < oldSize)
                 {

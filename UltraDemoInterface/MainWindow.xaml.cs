@@ -64,6 +64,7 @@ namespace UltraDemoInterface
             // 连接回调函数
             CompositionTarget.Rendering += animationPluginManager.RenderAnimationCallback;
             CompositionTarget.Rendering += debugControler.DebugControlerCallback;
+
         }
 
         /// <summary>
@@ -296,7 +297,7 @@ namespace UltraDemoInterface
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void AnimationContainer_Initialized(object sender, EventArgs e)
+        private void DemoContainer_Initialized(object sender, EventArgs e)
         {
             originWindowHeight = Height;
             originWindowWidth = Width;
@@ -309,12 +310,24 @@ namespace UltraDemoInterface
         /// <param name="e"></param>
         private void DemoContainer_SizeChanged(object sender, SizeChangedEventArgs e)
         {
-            double xRatio = ActualWidth / originWindowWidth;
-            double yRatio = ActualHeight / originWindowHeight;
+            double xRatio = Width / originWindowWidth;
+            double yRatio = Height / originWindowHeight;
             double ratio = xRatio < yRatio ? xRatio : yRatio;
             ScaleTransform scTrans = new ScaleTransform(ratio, ratio, AnimationContainer.ActualWidth / 2.0, AnimationContainer.ActualHeight / 2.0);
             AnimationContainer.RenderTransform = scTrans;
         }
+
+        /// <summary>
+        /// 初始化时将焦点移动到编辑框上
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void textEditor_Initialized(object sender, EventArgs e)
+        {
+            textEditor.Focus();
+        }
+
+        
 
     }
     
