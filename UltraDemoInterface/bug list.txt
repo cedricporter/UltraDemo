@@ -1,78 +1,78 @@
+ï»¿ 
 
 
+åŠ¨ç”»çš„å¤§å°åº”è¯¥æ ¹æ®æ¼”ç¤ºçª—å£çš„å¤§å°æ”¹å˜è€Œæ”¹å˜
+å½“DemoBarè£…ä¸ä¸‹æ‰€æœ‰æŒ‰é’®æ—¶åº”è¯¥è‡ªåŠ¨æ‹†æˆä¸¤è¡Œ
+æä¾›ä¸Šä¸‹åˆ†å±
 
-¶¯»­µÄ´óÐ¡Ó¦¸Ã¸ù¾ÝÑÝÊ¾´°¿ÚµÄ´óÐ¡¸Ä±ä¶ø¸Ä±ä
-µ±DemoBar×°²»ÏÂËùÓÐ°´Å¥Ê±Ó¦¸Ã×Ô¶¯²ð³ÉÁ½ÐÐ
-Ìá¹©ÉÏÏÂ·ÖÆÁ
+ç‚¹å‡»å¼€å§‹æ²¡æœ‰åˆå§‹åŒ–è§£é‡Šå™¨ï¼Œæ”¹initialize_machine
 
-µã»÷¿ªÊ¼Ã»ÓÐ³õÊ¼»¯½âÊÍÆ÷£¬¸Äinitialize_machine
-
-Óï·¨´íÎó¸ßÁÁ»ÆÉ«ÄÇÌõ¶«Î÷Ò»Ö±´æÔÚ¡£
+è¯­æ³•é”™è¯¯é«˜äº®é»„è‰²é‚£æ¡ä¸œè¥¿ä¸€ç›´å­˜åœ¨ã€‚
 
 
-ÊäÈë£º i
-bug£º±àÒë³É¹¦
+è¾“å…¥ï¼š i
+bugï¼šç¼–è¯‘æˆåŠŸ
 
-ÊäÈë£ºint
-bug£º±àÒë³É¹¦
+è¾“å…¥ï¼šint
+bugï¼šç¼–è¯‘æˆåŠŸ
 
-ÊäÈë£ºint a£»
-bug£ºËÀµô£¬³öÏÖ
-¡°System.AccessViolationException¡±ÀàÐÍµÄÎ´¾­´¦ÀíµÄÒì³£³öÏÖÔÚ UltraDemoInterface.exe ÖÐ¡£
-ÆäËûÐÅÏ¢: ³¢ÊÔ¶ÁÈ¡»òÐ´ÈëÊÜ±£»¤µÄÄÚ´æ¡£ÕâÍ¨³£Ö¸Ê¾ÆäËûÄÚ´æÒÑËð»µ¡£
+è¾“å…¥ï¼šint aï¼›
+bugï¼šæ­»æŽ‰ï¼Œå‡ºçŽ°
+â€œSystem.AccessViolationExceptionâ€ç±»åž‹çš„æœªç»å¤„ç†çš„å¼‚å¸¸å‡ºçŽ°åœ¨ UltraDemoInterface.exe ä¸­ã€‚
+å…¶ä»–ä¿¡æ¯: å°è¯•è¯»å–æˆ–å†™å…¥å—ä¿æŠ¤çš„å†…å­˜ã€‚è¿™é€šå¸¸æŒ‡ç¤ºå…¶ä»–å†…å­˜å·²æŸåã€‚
 
-ÊäÈë£ºint main£¨£©{}
-bug£ºËÀµô£¬³öÏÖ
-¡°System.AccessViolationException¡±ÀàÐÍµÄÎ´¾­´¦ÀíµÄÒì³£³öÏÖÔÚ UltraDemoInterface.exe ÖÐ¡£
-ÆäËûÐÅÏ¢: ³¢ÊÔ¶ÁÈ¡»òÐ´ÈëÊÜ±£»¤µÄÄÚ´æ¡£ÕâÍ¨³£Ö¸Ê¾ÆäËûÄÚ´æÒÑËð»µ¡£
+è¾“å…¥ï¼šint mainï¼ˆï¼‰{}
+bugï¼šæ­»æŽ‰ï¼Œå‡ºçŽ°
+â€œSystem.AccessViolationExceptionâ€ç±»åž‹çš„æœªç»å¤„ç†çš„å¼‚å¸¸å‡ºçŽ°åœ¨ UltraDemoInterface.exe ä¸­ã€‚
+å…¶ä»–ä¿¡æ¯: å°è¯•è¯»å–æˆ–å†™å…¥å—ä¿æŠ¤çš„å†…å­˜ã€‚è¿™é€šå¸¸æŒ‡ç¤ºå…¶ä»–å†…å­˜å·²æŸåã€‚
 
-ÊäÈë£º
-int main£¨£©
+è¾“å…¥ï¼š
+int mainï¼ˆï¼‰
 {return i;}
-bug£º±àÒë³É¹¦
+bugï¼šç¼–è¯‘æˆåŠŸ
 
-ÊäÈë£º
-int main£¨£©
+è¾“å…¥ï¼š
+int mainï¼ˆï¼‰
 {return i++;}
-bug£º±àÒë³É¹¦
+bugï¼šç¼–è¯‘æˆåŠŸ
 
-ÊäÈë£º
-int main£¨£©
-{return i+¡°asdf¡±;}
-bug£º±àÒë³É¹¦
+è¾“å…¥ï¼š
+int mainï¼ˆï¼‰
+{return i+â€œasdfâ€;}
+bugï¼šç¼–è¯‘æˆåŠŸ
 
-ÊäÈë£º
-int main£¨£©
-{return 0£»
-bug£º±àÒë³É¹¦
+è¾“å…¥ï¼š
+int mainï¼ˆï¼‰
+{return 0ï¼›
+bugï¼šç¼–è¯‘æˆåŠŸ
 
-ÊäÈë£º
+è¾“å…¥ï¼š
 void main()return 0;
-bug£º±àÒë³É¹¦
+bugï¼šç¼–è¯‘æˆåŠŸ
 
-ÊäÈë£º
+è¾“å…¥ï¼š
 void main()
-bug£º±àÒë³É¹¦
+bugï¼šç¼–è¯‘æˆåŠŸ
 
-ÊäÈë£º
+è¾“å…¥ï¼š
 int i=0;
 int main()
 {
 return 0;
 }
-bug£º±àÒëÊ§°Ü£¬´íÎóÐÅÏ¢£º
+bugï¼šç¼–è¯‘å¤±è´¥ï¼Œé”™è¯¯ä¿¡æ¯ï¼š
 error in external _declaration
 
-ÊäÈë£º
+è¾“å…¥ï¼š
 void main()
 {
 	for(i;i;i)i;
 }
-bug£º±àÒë³É¹¦
+bugï¼šç¼–è¯‘æˆåŠŸ
 
-ÊäÈë£º
+è¾“å…¥ï¼š
 void main()
 {
 	for(i)i;
 }
-bug£º±àÒë³É¹¦
+bugï¼šç¼–è¯‘æˆåŠŸ
