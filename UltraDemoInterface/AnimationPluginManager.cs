@@ -105,6 +105,8 @@ namespace UltraDemoInterface
             if (isRendering == false)
                 return;
             Dictionary<String, UInt32> map = mainWindow.etController.GetInterestingVariables();
+            if (map == null)
+                return;
             Object[] args = { sender, e, map };
             try
             {

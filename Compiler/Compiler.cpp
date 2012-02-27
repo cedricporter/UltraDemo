@@ -17,6 +17,7 @@ COMPILER_API unsigned long *get_dreg(ETCompiler::ETController* ctrl)
     return ctrl->Getdreg();
 }
 
+// 返回的是变量的地址，如果是指针的话记得要以二级指针来解释
 COMPILER_API ETCompiler::PropertiesInsertItem* get_first_item(ETCompiler::ETController* ctrl)
 {
     return ctrl->GetFirstItem();
