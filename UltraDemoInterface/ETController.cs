@@ -103,8 +103,14 @@ namespace UltraDemoInterface
 
             while (ret != IntPtr.Zero)
             {
+                // val默认为变量的内存地址，所以我们要去那个地址去取值。
                 MemItem memitem = (MemItem)Marshal.PtrToStructure(ret, typeof(MemItem));
-                Item item = new Item(memitem.name, memitem.val.ToString());
+                UInt32 val;
+                unsafe
+                {
+                    val = *(UInt32*)memitem.val;
+                }
+                Item item = new Item(memitem.name, val.ToString());
                 list.Add(item);
                 ret = get_next_item(controller);
             }
