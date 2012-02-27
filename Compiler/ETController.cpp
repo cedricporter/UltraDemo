@@ -1,4 +1,4 @@
-#include "def.h"
+ï»¿#include "def.h"
 #include "ETController.h"
 #include "JiafeiDebugger.h"
 
@@ -7,27 +7,27 @@ ETCompiler::ETController::ETController()
     m_pParser = new CParser;
 
     /************************************************************************/
-    /* ×¢²áµ÷ÊÔÆ÷                                                            */
+    /* æ³¨å†Œè°ƒè¯•å™¨                                                            */
     /************************************************************************/
 
-    // ×¢²áº¯Êı
+    // æ³¨å†Œå‡½æ•°
     auto regist = [&]( IDebugger* debug, std::function< LPVOID(LPVOID) > pfunc )
     {
-        debug->SetCallBack( pfunc );				// Îªµ÷ÊÔÆ÷ÉèÖÃ»Øµ÷º¯Êı
-        m_machine.AddDebugger( debug );			// ½«µ÷ÊÔÆ÷×¢²áµ½ET»úÆ÷ÖĞ
+        debug->SetCallBack( pfunc );				// ä¸ºè°ƒè¯•å™¨è®¾ç½®å›è°ƒå‡½æ•°
+        m_machine.AddDebugger( debug );			// å°†è°ƒè¯•å™¨æ³¨å†Œåˆ°ETæœºå™¨ä¸­
     };
 
 
-	// ¸ºÔğÄÚ´æĞÅÏ¢ÏÔÊ¾
+	// è´Ÿè´£å†…å­˜ä¿¡æ¯æ˜¾ç¤º
 	m_memoryWatcher = new MemoryViewDebugger;
 	auto func4 = [&]( LPVOID param )->LPVOID
 	{
 		switch ( (int)param )
 		{
 		case 0:
-			return m_pParser;	// ·µ»ØÓï·¨Æ÷
+			return m_pParser;	// è¿”å›è¯­æ³•å™¨
 		case 1:
-			return this;	    // ·µ»Ø¿ØÖÆÆ÷£¬ÓÃÓÚÄÚ´æ±äÁ¿±£´æÏÂÀ´¸øC#Ê¹ÓÃ
+			return this;	    // è¿”å›æ§åˆ¶å™¨ï¼Œç”¨äºå†…å­˜å˜é‡ä¿å­˜ä¸‹æ¥ç»™C#ä½¿ç”¨
 		}
 
 		return NULL;

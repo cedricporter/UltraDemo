@@ -1,17 +1,17 @@
-// Compiler.cpp : ¶¨Òå DLL Ó¦ÓÃ³ÌĞòµÄµ¼³öº¯Êı¡£
+ï»¿// Compiler.cpp : å®šä¹‰ DLL åº”ç”¨ç¨‹åºçš„å¯¼å‡ºå‡½æ•°ã€‚
 //
 
 #include "stdafx.h"
 #include "Compiler.h"
 #include "ETController.h"
 
-// »ñÈ¡Í¨ÓÃ¼Ä´æÆ÷
+// è·å–é€šç”¨å¯„å­˜å™¨
 COMPILER_API unsigned long *get_reg(ETCompiler::ETController* ctrl)
 {
     return ctrl->Getreg();
 }
 
-// »ñÈ¡µ÷ÊÔ¼Ä´æÆ÷
+// è·å–è°ƒè¯•å¯„å­˜å™¨
 COMPILER_API unsigned long *get_dreg(ETCompiler::ETController* ctrl)
 {
     return ctrl->Getdreg();
@@ -29,23 +29,23 @@ COMPILER_API ETCompiler::PropertiesInsertItem* get_next_item(ETCompiler::ETContr
 
 
 /************************************************************************/
-/* ½âÊÍÆ÷Ïà¹Øµ¼³öº¯Êı                                                    */
+/* è§£é‡Šå™¨ç›¸å…³å¯¼å‡ºå‡½æ•°                                                    */
 /************************************************************************/
 
-// ´´½¨½âÊÍÆ÷
+// åˆ›å»ºè§£é‡Šå™¨
 COMPILER_API ETCompiler::ETController* create_controller()
 {
     return new ETCompiler::ETController;
 }
 
-// Ïú»Ù½âÊÍÆ÷
+// é”€æ¯è§£é‡Šå™¨
 COMPILER_API void destroy_controller(ETCompiler::ETController* ctrl)
 {
     delete ctrl;
 }
 
-// ³õÊ¼»¯½âÊÍÆ÷
-//@param code Ô´´úÂë
+// åˆå§‹åŒ–è§£é‡Šå™¨
+//@param code æºä»£ç 
 COMPILER_API int initial_machine(ETCompiler::ETController* ctrl, const char* code, char* error_message)
 {
     int ret = ctrl->Initialiaze_Machine(code, error_message);
@@ -53,7 +53,7 @@ COMPILER_API int initial_machine(ETCompiler::ETController* ctrl, const char* cod
     return ret;
 }
 
-// µ¥²½Ö´ĞĞ
+// å•æ­¥æ‰§è¡Œ
 COMPILER_API int step(ETCompiler::ETController* ctrl)
 {
     int ret = ctrl->Step();
@@ -64,7 +64,7 @@ COMPILER_API int step(ETCompiler::ETController* ctrl)
     //return ctrl->Step();
 }
 
-// »ñÈ¡µ±Ç°ĞĞºÅ
+// è·å–å½“å‰è¡Œå·
 COMPILER_API int get_current_line(ETCompiler::ETController* ctrl)
 {
     return ctrl->GetCurrentLine();
@@ -77,7 +77,7 @@ COMPILER_API const int get_output(ETCompiler::ETController* ctrl, char* output)
 }
 
 
-// ±àÒë
+// ç¼–è¯‘
 COMPILER_API int compile(const wchar_t* code, char* outResult)
 {
     using namespace ETCompiler;
@@ -118,8 +118,8 @@ COMPILER_API int compile(const wchar_t* code, char* outResult)
     return 0;
 }
 
-// ÕâÊÇÒÑµ¼³öÀàµÄ¹¹Ôìº¯Êı¡£
-// ÓĞ¹ØÀà¶¨ÒåµÄĞÅÏ¢£¬Çë²ÎÔÄ Compiler.h
+// è¿™æ˜¯å·²å¯¼å‡ºç±»çš„æ„é€ å‡½æ•°ã€‚
+// æœ‰å…³ç±»å®šä¹‰çš„ä¿¡æ¯ï¼Œè¯·å‚é˜… Compiler.h
 CCompiler::CCompiler()
 {
 	return;

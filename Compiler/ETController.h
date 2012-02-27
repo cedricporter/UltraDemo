@@ -1,4 +1,4 @@
-
+ï»¿
 #include "Parser.h" 
 #include "ETMachine.h"
 #include "SymbolTable.h"
@@ -35,13 +35,13 @@ namespace ETCompiler
 
         const char* GetOutput();
 
-        // ·µ»ØÄÚ´æ±äÁ¿ÁĞ±í
+        // è¿”å›å†…å­˜å˜é‡åˆ—è¡¨
         WatchPropertiesListType& GetMemoryList();
 
-        // ·µ»ØµÚÒ»¸öÔªËØ
+        // è¿”å›ç¬¬ä¸€ä¸ªå…ƒç´ 
         PropertiesInsertItem* GetFirstItem();
 
-        // ·µ»ØÏÂÒ»¸ö
+        // è¿”å›ä¸‹ä¸€ä¸ª
         PropertiesInsertItem* GetNextItem();
     };
 
