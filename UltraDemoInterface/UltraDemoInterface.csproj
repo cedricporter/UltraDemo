@@ -148,6 +148,11 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="bug list.txt" />
+    <Content Include="code\冒泡排序.hpp" />
+    <Content Include="code\基数排序.hpp" />
+    <Content Include="code\快排.hpp" />
+    <Content Include="code\链表删除中间节点 - Copy.hpp" />
+    <Content Include="code\链表插入.hpp" />
     <Content Include="Icons\pause.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

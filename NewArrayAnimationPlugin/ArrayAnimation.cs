@@ -9,7 +9,7 @@ using System.Windows.Media;
 
 namespace UltraDemoInterface
 {
-    public class ArrayAnimation : AnimationFactory
+    public unsafe class ArrayAnimation : AnimationFactory
     {
         Rectangle fuckr;
 
@@ -35,10 +35,46 @@ namespace UltraDemoInterface
             
         }
 
-        public override void BeginRender(Object sender, EventArgs e)
+        public void DrawArray(int* array, int size)
         {
-            //System.Windows.MessageBox.Show("ArrayAnimation Rendering");
-            //fuckr.Width++;
+            animationContainer.Children.Clear();
+
+            int j = 0;
+            for (int i = 0; i < size; i++)
+            {
+                Rectangle rect = new Rectangle();
+
+                TextBox text = new TextBox();
+                text.Text = array[i].ToString();
+                text.Height = 30;
+
+                rect.Height = array[i] /  50;
+                rect.Width = 30;
+                rect.Fill = new SolidColorBrush(Colors.Red);
+
+                TranslateTransform ts = new TranslateTransform((-200 + 50 * i) % 300, j * 30);
+
+                rect.RenderTransform = ts;
+                text.RenderTransform = ts;
+
+                //animationContainer.Children.Add(rect); 
+                animationContainer.Children.Add(text);
+
+                if ((-200 + 50 * i) % 300 == 0)
+                    j++;
+            } 
+        }
+
+        public override void BeginRender(Object sender, EventArgs e, Dictionary<String, UInt32> map)
+        {
+            int* array = (int*)*(int*)map["watchedArray"];
+            int size = *(int*)map["watchedSize"];
+
+            if (array != (int*)0)
+            {
+                DrawArray(array, size);
+            }
+
         }
     }
 }

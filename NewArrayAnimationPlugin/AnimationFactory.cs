@@ -35,7 +35,7 @@ namespace UltraDemoInterface
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        public abstract void BeginRender(Object sender, EventArgs e);
+        public abstract void BeginRender(Object sender, EventArgs e, Dictionary<String, UInt32> map);
 
         /// <summary>
         /// 获取动画名称
@@ -64,10 +64,21 @@ namespace UltraDemoInterface
             return watchedList;
         }
 
+        /// <summary>
+        /// 设置运行间隔
+        /// </summary>
+        /// <param name="interval"></param>
+        public virtual void SetTimeInterval(Double interval)
+        {
+            this.timeInterval = interval;
+        }
+
         protected String name;
         protected String description;
-        protected List<String> watchedList;
+        protected List<String> watchedList = new List<String>();
+        protected Double timeInterval = 500;
         public Grid animationContainer;
+
         //{
         //    get { return animationContainer; }
         //    set { animationContainer = (Grid)value; }
